@@ -4,7 +4,7 @@ const getAllArtworks = async (req, res) => {
   try {
     let allArtworks;
 
-    allManga = await ADModel.getAllArtworks();
+    allArtworks = await ADModel.getAllArtworks();
     res.status(200).json({
       message: "[GET /controller]: Fetching all artworks successful!",
       data: allArtworks,
@@ -23,7 +23,7 @@ const getArtworkById = async (req, res) => {
     const { artwork_id } = req.params;
     let artworkId;
 
-    allManga = await ADModel.getArtworkById(artwork_id);
+    artworkId = await ADModel.getArtworkById(artwork_id);
     res.status(200).json({
       message: "[GET /controller]: Fetching artwork by id successful!",
       data: artworkId,
@@ -49,7 +49,8 @@ const addArtwork = async (req, res) => {
       title,
       description,
       image_url,
-      tool_id
+      tool_id,
+      artstyle_id
     );
     res.status(200).json({
       message: "[POST /controller]: Adding artwork successful!",
@@ -68,7 +69,7 @@ const updateArtwork = async (req, res) => {
     const { title, description, image_url, tool_id, artstyle_id } = req.body;
     let updatedArtwork;
 
-    updateArtwork = await ADModel.updateArtwork(
+    updatedArtwork = await ADModel.updateArtwork(
       artwork_id,
       title,
       description,
@@ -79,10 +80,10 @@ const updateArtwork = async (req, res) => {
 
     res.json(200).json({
       message: "[PUT /controller]: Updating artwork successful!",
-      data: updateArtwork,
+      data: updatedArtwork,
     });
   } catch (err) {
-    console.error("[PUT /controller]: Error updating artwork!", err.nessage);
+    console.error("[PUT /controller]: Error updating artwork!", err.message);
     res.status(500).json({
       error: "[PUT /controller]: Server error!",
     });
