@@ -42,6 +42,7 @@ const updateArtwork = async (
     value = [title, description, image_url, tool_id, artstyle_id, artwork_id];
   } else {
     query = `UPDATE artworks SET title = $1, description = $2, tool_id = $4, artstyle_id = $5 WHERE artwork_id = $6 RETURNING *`;
+    value = [title, description, image_url, tool_id, artstyle_id, artwork_id];
   }
 
   const result = await pool.query(query, value);
