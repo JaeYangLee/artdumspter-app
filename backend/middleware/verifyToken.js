@@ -11,7 +11,7 @@ const verifyToken = (req, res, next) => {
         .json({ message: "[VERIFY TOKEN]: No token provided." });
     }
 
-    const token = authHeader.split("")[1];
+    const token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, SECRET_KEY);
 
     req.user = decoded;
