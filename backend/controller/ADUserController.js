@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 const getUserById = async (req, res) => {
   try {
-    const { user_id } = req.params;
+    const { user_id } = req.user;
 
     const userId = await ADUserModel.getUserById(user_id);
 
