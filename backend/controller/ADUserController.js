@@ -1,7 +1,6 @@
 const ADUserModel = require("../model/ADUserModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { hash } = require("crypto");
 
 const getUserById = async (req, res) => {
   try {
