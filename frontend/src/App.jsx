@@ -20,17 +20,21 @@ function App() {
     artstyle_id
   ) => {
     try {
-      const res = axios.post(`http://localhost:5000/artDumpster/register`, {
-        username,
-        email,
-        password,
-        bio,
-        location,
-        tool_id,
-        artstyle_id,
-      });
+      const registeredUser = axios.post(
+        `http://localhost:5000/artDumpster/register`,
+        {
+          username,
+          email,
+          password,
+          bio,
+          location,
+          tool_id,
+          artstyle_id,
+        }
+      );
 
-      setUser(res.data);
+      setUser(registeredUser.data);
+
       console.log("[POST /App.jsx]: User registration successful!");
     } catch (err) {
       console.error("[POST /App.jsx]: Error creating new user!");
@@ -39,14 +43,24 @@ function App() {
 
   const loginUser = async (email, password) => {
     try {
-      const res = await axios.post(`http://localhost:5000/artDumpster/login`, {
-        email,
-        password,
-      });
+      const loggedInUser = await axios.post(
+        `http://localhost:5000/artDumpster/login`,
+        {
+          email,
+          password,
+        }
+      );
 
-      setUser(res.data);
+      if (!loggedInUser) {
+        console.error("[POST /App.jsx]: Invalid User!");
+      }
 
-      console.log("[POST /App.jsx]: Log in successful!");
+      const { token, user } = loggedInUser.data;
+      localStorage.setItem("token", token);
+
+      setUser(user);
+
+      console.log("User logged in successfully!", loggedInUser.data);
     } catch (err) {
       console.error("[POST /App.jsx]: Error logging in user!");
     }
