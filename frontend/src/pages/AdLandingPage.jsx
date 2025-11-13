@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
+import AdAuthModal from "../components/AdAuthModal";
 function AdLandingPage() {
+  const [isAuthModalOpen, setAuthModelOpen] = useState(false);
   return (
     <>
       <div className="flex flex-col items-center w-screen h-screen md:flex-row pt-14">
@@ -19,7 +22,10 @@ function AdLandingPage() {
             </p>
           </section>
           <section className="flex flex-row items-center justify-center w-full gap-2 md:items-start md:justify-start">
-            <button className="flex flex-row items-center gap-2 p-2 px-4 text-white bg-black border rounded">
+            <button
+              onClick={() => setAuthModelOpen(true)}
+              className="flex flex-row items-center gap-2 p-2 px-4 text-white bg-black border rounded"
+            >
               Get Started
               <span className="hidden md:flex">
                 <BsArrowRight />
@@ -32,6 +38,11 @@ function AdLandingPage() {
           <h1 className="text-5xl font-bold">AD*</h1>
         </div>
       </div>
+
+      <AdAuthModal
+        isAuthModalOpen={isAuthModalOpen}
+        onAuthModalClose={() => setAuthModelOpen(false)}
+      />
     </>
   );
 }
