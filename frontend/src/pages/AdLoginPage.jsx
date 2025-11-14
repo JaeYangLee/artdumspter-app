@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 function AdLoginPage() {
   return (
     <>
-      <div className="flex flex-col items-start justify-center w-screen h-screen px-4 pt-14">
-        <form className="flex flex-col items-start gap-4 p-4 px-4 border rounded-lg">
+      <div className="flex flex-col items-center justify-center w-screen h-screen px-4 pt-14">
+        <form className="flex flex-col items-center juti gap-4 p-4 px-4 border rounded-lg">
           <h1 className="text-lg font-bold text-left">LOG IN ART ACCOUNT</h1>
-          <section>
-            <div>
+          <section className="w-full items-start">
+            <div className="flex flex-col justify-center">
               <label>Enter email:</label>
               <input required type="email" className="px-2 border rounded" />
             </div>
-            <div>
+            <div className="flex flex-col justify-center">
               <label>Enter password:</label>
               <input type="password" className="px-2 border rounded" />
             </div>
