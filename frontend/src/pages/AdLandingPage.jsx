@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 function AdLandingPage({ onLogin, onRegister }) {
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-screen h-screen bg-primary text-secondary">
+      <div className="flex flex-col items-center justify-center w-screen h-screen bg-backgroundColor text-textColor">
         <div className="w-full h-full flex flex-col md:flex-row items-center justify-center">
           <section className="w-full h-full flex flex-col items-center justify-center">
             <div className="text-center md:text-start p-4">
               <h1 className="font-bold text-2xl">
-                Welcome to <span>ArtDumpster*</span>
+                Welcome to <span className="text-primary">ArtDumpster*</span>
               </h1>
               <h3 className="text-lg">Explore Unfiltered Art.</h3>
             </div>
@@ -27,7 +27,7 @@ function AdLandingPage({ onLogin, onRegister }) {
                   placeholder="Enter password..."
                   className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                 />
-                <button className="w-full px-2 border rounded bg-secondary text-primary shadow-secondary border-secondary shadow-[2px_2px_0px_0px]">
+                <button className="w-full px-2 border border-textColor shadow-textColor rounded  bg-primary text-backgroundColor shadow-[2px_2px_0px_0px]">
                   Log in
                 </button>
               </form>
@@ -36,7 +36,7 @@ function AdLandingPage({ onLogin, onRegister }) {
 
               <Link
                 to="/register"
-                className="px-2 rounded border bg-accent shadow-[2px_2px_0px_0px]"
+                className="px-2 rounded border shadow-[2px_2px_0px_0px] bg-secondary"
               >
                 Create new art account
               </Link>

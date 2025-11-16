@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 function AdRegisterPage() {
   return (
     <>
-      <div className="w-screen h-screen flex flex-col items-center justify-center bg-primary">
+      <div className="w-screen h-screen flex flex-col items-center justify-center bg-backgroundColor">
         <div className="flex flex-col items-center justify-center text-center gap-4 ">
           <section>
-            <h1 className="text-3xl font-bold">ArtDumpster*</h1>
+            <h1 className="text-3xl font-bold text-primary">ArtDumpster*</h1>
           </section>
 
           <section className="border rounded-lg shadow-[4px_4px_0px_0px]">
@@ -79,7 +79,7 @@ function AdRegisterPage() {
               </section>
 
               <section className="w-full flex flex-row items-end justify-end gap-2">
-                <button className="px-2 border rounded shadow-[2px_2px_0px_0px]">
+                <button className="px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor">
                   Submit
                 </button>
                 <Link
