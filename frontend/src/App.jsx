@@ -2,8 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import AdLandingPage from "./pages/AdLandingPage";
+import AdRegisterPage from "./pages/AdRegisterPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -69,6 +69,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<AdLandingPage />}></Route>
+          <Route path="/register" element={<AdRegisterPage />}></Route>
         </Routes>
       </Router>
     </>
