@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 
-function AdRegisterPage() {
+function AdRegisterPage({ onSubmit }) {
+  const handleSubmit = async (e) => {
+    try {
+    } catch (err) {
+      console.error("[POST /RegisterPage.jsx]: Server error!", err.message);
+    }
+  };
+
   return (
     <>
       <div className="w-screen h-screen flex flex-col items-center justify-center bg-backgroundColor">

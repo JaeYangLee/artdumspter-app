@@ -79,6 +79,7 @@ function App() {
           <Route path="/register" element={<AdRegisterPage />}></Route>
 
           <Route
+            exact
             path="/profile"
             element={
               <AdProtectedRoute user={user}>

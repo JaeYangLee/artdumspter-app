@@ -20,7 +20,7 @@ function AdLandingPage({ onLogin, onRegister }) {
       setEmail("");
       setPassword("");
     } catch (err) {
-      console.error("[POST /Login]: Server error!");
+      console.error("[POST /Login]: Server error!", err.message);
       setEmail("");
       setPassword("");
     }

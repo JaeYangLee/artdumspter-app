@@ -1,10 +1,10 @@
 import { Navigate } from "react-router-dom";
 
-function AdProtectedRoute({ user, child }) {
+function AdProtectedRoute({ user, children }) {
   if (!user) {
     return <Navigate to="/" replace />;
   }
-  return child;
+  return children;
 }
 
 export default AdProtectedRoute;
