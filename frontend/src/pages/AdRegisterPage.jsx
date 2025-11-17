@@ -106,13 +106,13 @@ function AdRegisterPage({ onRegister }) {
                   <label className="w-full text-start text-sm">
                     Whats is your main tool?
                   </label>
-                  <select></select>
+                  <select className=" px-2 border rounded shadow-[2px_2px_0px_0px]"></select>
                 </div>
                 <div className="flex flex-col">
                   <label className="w-full text-start text-sm">
                     What is your art style?
                   </label>
-                  <select></select>
+                  <select className="px-2 border rounded shadow-[2px_2px_0px_0px]"></select>
                 </div>
               </section>
 
