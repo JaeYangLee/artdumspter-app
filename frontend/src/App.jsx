@@ -4,6 +4,8 @@ import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AdLandingPage from "./pages/AdLandingPage";
 import AdRegisterPage from "./pages/AdRegisterPage";
+import AdProtectedRoute from "./components/AdProtectedRoute";
+import AdProfilePage from "./pages/AdProfilePage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -73,7 +75,17 @@ function App() {
             path="/"
             element={<AdLandingPage onLogin={loginUser} />}
           ></Route>
+
           <Route path="/register" element={<AdRegisterPage />}></Route>
+
+          <Route
+            path="/profile"
+            element={
+              <AdProtectedRoute user={user}>
+                <AdProfilePage user={user} />
+              </AdProtectedRoute>
+            }
+          ></Route>
         </Routes>
       </Router>
     </>
