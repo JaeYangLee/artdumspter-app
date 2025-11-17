@@ -1,8 +1,27 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function AdRegisterPage({ onSubmit }) {
+function AdRegisterPage({ onRegister }) {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [bio, setBio] = useState("");
+  const [location, setLocation] = useState("");
+  const [tool_id, setToolId] = useState("");
+  const [artstyle_id, setArtstyleId] = useState("");
+
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
+      await onRegister(
+        username,
+        email,
+        password,
+        bio,
+        location,
+        tool_id,
+        artstyle_id
+      );
     } catch (err) {
       console.error("[POST /RegisterPage.jsx]: Server error!", err.message);
     }
@@ -24,13 +43,15 @@ function AdRegisterPage({ onSubmit }) {
 
             <hr />
 
-            <form className="flex flex-col p-4 gap-8 ">
+            <form onSubmit={handleSubmit} className="flex flex-col p-4 gap-8 ">
               <section className="flex flex-col gap-2">
                 <div className="flex flex-col">
                   <label className="w-full text-start text-sm">
                     Enter username:
                   </label>
                   <input
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     type="text"
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
@@ -40,6 +61,8 @@ function AdRegisterPage({ onSubmit }) {
                     Enter email:
                   </label>
                   <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     type="email"
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
@@ -49,6 +72,8 @@ function AdRegisterPage({ onSubmit }) {
                     Enter password:
                   </label>
                   <input
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     type="password"
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
@@ -58,12 +83,18 @@ function AdRegisterPage({ onSubmit }) {
                     Enter bio:
                   </label>
                   <textarea
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
                     type="text"
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="w-full text-start text-sm">
+                  <label
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    className="w-full text-start text-sm"
+                  >
                     Enter location:
                   </label>
                   <input
@@ -86,7 +117,10 @@ function AdRegisterPage({ onSubmit }) {
               </section>
 
               <section className="w-full flex flex-row items-end justify-end gap-2">
-                <button className="px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor">
+                <button
+                  type="submit"
+                  className="px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor"
+                >
                   Submit
                 </button>
                 <Link
