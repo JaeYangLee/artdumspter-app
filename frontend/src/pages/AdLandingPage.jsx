@@ -1,6 +1,29 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function AdLandingPage({ onLogin, onRegister }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      if (!email.trim() || !password.trim()) {
+        return;
+      }
+
+      onLogin(email, password);
+
+      setEmail("");
+      setPassword("");
+    } catch (err) {
+      console.error("[POST /Login]: Server error!");
+      setEmail("");
+      setPassword("");
+    }
+  };
+
   return (
     <>
       <div className="flex flex-col items-center justify-center w-screen h-screen bg-backgroundColor text-textColor">
@@ -16,18 +39,28 @@ function AdLandingPage({ onLogin, onRegister }) {
 
           <section className="w-full h-full flex flex-col items-center justify-center ">
             <div className="flex flex-col items-center justify-center gap-4 border rounded-lg px-4 py-8 shadow-[4px_4px_0px_0px]">
-              <form className="flex flex-col items-center justify-center gap-2 ">
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col items-center justify-center gap-2 "
+              >
                 <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   placeholder="Enter email..."
                   className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                 />
                 <input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   type="password"
                   placeholder="Enter password..."
                   className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                 />
-                <button className="w-full px-2 border border-textColor shadow-textColor rounded  bg-primary text-backgroundColor shadow-[2px_2px_0px_0px]">
+                <button
+                  type="submit"
+                  className="w-full px-2 border border-textColor shadow-textColor rounded  bg-primary text-backgroundColor shadow-[2px_2px_0px_0px]"
+                >
                   Log in
                 </button>
               </form>

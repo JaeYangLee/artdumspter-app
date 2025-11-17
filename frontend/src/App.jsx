@@ -68,7 +68,11 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route exact path="/" element={<AdLandingPage />}></Route>
+          <Route
+            exact
+            path="/"
+            element={<AdLandingPage onLogin={loginUser} />}
+          ></Route>
           <Route path="/register" element={<AdRegisterPage />}></Route>
         </Routes>
       </Router>
