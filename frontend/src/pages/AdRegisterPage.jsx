@@ -123,9 +123,8 @@ function AdRegisterPage({ onRegister }) {
                   <select
                     value={tool_id}
                     onChange={(e) => setToolId(e.target.value)}
-                    className=" px-2 border rounded shadow-[2px_2px_0px_0px]"
+                    className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   >
-                    <option>Select your tool:</option>
                     {tools.map((tools) => (
                       <option key={tools.tool_id} value={tools.tool_id}>
                         {tools.tool_name}
