@@ -137,9 +137,9 @@ function AdRegisterPage({ onRegister }) {
                     onChange={(e) => setToolId(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   >
-                    {tools.map((tools) => (
-                      <option key={tools.tool_id} value={tools.tool_id}>
-                        {tools.tool_name}
+                    {tools.map((tool) => (
+                      <option key={tool.tool_id} value={tool.tool_id}>
+                        {tool.tool_name}
                       </option>
                     ))}
                   </select>
@@ -153,12 +153,12 @@ function AdRegisterPage({ onRegister }) {
                     onChange={(e) => setArtStyleId(e.target.value)}
                     className=" px-2 border rounded shadow-[2px_2px_0px_0px]"
                   >
-                    {artstyles.map((artstyles) => (
+                    {artstyles.map((artstyle) => (
                       <option
-                        key={artstyles.artstyle_id}
-                        value={artstyles.artstyle_id}
+                        key={artstyle.artstyle_id}
+                        value={artstyle.artstyle_id}
                       >
-                        {artstyles.artstyle_name}
+                        {artstyle.artstyle_name}
                       </option>
                     ))}
                   </select>

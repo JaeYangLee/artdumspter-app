@@ -33,7 +33,7 @@ function App() {
         }
       );
 
-      setUser(registeredUser.data);
+      setUser(registeredUser.data.data);
 
       console.log("[POST /App.jsx]: User registration successful!");
     } catch (err) {
@@ -76,7 +76,10 @@ function App() {
             element={<AdLandingPage onLogin={loginUser} />}
           ></Route>
 
-          <Route path="/register" element={<AdRegisterPage />}></Route>
+          <Route
+            path="/register"
+            element={<AdRegisterPage onRegister={registerUser} />}
+          ></Route>
 
           <Route
             exact
