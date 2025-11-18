@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function AdRegisterPage({ onRegister }) {
   const [username, setUsername] = useState("");
@@ -7,8 +8,21 @@ function AdRegisterPage({ onRegister }) {
   const [password, setPassword] = useState("");
   const [bio, setBio] = useState("");
   const [location, setLocation] = useState("");
+  const [tools, setTools] = useState([]);
   const [tool_id, setToolId] = useState("");
-  const [artstyle_id, setArtstyleId] = useState("");
+
+  useEffect(() => {
+    fetchAllTools();
+  }, []);
+
+  const fetchAllTools = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/artDumpster/tools");
+      setTools(res.data.data);
+    } catch (err) {
+      console.error("[GET /RegisterPage.jsx]: Error fetching all tools!");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -106,13 +120,24 @@ function AdRegisterPage({ onRegister }) {
                   <label className="w-full text-start text-sm">
                     Whats is your main tool?
                   </label>
-                  <select className=" px-2 border rounded shadow-[2px_2px_0px_0px]"></select>
+                  <select
+                    value={tool_id}
+                    onChange={(e) => setToolId(e.target.value)}
+                    className=" px-2 border rounded shadow-[2px_2px_0px_0px]"
+                  >
+                    <option>Select your tool:</option>
+                    {tools.map((tools) => (
+                      <option key={tools.tool_id} value={tools.tool_id}>
+                        {tools.tool_name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 <div className="flex flex-col">
                   <label className="w-full text-start text-sm">
                     What is your art style?
                   </label>
-                  <select className="px-2 border rounded shadow-[2px_2px_0px_0px]"></select>
+                  <select className=" px-2 border rounded shadow-[2px_2px_0px_0px]"></select>
                 </div>
               </section>
 
