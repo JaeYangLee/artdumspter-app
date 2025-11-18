@@ -2,7 +2,7 @@ const pool = require("../database/database");
 
 const fetchAllArtStyles = async () => {
   const res = await pool.query(
-    "SELECT * FROM artstyles ORDER VY artstyle_id ASC"
+    "SELECT * FROM artstyles ORDER BY artstyle_id ASC"
   );
   return res.rows;
 };

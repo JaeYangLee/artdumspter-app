@@ -5,7 +5,7 @@ const fetchAllArtStyles = async (req, res) => {
     const allArtstyles = await AdArtStylesModel.fetchAllArtStyles();
 
     res.status(200).json({
-      message: "[GET /ArtStylesController]: All art styles fetached!",
+      message: "[GET /ArtStylesController]: All art styles fetched!",
       data: allArtstyles,
     });
   } catch (err) {

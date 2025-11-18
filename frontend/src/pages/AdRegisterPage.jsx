@@ -10,10 +10,24 @@ function AdRegisterPage({ onRegister }) {
   const [location, setLocation] = useState("");
   const [tools, setTools] = useState([]);
   const [tool_id, setToolId] = useState("");
+  const [artstyles, setArtStyles] = useState([]);
+  const [artstyle_id, setArtStyleId] = useState("");
 
   useEffect(() => {
     fetchAllTools();
+    fetchAllArtStyles();
   }, []);
+
+  const fetchAllArtStyles = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:5000/artDumpster/artStyles"
+      );
+      setArtStyles(res.data.data);
+    } catch (err) {
+      console.error("[GET /RegisterPage.jsx]: Error fetching all art styles!");
+    }
+  };
 
   const fetchAllTools = async () => {
     try {
@@ -104,14 +118,12 @@ function AdRegisterPage({ onRegister }) {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                    className="w-full text-start text-sm"
-                  >
+                  <label className="w-full text-start text-sm">
                     Enter location:
                   </label>
                   <input
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
                     type="text"
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
@@ -136,7 +148,20 @@ function AdRegisterPage({ onRegister }) {
                   <label className="w-full text-start text-sm">
                     What is your art style?
                   </label>
-                  <select className=" px-2 border rounded shadow-[2px_2px_0px_0px]"></select>
+                  <select
+                    value={artstyle_id}
+                    onChange={(e) => setArtStyleId(e.target.value)}
+                    className=" px-2 border rounded shadow-[2px_2px_0px_0px]"
+                  >
+                    {artstyles.map((artstyles) => (
+                      <option
+                        key={artstyles.artstyle_id}
+                        value={artstyles.artstyle_id}
+                      >
+                        {artstyles.artstyle_name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </section>
 
