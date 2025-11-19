@@ -79,8 +79,8 @@ const logInUser = async (req, res) => {
 
 const createUser = async (req, res) => {
   try {
-    const { username, email, password, bio, location, tool_id, artstyle_id } =
-      req.body;
+    const { tool_id, artstyle_id } = req.params;
+    const { username, email, password, bio, location } = req.body;
 
     const newUser = await ADUserModel.createUser(
       username,

@@ -20,7 +20,7 @@ function App() {
     artstyle_id
   ) => {
     try {
-      const registeredUser = axios.post(
+      const registeredUser = await axios.post(
         `http://localhost:5000/artDumpster/register`,
         {
           username,

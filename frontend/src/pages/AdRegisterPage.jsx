@@ -41,6 +41,17 @@ function AdRegisterPage({ onRegister }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (
+        !username.trim() ||
+        !email.trim() ||
+        !password.trim() ||
+        !bio.trim() ||
+        !location.trim() ||
+        !tool_id ||
+        !artstyle_id
+      )
+        return;
+
       await onRegister(
         username,
         email,
@@ -78,6 +89,7 @@ function AdRegisterPage({ onRegister }) {
                     Enter username:
                   </label>
                   <input
+                    required
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     type="text"
@@ -89,6 +101,7 @@ function AdRegisterPage({ onRegister }) {
                     Enter email:
                   </label>
                   <input
+                    required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     type="email"
@@ -100,6 +113,7 @@ function AdRegisterPage({ onRegister }) {
                     Enter password:
                   </label>
                   <input
+                    required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     type="password"
@@ -122,6 +136,7 @@ function AdRegisterPage({ onRegister }) {
                     Enter location:
                   </label>
                   <input
+                    required
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
                     type="text"
@@ -137,6 +152,7 @@ function AdRegisterPage({ onRegister }) {
                     onChange={(e) => setToolId(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   >
+                    <option value="">Select your tool:</option>
                     {tools.map((tool) => (
                       <option key={tool.tool_id} value={tool.tool_id}>
                         {tool.tool_name}
@@ -153,6 +169,7 @@ function AdRegisterPage({ onRegister }) {
                     onChange={(e) => setArtStyleId(e.target.value)}
                     className=" px-2 border rounded shadow-[2px_2px_0px_0px]"
                   >
+                    <option value="">Select your art style:</option>
                     {artstyles.map((artstyle) => (
                       <option
                         key={artstyle.artstyle_id}
