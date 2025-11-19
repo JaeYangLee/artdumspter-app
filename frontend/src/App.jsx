@@ -37,7 +37,7 @@ function App() {
 
       console.log("[POST /App.jsx]: User registration successful!");
     } catch (err) {
-      console.error("[POST /App.jsx]: Error creating new user!");
+      console.error("[POST /App.jsx]: Error creating new user!", err.message);
     }
   };
 
@@ -62,7 +62,7 @@ function App() {
 
       console.log("User logged in successfully!", loggedInUser.data);
     } catch (err) {
-      console.error("[POST /App.jsx]: Error logging in user!");
+      console.error("[POST /App.jsx]: Error logging in user!", err.message);
     }
   };
 
