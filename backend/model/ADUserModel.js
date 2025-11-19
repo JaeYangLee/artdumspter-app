@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 
 const getUserById = async (user_id) => {
   const result = await pool.query(
-    "SELECT user_id, username, email, bio, location, tool_id, artstyle_id FROM users WHERE user_id = $1",
+    "SELECT u.user_id, u.username, u.email, u.bio, u.location, t.tool_name, a.artstyle_name FROM users u LEFT JOIN tools t ON u.tool_id = t.tool_id LEFT JOIN artstyles a ON u.artstyle_id = a.artstyle_id WHERE u.user_id = $1",
     [user_id]
   );
 
