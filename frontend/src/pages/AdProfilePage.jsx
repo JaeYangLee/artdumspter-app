@@ -44,8 +44,8 @@ function AdProfilePage({ onLogout }) {
         <h1>{user.email}</h1>
         <h1>{user.bio}</h1>
         <h1>{user.location}</h1>
-        <h1>{user.tool_id}</h1>
-        <h1>{user.artstyle_id}</h1>
+        <h1>{user.tool_name}</h1>
+        <h1>{user.artstyle_name}</h1>
       </div>
 
       <AdNavBar />
