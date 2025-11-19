@@ -86,7 +86,7 @@ function App() {
             path="/profile"
             element={
               <AdProtectedRoute user={user}>
-                <AdProfilePage user={user} />
+                <AdProfilePage />
               </AdProtectedRoute>
             }
           ></Route>
