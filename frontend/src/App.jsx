@@ -6,6 +6,8 @@ import AdLandingPage from "./pages/AdLandingPage";
 import AdRegisterPage from "./pages/AdRegisterPage";
 import AdProtectedRoute from "./components/AdProtectedRoute";
 import AdProfilePage from "./pages/AdProfilePage";
+import AdMyDumpsterPage from "./pages/AdMyDumpsterPage";
+import AdAddAnArtworkPage from "./pages/AdAddAnArtworkPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -97,6 +99,26 @@ function App() {
             element={
               <AdProtectedRoute user={user}>
                 <AdProfilePage onLogout={logOutUser} />
+              </AdProtectedRoute>
+            }
+          ></Route>
+
+          <Route
+            exact
+            path="/myDumpster"
+            element={
+              <AdProtectedRoute user={user}>
+                <AdMyDumpsterPage />
+              </AdProtectedRoute>
+            }
+          ></Route>
+
+          <Route
+            exact
+            path="/addAnArtwork"
+            element={
+              <AdProtectedRoute user={user}>
+                <AdAddAnArtworkPage />
               </AdProtectedRoute>
             }
           ></Route>

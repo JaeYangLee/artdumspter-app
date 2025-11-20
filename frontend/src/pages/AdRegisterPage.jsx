@@ -68,8 +68,8 @@ function AdRegisterPage({ onRegister }) {
 
   return (
     <>
-      <div className="w-screen h-screen flex flex-col items-center justify-center bg-backgroundColor">
-        <div className="flex flex-col items-center justify-center text-center gap-4 ">
+      <div className="flex flex-col items-center justify-center w-screen h-screen bg-backgroundColor">
+        <div className="flex flex-col items-center justify-center gap-4 text-center ">
           <section>
             <h1 className="text-3xl font-bold text-primary">ArtDumpster*</h1>
           </section>
@@ -82,10 +82,10 @@ function AdRegisterPage({ onRegister }) {
 
             <hr />
 
-            <form onSubmit={handleSubmit} className="flex flex-col p-4 gap-8 ">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-8 p-4 ">
               <section className="flex flex-col gap-2">
                 <div className="flex flex-col">
-                  <label className="w-full text-start text-sm">
+                  <label className="w-full text-sm text-start">
                     Enter username:
                   </label>
                   <input
@@ -97,7 +97,7 @@ function AdRegisterPage({ onRegister }) {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="w-full text-start text-sm">
+                  <label className="w-full text-sm text-start">
                     Enter email:
                   </label>
                   <input
@@ -109,7 +109,7 @@ function AdRegisterPage({ onRegister }) {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="w-full text-start text-sm">
+                  <label className="w-full text-sm text-start">
                     Enter password:
                   </label>
                   <input
@@ -121,7 +121,7 @@ function AdRegisterPage({ onRegister }) {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="w-full text-start text-sm">
+                  <label className="w-full text-sm text-start">
                     Enter bio:
                   </label>
                   <textarea
@@ -132,7 +132,7 @@ function AdRegisterPage({ onRegister }) {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="w-full text-start text-sm">
+                  <label className="w-full text-sm text-start">
                     Enter location:
                   </label>
                   <input
@@ -144,7 +144,7 @@ function AdRegisterPage({ onRegister }) {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="w-full text-start text-sm">
+                  <label className="w-full text-sm text-start">
                     Whats is your main tool?
                   </label>
                   <select
@@ -161,7 +161,7 @@ function AdRegisterPage({ onRegister }) {
                   </select>
                 </div>
                 <div className="flex flex-col">
-                  <label className="w-full text-start text-sm">
+                  <label className="w-full text-sm text-start">
                     What is your art style?
                   </label>
                   <select
@@ -182,7 +182,7 @@ function AdRegisterPage({ onRegister }) {
                 </div>
               </section>
 
-              <section className="w-full flex flex-row items-end justify-end gap-2">
+              <section className="flex flex-row items-end justify-end w-full gap-2">
                 <button
                   type="submit"
                   className="px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor"
