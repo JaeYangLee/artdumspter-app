@@ -66,6 +66,16 @@ function App() {
     }
   };
 
+  const logOutUser = async (req, res) => {
+    try {
+      localStorage.removeItem("token");
+      setUser(null);
+      console.log("Token Deleted!");
+    } catch (err) {
+      console.error("[LOG OUT /App.jsx]: Error logging out user!", err.message);
+    }
+  };
+
   return (
     <>
       <Router>
@@ -86,7 +96,7 @@ function App() {
             path="/profile"
             element={
               <AdProtectedRoute user={user}>
-                <AdProfilePage />
+                <AdProfilePage onLogout={logOutUser} />
               </AdProtectedRoute>
             }
           ></Route>
