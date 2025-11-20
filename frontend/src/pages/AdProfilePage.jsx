@@ -1,43 +1,11 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import AdNavBar from "../components/AdNavBar";
 import { BsPersonCircle } from "react-icons/bs";
 import { BsEnvelope } from "react-icons/bs";
 import { BsFillPinMapFill } from "react-icons/bs";
+import { useFetchUserById } from "../customHooks/useFetchUserById";
 
 function AdProfilePage({ onLogout }) {
-  const navigate = useNavigate();
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const getUserById = async () => {
-      try {
-        const authToken = localStorage.getItem("token");
-
-        if (!authToken) return;
-
-        const userProfile = await axios.get(
-          "http://localhost:5000/artDumpster/profile",
-          {
-            headers: { Authorization: `Bearer ${authToken}` },
-          }
-        );
-
-        setUser(userProfile.data.data);
-      } catch (err) {
-        console.error(
-          "[GET /App.jsx]: Error fetching user profile!",
-          err.response?.data || err.message
-        );
-
-        setUser(null);
-        localStorage.removeItem("token");
-        navigate("/");
-      }
-    };
-    getUserById();
-  }, []);
+  const user = useFetchUserById();
 
   if (!user) return <p>Loading...</p>;
   return (
