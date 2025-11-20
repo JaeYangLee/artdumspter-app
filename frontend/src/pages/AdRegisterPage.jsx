@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function AdRegisterPage({ onRegister }) {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -61,6 +62,8 @@ function AdRegisterPage({ onRegister }) {
         tool_id,
         artstyle_id
       );
+
+      navigate("/profile");
     } catch (err) {
       console.error("[POST /RegisterPage.jsx]: Server error!", err.message);
     }

@@ -35,9 +35,13 @@ function App() {
         }
       );
 
-      setUser(registeredUser.data.data);
+      const { token, data } = registeredUser.data;
 
-      console.log("[POST /App.jsx]: User registration successful!");
+      localStorage.setItem("token", token);
+
+      setUser(data);
+
+      console.log("[POST /App.jsx]: Registration successful!");
     } catch (err) {
       console.error("[POST /App.jsx]: Error creating new user!", err.message);
     }

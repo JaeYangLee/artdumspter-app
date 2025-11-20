@@ -92,9 +92,15 @@ const createUser = async (req, res) => {
       artstyle_id
     );
 
-    res.status(200).json({
+    const SECRET_KEY = process.env.JWT_SECRET || "superSecret123";
+    const token = jwt.sign({ user_id: newUser.user_id }, SECRET_KEY, {
+      expiresIn: "2h",
+    });
+
+    res.status(201).json({
       message: "[POST /UserController]: New user created!",
       data: newUser,
+      token: token,
     });
   } catch (err) {
     console.error("[POST /UserController]: Error creating user!", err.message);
