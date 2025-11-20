@@ -1,6 +1,6 @@
 import React from "react";
 import AdNavBar from "../components/AdNavBar";
-import { useFetchUserById } from "../customHooks/useFetchUserById";
+import { useFetchUserById } from "../hooks/useFetchUserById";
 
 function AdAddAnArtworkPage({}) {
   const user = useFetchUserById();

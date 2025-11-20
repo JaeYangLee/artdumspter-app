@@ -2,7 +2,7 @@ import AdNavBar from "../components/AdNavBar";
 import { BsPersonCircle } from "react-icons/bs";
 import { BsEnvelope } from "react-icons/bs";
 import { BsFillPinMapFill } from "react-icons/bs";
-import { useFetchUserById } from "../customHooks/useFetchUserById";
+import { useFetchUserById } from "../hooks/useFetchUserById";
 
 function AdProfilePage({ onLogout }) {
   const user = useFetchUserById();
