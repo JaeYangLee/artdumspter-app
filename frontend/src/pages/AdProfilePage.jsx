@@ -12,9 +12,14 @@ function AdProfilePage({ onLogout }) {
     <>
       <div className="flex flex-col justify-center w-screen h-screen p-2 pt-16 md:flex-row">
         <div className="flex flex-col items-center justify-center w-full gap-4 px-2 py-4 bg-gray-200 rounded">
-          <div className="flex flex-col items-center justify-center gap-2">
+          <div
+            to="/profile"
+            className="flex flex-col items-center justify-center gap-2"
+          >
             <BsPersonCircle className="text-textColor size-28 opacity-80" />
-            <h1 className="text-lg font-bold">{user.username}</h1>
+            <h1 to="/profile" className="text-lg font-bold">
+              {user.username}
+            </h1>
             <p className="w-full italic">
               <span className="opacity-40">" </span>
               {user.bio}
