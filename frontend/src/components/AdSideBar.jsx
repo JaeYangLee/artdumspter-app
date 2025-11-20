@@ -6,7 +6,7 @@ import { BsUpload } from "react-icons/bs";
 import { BsFillGearFill } from "react-icons/bs";
 import { BsPower } from "react-icons/bs";
 
-function AdSideBar({ user, isSideBarOpen, onSideBarClose }) {
+function AdSideBar({ user, isSideBarOpen, onSideBarClose, onLogout }) {
   if (!isSideBarOpen) return null;
 
   return (
@@ -49,7 +49,7 @@ function AdSideBar({ user, isSideBarOpen, onSideBarClose }) {
             <div className="flex flex-row items-center gap-2">
               <BsPower className="size-4" />
 
-              <button>Log out</button>
+              <button onClick={onLogout}>Log out</button>
             </div>
           </ul>
         </div>

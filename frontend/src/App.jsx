@@ -108,7 +108,7 @@ function App() {
             path="/myDumpster"
             element={
               <AdProtectedRoute user={user}>
-                <AdMyDumpsterPage />
+                <AdMyDumpsterPage onLogout={logOutUser} />
               </AdProtectedRoute>
             }
           ></Route>
@@ -118,7 +118,7 @@ function App() {
             path="/addAnArtwork"
             element={
               <AdProtectedRoute user={user}>
-                <AdAddAnArtworkPage />
+                <AdAddAnArtworkPage onLogout={logOutUser} />
               </AdProtectedRoute>
             }
           ></Route>

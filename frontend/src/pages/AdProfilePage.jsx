@@ -61,7 +61,7 @@ function AdProfilePage({ onLogout }) {
         </div>
       </div>
 
-      <AdNavBar user={user} />
+      <AdNavBar onLogout={onLogout} user={user} />
     </>
   );
 }

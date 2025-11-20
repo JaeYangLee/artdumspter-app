@@ -1,7 +1,7 @@
 import { BsJustify } from "react-icons/bs";
 import AdSideBar from "./AdSideBar";
 import { useState } from "react";
-function AdNavBar({ user }) {
+function AdNavBar({ user, onLogout }) {
   const [isSideBarOpen, setSideBarOpen] = useState(false);
   return (
     <>
@@ -17,6 +17,7 @@ function AdNavBar({ user }) {
         user={user}
         isSideBarOpen={isSideBarOpen}
         onSideBarClose={() => setSideBarOpen(false)}
+        onLogout={onLogout}
       />
     </>
   );

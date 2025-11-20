@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import AdNavBar from "../components/AdNavBar";
 import { useFetchUserById } from "../hooks/useFetchUserById";
 
-function AdMyDumpsterPage({}) {
+function AdMyDumpsterPage({ onLogout }) {
   const user = useFetchUserById();
 
   return (
@@ -12,7 +12,7 @@ function AdMyDumpsterPage({}) {
         <h1>My Dumpster Page</h1>
       </div>
 
-      <AdNavBar user={user} />
+      <AdNavBar user={user} onLogout={onLogout} />
     </>
   );
 }
