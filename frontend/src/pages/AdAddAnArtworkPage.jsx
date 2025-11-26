@@ -7,7 +7,7 @@ function AdAddAnArtworkPage({ onLogout }) {
   return (
     <>
       <div className="flex flex-col items-center justify-center w-screen h-screen pt-14">
-        <h1>Add an artwork page</h1>
+        <h1 className="">Add an artwork page</h1>
       </div>
       <AdNavBar onLogout={onLogout} user={user} />
     </>
