@@ -7,7 +7,9 @@ function AdAddAnArtworkPage({ onLogout }) {
     <>
       <div className="flex flex-col items-center justify-center w-screen h-screen pt-14 text-textColor">
         <div className="flex flex-col items-center w-full h-full p-2 bg-gray">
-          <h1 className="w-full p-2 text-2xl font-bold">Add an artwork</h1>
+          <h1 className="w-full p-2 text-2xl font-bold text-primary">
+            Add an artwork
+          </h1>
 
           <form className="flex flex-col items-center w-full h-full gap-2 p-2">
             <section className="items-start w-full px-2 ">
