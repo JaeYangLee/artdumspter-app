@@ -8,9 +8,11 @@ import AdProtectedRoute from "./components/AdProtectedRoute";
 import AdProfilePage from "./pages/AdProfilePage";
 import AdMyDumpsterPage from "./pages/AdMyDumpsterPage";
 import AdAddAnArtworkPage from "./pages/AdAddAnArtworkPage";
+import AdSuccessModal from "./components/AdSuccessModal";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
 
   const registerUser = async (
     username,
@@ -41,6 +43,7 @@ function App() {
 
       setUser(data);
 
+      setSuccessModalOpen(true);
       console.log("[POST /App.jsx]: Registration successful!");
     } catch (err) {
       console.error("[POST /App.jsx]: Error creating new user!", err.message);
@@ -128,6 +131,13 @@ function App() {
           ></Route>
         </Routes>
       </Router>
+
+      <AdSuccessModal
+        isSuccessModalOpen={isSuccessModalOpen}
+        onSuccessModalClose={() => setSuccessModalOpen(false)}
+        title={"Registeration successful!"}
+        message={"welcome to ArtDumpster*!"}
+      />
     </>
   );
 }
