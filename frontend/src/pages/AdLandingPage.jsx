@@ -21,6 +21,7 @@ function AdLandingPage({ onLogin, onRegister }) {
       setPassword("");
     } catch (err) {
       console.error("[POST /Login]: Server error!", err.message);
+
       setEmail("");
       setPassword("");
     }
@@ -29,17 +30,17 @@ function AdLandingPage({ onLogin, onRegister }) {
   return (
     <>
       <div className="flex flex-col items-center justify-center w-screen h-screen bg-backgroundColor text-textColor">
-        <div className="w-full h-full flex flex-col md:flex-row items-center justify-center">
-          <section className="w-full h-full flex flex-col items-center justify-center">
-            <div className="text-center md:text-start p-4">
-              <h1 className="font-bold text-2xl">
+        <div className="flex flex-col items-center justify-center w-full h-full md:flex-row">
+          <section className="flex flex-col items-center justify-center w-full h-full">
+            <div className="p-4 text-center md:text-start">
+              <h1 className="text-2xl font-bold">
                 Welcome to <span className="text-primary">ArtDumpster*</span>
               </h1>
               <h3 className="text-lg">Explore Unfiltered Art.</h3>
             </div>
           </section>
 
-          <section className="w-full h-full flex flex-col items-center justify-center ">
+          <section className="flex flex-col items-center justify-center w-full h-full ">
             <div className="flex flex-col items-center justify-center gap-4 border rounded-lg px-4 py-8 shadow-[4px_4px_0px_0px]">
               <form
                 onSubmit={handleSubmit}
