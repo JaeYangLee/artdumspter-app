@@ -9,10 +9,12 @@ import AdProfilePage from "./pages/AdProfilePage";
 import AdMyDumpsterPage from "./pages/AdMyDumpsterPage";
 import AdAddAnArtworkPage from "./pages/AdAddAnArtworkPage";
 import AdSuccessModal from "./components/AdSuccessModal";
+import AdErrorModal from "./components/AdErrorModal";
 
 function App() {
   const [user, setUser] = useState(null);
   const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
+  const [isErrorModalOpen, setErrorModalOpen] = useState(false);
 
   const registerUser = async (
     username,
@@ -72,6 +74,7 @@ function App() {
       console.log("User logged in successfully!", loggedInUser.data);
     } catch (err) {
       console.error("[POST /App.jsx]: Error logging in user!", err.message);
+      setErrorModalOpen(true);
     }
   };
 
@@ -136,7 +139,14 @@ function App() {
         isSuccessModalOpen={isSuccessModalOpen}
         onSuccessModalClose={() => setSuccessModalOpen(false)}
         title={"Registeration successful!"}
-        message={"welcome to ArtDumpster*!"}
+        message={"welcome to ArtDumpster*"}
+      />
+
+      <AdErrorModal
+        isErrorModalOpen={isErrorModalOpen}
+        onErrorModalClose={() => setErrorModalOpen(false)}
+        title={"Invalid credentials!"}
+        message={"Try again..."}
       />
     </>
   );
