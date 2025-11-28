@@ -48,10 +48,13 @@ function AdSideBar({ user, isSideBarOpen, onSideBarClose, onLogout }) {
 
               <a>Settings</a>
             </div>
-            <div className="flex flex-row items-center gap-2">
+            <div
+              onClick={onLogout}
+              className="flex flex-row items-center gap-2"
+            >
               <BsPower className="size-4" />
 
-              <button onClick={onLogout}>Log out</button>
+              <button>Log out</button>
             </div>
           </ul>
         </div>
