@@ -139,7 +139,7 @@ function App() {
         isSuccessModalOpen={isSuccessModalOpen}
         onSuccessModalClose={() => setSuccessModalOpen(false)}
         title={"Registeration successful!"}
-        message={"welcome to ArtDumpster*"}
+        message={"Welcome to ArtDumpster*!"}
       />
 
       <AdErrorModal
