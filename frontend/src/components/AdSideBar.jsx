@@ -13,7 +13,7 @@ function AdSideBar({ user, isSideBarOpen, onSideBarClose, onLogout }) {
     <>
       <div
         onClick={onSideBarClose}
-        className="fixed top-0 flex flex-col items-end justify-center w-full h-full z-60 bg-black/50"
+        className="fixed top-0 flex flex-col items-end justify-center w-screen h-screen z-60 bg-black/50"
       >
         <div
           onClick={(e) => e.stopPropagation()}
