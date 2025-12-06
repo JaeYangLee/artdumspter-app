@@ -1,4 +1,6 @@
 import AdNavBar from "../components/AdNavBar";
+import { BsCloudArrowUp } from "react-icons/bs";
+
 import { useFetchUserById } from "../hooks/useFetchUserById";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -83,8 +85,26 @@ function AdAddAnArtworkPage({ onUpload, onLogout }) {
             onSubmit={handleSubmit}
             className="flex flex-col items-start w-full gap-4 p-2 md:flex-row md:items-center"
           >
-            <section className="flex flex-col items-start px-2 ">
+            <section className="flex flex-col items-start gap-2 px-2">
               <label>Upload artwork:</label>
+              {artworkPreview ? (
+                <img
+                  src={artworkPreview}
+                  alt="Artwork Preview"
+                  className="flex flex-col items-center justify-center border-black/30 bg-gray-100 border-dashed border rounded w-full h-[40vh]"
+                />
+              ) : (
+                <div className="flex flex-col items-center justify-center border-black/30 bg-gray-100 border-dashed border rounded w-full h-[40vh]">
+                  <BsCloudArrowUp className="size-16 opacity-40" />
+                  <p className="font-light opacity-60">Drop files to upload</p>
+                  <p className="font-light text-textColor/60">
+                    or{" "}
+                    <span className="font-normal underline opacity-100 text-primary">
+                      browse
+                    </span>
+                  </p>
+                </div>
+              )}
 
               <input
                 required
