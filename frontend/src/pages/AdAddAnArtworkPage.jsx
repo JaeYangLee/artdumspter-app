@@ -91,7 +91,7 @@ function AdAddAnArtworkPage({ onUpload, onLogout }) {
                 <img
                   src={artworkPreview}
                   alt="Artwork Preview"
-                  className="flex flex-col items-center justify-center border-black/30 bg-gray-100 border-dashed border rounded w-full h-[40vh]"
+                  className="inline-block object-contain flex-col items-center justify-center border-black/30 bg-gray-100 border-dashed border rounded w-full h-[40vh]"
                 />
               ) : (
                 <div className="flex flex-col items-center justify-center border-black/30 bg-gray-100 border-dashed border rounded w-full h-[40vh]">
