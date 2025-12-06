@@ -1,8 +1,60 @@
 import AdNavBar from "../components/AdNavBar";
 import { useFetchUserById } from "../hooks/useFetchUserById";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-function AdAddAnArtworkPage({ onLogout }) {
+function AdAddAnArtworkPage({ onUpload, onLogout }) {
   const user = useFetchUserById();
+  const [artwork, setArtwork] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [toolId, setToolId] = useState("");
+  const [tool, setTool] = useState([]);
+  const [artstyleId, setArtStyleId] = useState("");
+  const [artstyle, setArtstyle] = useState([]);
+
+  useEffect(() => {
+    fetchAllTools();
+    fetchAllArtStyles();
+  }, []);
+
+  const fetchAllTools = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/artDumpster/tools");
+      setTool(res.data.data);
+    } catch (err) {
+      console.error("[GET /AddAnArtworkPage.jsx]: Error fetching all tools!");
+    }
+  };
+
+  const fetchAllArtStyles = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:5000/artDumpster/artStyles"
+      );
+      setArtstyle(res.data.data);
+    } catch (err) {
+      console.error(
+        "[GEt /AddAnArtworkPage.jsx]: Error fetching all Art styles!"
+      );
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+    } catch (err) {}
+  };
+
+  const handleResetFields = (e) => {
+    e.preventDefault();
+    setArtwork("");
+    setTitle("");
+    setDescription("");
+    setToolId("");
+    setArtStyleId("");
+  };
+
   return (
     <>
       <div className="flex flex-col items-center w-screen h-screen pt-14 text-textColor">
@@ -11,57 +63,90 @@ function AdAddAnArtworkPage({ onLogout }) {
             Add an artwork
           </h1>
 
-          <form className="flex flex-col items-start w-full gap-4 p-2">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col items-start w-full gap-4 p-2 md:flex-row md:items-center"
+          >
             <section className="flex flex-col items-start px-2 ">
               <label>Upload artwork:</label>
               <input
+                required
+                value={artwork}
+                onChange={(e) => setArtwork(e.target.value)}
                 type="file"
-                className="border rounded w-[80vw] shadow-[2px_2px_0px_0px] order file:px-2 file:border-black file:rounded file:bg-primary file:text-backgroundColor"
+                className="border rounded w-[80vw] md:w-[40vw] shadow-[2px_2px_0px_0px] order file:px-2 file:border-black file:rounded file:bg-primary file:text-backgroundColor"
               />
             </section>
 
-            <section className="flex flex-col items-start gap-4 px-2">
+            <section className="flex flex-col items-start w-full gap-4 px-2">
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col">
                   <label>Enter Artwork title:</label>
                   <input
                     required
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                     type="text"
-                    className="w-[80vw] px-2 border rounded shadow-[2px_2px_0px_0px]"
+                    className="md:w-full w-[80vw] px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
                 </div>
                 <div className="flex flex-col">
                   <label>Enter description:</label>
                   <textarea
                     required
-                    className="h-[30vh] border rounded shadow-[2px_2px_0px]"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    className="md:w-full h-[30vh] border rounded shadow-[2px_2px_0px] px-2"
                   ></textarea>
                 </div>
                 <div className="flex flex-col">
                   <label>Tool:</label>
                   <select
                     required
-                    className="px-2 border rounded shadow-[2px_2px_0px]"
+                    value={toolId}
+                    onChange={(e) => setToolId(e.target.value)}
+                    className="md:w-full px-2 border rounded shadow-[2px_2px_0px]"
                   >
                     <option>Select tool...</option>
+                    {tool.map((tool) => (
+                      <option key={tool.tool_id} value={tool.tool_id}>
+                        {tool.tool_name}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div className="flex flex-col">
                   <label>Artstyle:</label>
                   <select
                     required
-                    className="px-2 border rounded shadow-[2px_2px_0px]"
+                    value={artstyleId}
+                    onChange={(e) => setArtStyleId(e.target.value)}
+                    className="md:w-full px-2 border rounded shadow-[2px_2px_0px]"
                   >
                     <option>Select artstyle...</option>
+                    {artstyle.map((artstyle) => (
+                      <option
+                        key={artstyle.artstyle_id}
+                        value={artstyle.artstyle_id}
+                      >
+                        {artstyle.artstyle_name}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
 
               <div className="flex flex-row items-end justify-end w-full gap-2">
-                <button className="px-2 border rounded bg-primary text-backgroundColor shadow-textColor border-black shadow-[2px_2px_0px_0px]">
+                <button
+                  type="submit"
+                  className="px-2 border rounded bg-primary text-backgroundColor shadow-textColor border-black shadow-[2px_2px_0px_0px]"
+                >
                   Upload
                 </button>
-                <button className="px-2 border rounded opacity-50 shadow-textColor border-textColor shadow-[2px_2px_0px_0px]">
+                <button
+                  onClick={handleResetFields}
+                  className="px-2 border rounded opacity-50 shadow-textColor border-textColor shadow-[2px_2px_0px_0px]"
+                >
                   Clear
                 </button>
               </div>
