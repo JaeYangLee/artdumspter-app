@@ -5,7 +5,8 @@ import axios from "axios";
 
 function AdAddAnArtworkPage({ onUpload, onLogout }) {
   const user = useFetchUserById();
-  const [artwork, setArtwork] = useState("");
+  const [artwork, setArtwork] = useState(null);
+  const [artworkPreview, setArtworkPreview] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [toolId, setToolId] = useState("");
@@ -43,12 +44,27 @@ function AdAddAnArtworkPage({ onUpload, onLogout }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-    } catch (err) {}
+      setArtwork(null);
+      setArtworkPreview(null);
+      setTitle("");
+      setDescription("");
+      setToolId("");
+      setArtStyleId("");
+    } catch (err) {
+      console.error("[POST /AddAnArtWorkPage.jsx]: Error adding an artwork!");
+      setArtwork(null);
+      setArtworkPreview(null);
+      setTitle("");
+      setDescription("");
+      setToolId("");
+      setArtStyleId("");
+    }
   };
 
   const handleResetFields = (e) => {
     e.preventDefault();
-    setArtwork("");
+    setArtwork(null);
+    setArtworkPreview(null);
     setTitle("");
     setDescription("");
     setToolId("");
@@ -69,11 +85,20 @@ function AdAddAnArtworkPage({ onUpload, onLogout }) {
           >
             <section className="flex flex-col items-start px-2 ">
               <label>Upload artwork:</label>
+
               <input
                 required
-                value={artwork}
-                onChange={(e) => setArtwork(e.target.value)}
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  setArtwork(file);
+
+                  if (file) {
+                    const imageUrl = URL.createObjectURL(file);
+                    setArtworkPreview(imageUrl);
+                  }
+                }}
                 type="file"
+                accept="image/*"
                 className="border rounded w-[80vw] md:w-[40vw] shadow-[2px_2px_0px_0px] order file:px-2 file:border-black file:rounded file:bg-primary file:text-backgroundColor"
               />
             </section>
