@@ -11,7 +11,7 @@ function AdProfilePage({ onLogout }) {
   return (
     <>
       <div className="flex flex-col items-center w-screen h-screen p-2 pt-16 md:flex-row">
-        <div className="flex flex-col items-center justify-center w-full gap-4 px-2 py-4 md:h-full bg-gray-200 rounded">
+        <div className="flex flex-col items-center justify-center w-full gap-4 px-2 py-4 bg-gray-200 rounded md:h-full">
           <div
             to="/profile"
             className="flex flex-col items-center justify-center gap-2"
