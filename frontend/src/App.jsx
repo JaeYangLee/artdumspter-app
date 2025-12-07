@@ -1,7 +1,3 @@
-import { useState } from "react";
-import axios from "axios";
-import "./index.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AdLandingPage from "./pages/AdLandingPage";
 import AdRegisterPage from "./pages/AdRegisterPage";
 import AdProtectedRoute from "./components/AdProtectedRoute";
@@ -10,6 +6,10 @@ import AdMyDumpsterPage from "./pages/AdMyDumpsterPage";
 import AdAddAnArtworkPage from "./pages/AdAddAnArtworkPage";
 import AdSuccessModal from "./components/AdSuccessModal";
 import AdErrorModal from "./components/AdErrorModal";
+import { useState } from "react";
+import axios from "axios";
+import "./index.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState(null);
