@@ -85,16 +85,16 @@ function AdAddAnArtworkPage({ onUpload, onLogout }) {
             onSubmit={handleSubmit}
             className="flex flex-col items-start w-full gap-4 p-2 md:flex-row md:items-center"
           >
-            <section className="flex flex-col items-start gap-2 px-2">
-              <label>Upload artwork:</label>
+            <section className="flex flex-col h-full items-start gap-2 px-2">
+              <label className="w-full items-start">Upload artwork:</label>
               {artworkPreview ? (
                 <img
                   src={artworkPreview}
                   alt="Artwork Preview"
-                  className="inline-block object-contain flex-col items-center justify-center border-black/30 bg-gray-100 border-dashed border rounded w-full h-[40vh]"
+                  className="inline-block object-contain flex-col items-center justify-center border-black/30 bg-gray-100 border-dashed border rounded w-full h-[40vh] md:h-[54vh]"
                 />
               ) : (
-                <div className="flex flex-col items-center justify-center border-black/30 bg-gray-100 border-dashed border rounded w-full h-[40vh]">
+                <div className="flex flex-col items-center justify-center border-black/30 bg-gray-100 border-dashed border rounded w-full h-[40vh] md:h-full lg:w-[60vw]">
                   <BsCloudArrowUp className="size-16 opacity-40" />
                   <p className="font-light opacity-60">Drop files to upload</p>
                   <p className="font-light text-textColor/60">
@@ -119,12 +119,12 @@ function AdAddAnArtworkPage({ onUpload, onLogout }) {
                 }}
                 type="file"
                 accept="image/*"
-                className="border rounded w-[80vw] md:w-[40vw] shadow-[2px_2px_0px_0px] order file:px-2 file:border-black file:rounded file:bg-primary file:text-backgroundColor"
+                className="border rounded w-[80vw] md:w-[40vw] shadow-[2px_2px_0px_0px] order file:px-2 file:border-black file:rounded file:bg-primary file:text-backgroundColor lg:w-[60vw]"
               />
             </section>
 
             <section className="flex flex-col items-start w-full gap-4 px-2">
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 w-full">
                 <div className="flex flex-col">
                   <label>Enter Artwork title:</label>
                   <input
