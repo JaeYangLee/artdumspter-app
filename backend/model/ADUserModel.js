@@ -2,6 +2,7 @@ const pool = require("../database/database");
 const bcrypt = require("bcrypt");
 
 const getUserById = async (user_id) => {
+  //This database query is called JOIN method, it allows you to fetch data from other tables and "JOIN" the data literally for fetching
   const result = await pool.query(
     "SELECT u.user_id, u.username, u.email, u.bio, u.location, t.tool_name, a.artstyle_name FROM users u LEFT JOIN tools t ON u.tool_id = t.tool_id LEFT JOIN artstyles a ON u.artstyle_id = a.artstyle_id WHERE u.user_id = $1",
     [user_id],
