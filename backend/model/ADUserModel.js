@@ -1,8 +1,3 @@
-/* sample user for testing
-  sampleuser@gmail.com
-  sampleuser1234
-*/
-
 const pool = require("../database/database");
 const bcrypt = require("bcrypt");
 
