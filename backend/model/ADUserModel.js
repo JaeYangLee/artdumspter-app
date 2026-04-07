@@ -49,33 +49,29 @@ const updateUser = async (
   tool_id,
   artstyle_id,
 ) => {
-  let hashedPassword = password;
+  let query =
+    "UPDATE users SET username = $1, email = $2, bio = $3, location = $4, tool_id = $5, artstyle_id = $6";
+
+  const values = [username, email, bio, location, tool_id, artstyle_id];
 
   if (password) {
     const saltRounds = 10;
-    hashedPassword = await bcrypt.hash(password, saltRounds);
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    query += ", password = $7 WHERE user_id = $8 RETURNING *";
+    values.push(hashedPassword, user_id);
+  } else {
+    query += " WHERE user_id = $7 RETURNING *";
+    values.push(user_id);
   }
 
-  const result = await pool.query(
-    "UPDATE users SET username = $1, email = $2, password = $3, bio = $4, location = $5, tool_id = $6, artstyle_id = $7 WHERE user_id = $8 RETURNING *",
-    [
-      username,
-      email,
-      hashedPassword,
-      bio,
-      location,
-      tool_id,
-      artstyle_id,
-      user_id,
-    ],
-  );
-
+  const result = await pool.query(query, values);
   return result.rows[0];
 };
 
 const deleteUser = async (user_id) => {
   const result = await pool.query(
-    "DELETE FROM users WHERE user_id = $1 RETURNING *",
+    " DELETE FROM users WHERE user_id = $1 RETURNING *",
     [user_id],
   );
   return result.rows[0];

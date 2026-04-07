@@ -21,7 +21,7 @@ const getUserById = async (req, res) => {
   } catch (err) {
     console.error(
       "[GET /UserController]: Error fetching user id!",
-      err.message
+      err.message,
     );
     res.status(500).json({ error: "[GET /UserController]: Server error!" });
   }
@@ -89,7 +89,7 @@ const createUser = async (req, res) => {
       bio,
       location,
       tool_id,
-      artstyle_id
+      artstyle_id,
     );
 
     if (newUser.password) delete newUser.password;
@@ -116,26 +116,23 @@ const updateUser = async (req, res) => {
     const { username, email, password, bio, location, tool_id, artstyle_id } =
       req.body;
 
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
-
     const updatedUser = await ADUserModel.updateUser(
       user_id,
       username,
       email,
-      hashedPassword,
+      password,
       bio,
       location,
       tool_id,
-      artstyle_id
+      artstyle_id,
     );
 
     res.status(200).json({
-      message: "[PUT /UserController]: User Updated!",
+      message: "[PUT /UserController]: User updated successfully!",
       data: updatedUser,
     });
   } catch (err) {
-    console.error("[PUT /UserController]: Error Updating User!", err.message);
+    console.error("[PUT /UserController]: Error updating user!", err.message);
     res.status(500).json({ error: "[PUT /UserController]: Server error!" });
   }
 };
@@ -151,7 +148,7 @@ const deleteUser = async (req, res) => {
   } catch (err) {
     console.error(
       "[DELETE /UserController]: Error Deleting User!",
-      err.message
+      err.message,
     );
     res.status(500).json({ error: "[DELETE /UserController]: Server error!" });
   }
