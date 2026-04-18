@@ -116,6 +116,12 @@ const updateUser = async (req, res) => {
     const { username, email, password, bio, location, tool_id, artstyle_id } =
       req.body;
 
+    if (req.user.id !== parseInt(user_id)) {
+      return res
+        .status(403)
+        .json({ error: "[PUT /Controller]: Unauthorized!" });
+    }
+
     const updatedUser = await ADUserModel.updateUser(
       user_id,
       username,
@@ -140,7 +146,21 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const { user_id } = req.params;
+
+    if (req.user.id !== parseInt(user_id)) {
+      return res
+        .status(403)
+        .json({ error: "[DELETE /Controller]: Unauthorized!" });
+    }
+
     const deletedUser = await ADUserModel.deleteUser(user_id);
+
+    if (!deletedUser) {
+      return res
+        .status(404)
+        .json({ error: "[DELETE /Controller]: User not found!" });
+    }
+
     res.status(200).json({
       message: "[DELETE /UserController]: User deleted!",
       data: deletedUser,
