@@ -116,7 +116,7 @@ const updateUser = async (req, res) => {
     const { username, email, password, bio, location, tool_id, artstyle_id } =
       req.body;
 
-    if (req.user.id !== parseInt(user_id)) {
+    if (req.user.user_id !== parseInt(user_id)) {
       return res
         .status(403)
         .json({ error: "[PUT /Controller]: Unauthorized!" });
