@@ -116,6 +116,12 @@ const updateUser = async (req, res) => {
     const { username, email, password, bio, location, tool_id, artstyle_id } =
       req.body;
 
+    if (!req.user || !req.user.user_id) {
+      return res
+        .status(401)
+        .json({ error: "[PUT /Controller]: Missing auth user!" });
+    }
+
     if (req.user.user_id !== parseInt(user_id)) {
       return res
         .status(403)
@@ -147,7 +153,7 @@ const deleteUser = async (req, res) => {
   try {
     const { user_id } = req.params;
 
-    if (req.user.id !== parseInt(user_id)) {
+    if (req.user.user_id !== parseInt(user_id)) {
       return res
         .status(403)
         .json({ error: "[DELETE /Controller]: Unauthorized!" });
