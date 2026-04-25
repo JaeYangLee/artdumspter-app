@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useFetchUserById } from "../hooks/useFetchUserById";
 
-function AdUpdateUser({
+function AdUpdateUserModal({
   user = [],
   onEdit,
+  onDelete,
   isUpdateUserModalOpen,
   onUpdateUserModalClose,
 }) {
@@ -42,7 +43,7 @@ function AdUpdateUser({
                   <input
                     required
                     type="text"
-                    value={user.username}
+                    value={newUserName}
                     onChange={() => setNewUserName(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
@@ -54,7 +55,7 @@ function AdUpdateUser({
                   <input
                     required
                     type="email"
-                    value={user.email}
+                    value={newEmail}
                     onChange={() => setNewEmail(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
@@ -63,7 +64,7 @@ function AdUpdateUser({
                   <label className="w-full text-sm text-start">Edit bio:</label>
                   <textarea
                     type="text"
-                    value={user.bio}
+                    value={newBio}
                     onChange={() => setNewBio(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
@@ -75,7 +76,7 @@ function AdUpdateUser({
                   <input
                     required
                     type="text"
-                    value={user.location}
+                    value={newLocation}
                     onChange={() => setNewLocation(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
@@ -122,4 +123,4 @@ function AdUpdateUser({
   );
 }
 
-export default AdUpdateUser;
+export default AdUpdateUserModal;

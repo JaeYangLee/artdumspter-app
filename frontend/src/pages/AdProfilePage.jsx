@@ -3,7 +3,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import { BsEnvelope } from "react-icons/bs";
 import { BsFillPinMapFill } from "react-icons/bs";
 import { useFetchUserById } from "../hooks/useFetchUserById";
-import AdUpdateUser from "../components/AdUpdateUser";
+import AdUpdateUserModal from "../components/AdUpdateUserModal";
 import { useState } from "react";
 
 function AdProfilePage({ onLogout }) {
@@ -66,7 +66,7 @@ function AdProfilePage({ onLogout }) {
       </div>
 
       <AdNavBar onLogout={onLogout} user={user} />
-      <AdUpdateUser
+      <AdUpdateUserModal
         isUpdateUserModalOpen={isUpdateUserModalOpen}
         onUpdateUserModalClose={() => setUpdateUserModalOpen(false)}
         user={user}
