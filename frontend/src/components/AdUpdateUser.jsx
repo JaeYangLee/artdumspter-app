@@ -1,13 +1,24 @@
 import React, { useState } from "react";
+import { useFetchUserById } from "../hooks/useFetchUserById";
 
-function AdUpdateUser({ isUpdateUserModalOpen, onUpdateUserModalClose }) {
-  if (isUpdateUserModalOpen) return null;
+function AdUpdateUser({
+  user = [],
+  isUpdateUserModalOpen,
+  onUpdateUserModalClose,
+}) {
+  if (!isUpdateUserModalOpen) return null;
 
   return (
     <>
-      <div className="fixed top-0 flex flex-col items-center justify-center w-screen h-screen z-60 bg-black/50">
-        <div className="flex flex-col items-center justify-center gap-4 p-4 text-center ">
-          <section className="border rounded-lg shadow-[4px_4px_0px_0px] bg-white">
+      <div
+        onClick={onUpdateUserModalClose}
+        className="fixed top-0 flex flex-col items-center justify-center w-screen h-screen z-60 bg-black/50"
+      >
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="flex flex-col items-center justify-center gap-4 p-4 text-center "
+        >
+          <section className="border rounded-lg shadow-[4px_4px_0px_0px] bg-backgroundColor">
             <header className="p-2">
               <h1 className="text-lg font-bold text-left">Edit profile</h1>
             </header>
@@ -23,6 +34,7 @@ function AdUpdateUser({ isUpdateUserModalOpen, onUpdateUserModalClose }) {
                   <input
                     required
                     type="text"
+                    value={user.username}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
                 </div>
@@ -33,16 +45,7 @@ function AdUpdateUser({ isUpdateUserModalOpen, onUpdateUserModalClose }) {
                   <input
                     required
                     type="email"
-                    className="px-2 border rounded shadow-[2px_2px_0px_0px]"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label className="w-full text-sm text-start">
-                    Edit password:
-                  </label>
-                  <input
-                    required
-                    type="password"
+                    value={user.email}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
                 </div>
@@ -50,6 +53,7 @@ function AdUpdateUser({ isUpdateUserModalOpen, onUpdateUserModalClose }) {
                   <label className="w-full text-sm text-start">Edit bio:</label>
                   <textarea
                     type="text"
+                    value={user.bio}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
                 </div>
@@ -60,6 +64,7 @@ function AdUpdateUser({ isUpdateUserModalOpen, onUpdateUserModalClose }) {
                   <input
                     required
                     type="text"
+                    value={user.location}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
                 </div>
@@ -68,7 +73,7 @@ function AdUpdateUser({ isUpdateUserModalOpen, onUpdateUserModalClose }) {
                     Edit your main tool?
                   </label>
                   <select className="px-2 border rounded shadow-[2px_2px_0px_0px]">
-                    <option value="">Select your tool:</option>
+                    <option>Select your tool:</option>
                   </select>
                 </div>
                 <div className="flex flex-col">
@@ -87,6 +92,13 @@ function AdUpdateUser({ isUpdateUserModalOpen, onUpdateUserModalClose }) {
                   className="px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor"
                 >
                   Submit
+                </button>
+                <button
+                  onClick={onUpdateUserModalClose}
+                  type="button"
+                  className="px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-backgroundColor text-gray opacity-50"
+                >
+                  Cancel
                 </button>
               </section>
             </form>

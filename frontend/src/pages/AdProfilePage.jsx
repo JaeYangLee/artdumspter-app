@@ -51,7 +51,10 @@ function AdProfilePage({ onLogout }) {
           </div>
 
           <div className="w-full pt-8">
-            <button className="px-2 rounded border w-full bg-primary text-backgroundColor border-textColor shadow-textColor shadow-[2px_2px_0px_0px]">
+            <button
+              onClick={() => setUpdateUserModalOpen(true)}
+              className="px-2 rounded border w-full bg-primary text-backgroundColor border-textColor shadow-textColor shadow-[2px_2px_0px_0px]"
+            >
               Edit profile
             </button>
           </div>
@@ -63,7 +66,11 @@ function AdProfilePage({ onLogout }) {
       </div>
 
       <AdNavBar onLogout={onLogout} user={user} />
-      <AdUpdateUser />
+      <AdUpdateUser
+        isUpdateUserModalOpen={isUpdateUserModalOpen}
+        onUpdateUserModalClose={() => setUpdateUserModalOpen(false)}
+        user={user}
+      />
     </>
   );
 }
