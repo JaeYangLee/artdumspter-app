@@ -3,10 +3,18 @@ import { useFetchUserById } from "../hooks/useFetchUserById";
 
 function AdUpdateUser({
   user = [],
+  onEdit,
   isUpdateUserModalOpen,
   onUpdateUserModalClose,
 }) {
+  const [newUserName, setNewUserName] = useState(user.username);
+  const [newEmail, setNewEmail] = useState(user.email);
+  const [newBio, setNewBio] = useState(user.bio);
+  const [newLocation, setNewLocation] = useState(user.location);
+
   if (!isUpdateUserModalOpen) return null;
+
+  const handleSubmit = async () => {};
 
   return (
     <>
@@ -35,6 +43,7 @@ function AdUpdateUser({
                     required
                     type="text"
                     value={user.username}
+                    onChange={() => setNewUserName(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
                 </div>
@@ -46,6 +55,7 @@ function AdUpdateUser({
                     required
                     type="email"
                     value={user.email}
+                    onChange={() => setNewEmail(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
                 </div>
@@ -54,6 +64,7 @@ function AdUpdateUser({
                   <textarea
                     type="text"
                     value={user.bio}
+                    onChange={() => setNewBio(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
                 </div>
@@ -65,6 +76,7 @@ function AdUpdateUser({
                     required
                     type="text"
                     value={user.location}
+                    onChange={() => setNewLocation(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
                 </div>
