@@ -17,14 +17,14 @@ export function useFetchUserById() {
           "http://localhost:5000/artDumpster/profile",
           {
             headers: { Authorization: `Bearer ${authToken}` },
-          }
+          },
         );
 
         setUser(userProfile.data.data);
       } catch (err) {
         console.error(
           "[GET /App.jsx]: Error fetching user profile!",
-          err.response?.data || err.message
+          err.response?.data || err.message,
         );
         setUser(null);
         localStorage.removeItem("token");

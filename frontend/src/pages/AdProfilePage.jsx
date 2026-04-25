@@ -3,9 +3,12 @@ import { BsPersonCircle } from "react-icons/bs";
 import { BsEnvelope } from "react-icons/bs";
 import { BsFillPinMapFill } from "react-icons/bs";
 import { useFetchUserById } from "../hooks/useFetchUserById";
+import AdUpdateUser from "../components/AdUpdateUser";
+import { useState } from "react";
 
 function AdProfilePage({ onLogout }) {
   const user = useFetchUserById();
+  const [isUpdateUserModalOpen, setUpdateUserModalOpen] = useState(false);
 
   if (!user) return <p>Loading...</p>;
   return (
@@ -60,6 +63,7 @@ function AdProfilePage({ onLogout }) {
       </div>
 
       <AdNavBar onLogout={onLogout} user={user} />
+      <AdUpdateUser />
     </>
   );
 }
