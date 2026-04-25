@@ -71,6 +71,8 @@ const logInUser = async (req, res) => {
       token,
       user: userResponse,
     });
+
+    console.log("[POST /Controller]: Log in successful!");
   } catch (err) {
     console.error("[POST /UserController]: Error logging in user!");
     res.status(500).json({ error: "[POST /UserController]: Server error!" });
@@ -171,6 +173,8 @@ const deleteUser = async (req, res) => {
       message: "[DELETE /UserController]: User deleted!",
       data: deletedUser,
     });
+
+    console.log("[DELETE /Controller]: User deleted!");
   } catch (err) {
     console.error(
       "[DELETE /UserController]: Error Deleting User!",
