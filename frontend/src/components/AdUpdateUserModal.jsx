@@ -1,21 +1,60 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFetchUserById } from "../hooks/useFetchUserById";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function AdUpdateUserModal({
-  user = [],
+  user = null,
   onEdit,
   onDelete,
   isUpdateUserModalOpen,
   onUpdateUserModalClose,
 }) {
-  const [newUserName, setNewUserName] = useState(user.username);
-  const [newEmail, setNewEmail] = useState(user.email);
-  const [newBio, setNewBio] = useState(user.bio);
-  const [newLocation, setNewLocation] = useState(user.location);
+  const navigate = useNavigate();
+  const [newUserName, setNewUserName] = useState("");
+  const [newEmail, setNewEmail] = useState("");
+  const [newBio, setNewBio] = useState("");
+  const [newLocation, setNewLocation] = useState("");
 
-  if (!isUpdateUserModalOpen) return null;
+  const [newTools, setNewTools] = useState([]);
+  const [tool_id, setToolId] = useState("");
+  const [newArtStyles, setNewArtStyles] = useState([]);
+  const [artstyle_id, setArtStyleId] = useState("");
+
+  useEffect(() => {
+    fetchAllTools();
+    fetchAllArtStyles();
+    if (user) {
+      setNewUserName(user.username);
+      setNewEmail(user.email);
+      setNewBio(user.bio);
+      setNewLocation(user.location);
+    }
+  }, [user]);
+
+  const fetchAllTools = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/artDumpster/tools");
+      setNewTools(res.data.data);
+    } catch (err) {
+      console.error("[GET /frontend]: Error fetching all tools!");
+    }
+  };
+
+  const fetchAllArtStyles = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:5000/artDumpster/artStyles",
+      );
+      setNewArtStyles(res.data.data);
+    } catch (err) {
+      console.error("[GET /frontend]: Error fetching all art style!");
+    }
+  };
 
   const handleSubmit = async () => {};
+
+  if (!isUpdateUserModalOpen) return null;
 
   return (
     <>
@@ -44,7 +83,7 @@ function AdUpdateUserModal({
                     required
                     type="text"
                     value={newUserName}
-                    onChange={() => setNewUserName(e.target.value)}
+                    onChange={(e) => setNewUserName(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
                 </div>
@@ -56,7 +95,7 @@ function AdUpdateUserModal({
                     required
                     type="email"
                     value={newEmail}
-                    onChange={() => setNewEmail(e.target.value)}
+                    onChange={(e) => setNewEmail(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
                 </div>
@@ -65,7 +104,7 @@ function AdUpdateUserModal({
                   <textarea
                     type="text"
                     value={newBio}
-                    onChange={() => setNewBio(e.target.value)}
+                    onChange={(e) => setNewBio(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
                 </div>
@@ -77,24 +116,45 @@ function AdUpdateUserModal({
                     required
                     type="text"
                     value={newLocation}
-                    onChange={() => setNewLocation(e.target.value)}
+                    onChange={(e) => setNewLocation(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   />
                 </div>
                 <div className="flex flex-col">
                   <label className="w-full text-sm text-start">
-                    Edit your main tool?
+                    Edit your main tool:
                   </label>
-                  <select className="px-2 border rounded shadow-[2px_2px_0px_0px]">
+                  <select
+                    value={tool_id}
+                    onChange={(e) => setToolId(e.target.value)}
+                    className="px-2 border rounded shadow-[2px_2px_0px_0px]"
+                  >
                     <option>Select your tool:</option>
+                    {newTools.map((tools) => (
+                      <option key={tools.tool_id} value={tools.tool_id}>
+                        {tools.tool_name}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div className="flex flex-col">
                   <label className="w-full text-sm text-start">
-                    Edit art style?
+                    Edit art style:
                   </label>
-                  <select className=" px-2 border rounded shadow-[2px_2px_0px_0px]">
-                    <option value="">Select your art style:</option>
+                  <select
+                    value={artstyle_id}
+                    onChange={(e) => setArtStyleId(e.target.value)}
+                    className=" px-2 border rounded shadow-[2px_2px_0px_0px]"
+                  >
+                    <option>Select your art style:</option>
+                    {newArtStyles.map((artstyles) => (
+                      <option
+                        key={artstyles.artstyle_id}
+                        value={artstyles.artstyle_id}
+                      >
+                        {artstyles.artstyle_name}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </section>
