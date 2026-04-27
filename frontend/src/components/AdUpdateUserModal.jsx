@@ -177,7 +177,6 @@ function AdUpdateUserModal({
             </form>
           </section>
         </div>
-        <footer></footer>
       </div>
     </>
   );
