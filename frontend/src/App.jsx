@@ -23,7 +23,7 @@ function App() {
     bio,
     location,
     tool_id,
-    artstyle_id
+    artstyle_id,
   ) => {
     try {
       const registeredUser = await axios.post(
@@ -36,7 +36,7 @@ function App() {
           location,
           tool_id,
           artstyle_id,
-        }
+        },
       );
 
       const { token, data } = registeredUser.data;
@@ -59,7 +59,7 @@ function App() {
         {
           email,
           password,
-        }
+        },
       );
 
       if (!loggedInUser) {
@@ -75,6 +75,42 @@ function App() {
     } catch (err) {
       console.error("[POST /App.jsx]: Error logging in user!", err.message);
       setErrorModalOpen(true);
+    }
+  };
+
+  const updateUser = async (
+    user_id,
+    username,
+    email,
+    password,
+    bio,
+    location,
+    tool_id,
+    artstyle_id,
+  ) => {
+    const token = localStorage.getItem("token");
+    try {
+      const updatedUser = await axios.put(
+        `http://localhost:5000/artDumpster/profile/${user_id}`,
+        {
+          username,
+          email,
+          password,
+          bio,
+          location,
+          tool_id,
+          artstyle_id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      setUser(updatedUser.data.data);
+    } catch (err) {
+      console.error("[PUT /frontend]: Error updating user!", err.message);
     }
   };
 
@@ -108,7 +144,7 @@ function App() {
             path="/profile"
             element={
               <AdProtectedRoute user={user}>
-                <AdProfilePage onLogout={logOutUser} />
+                <AdProfilePage onLogout={logOutUser} onEdit={updateUser} />
               </AdProtectedRoute>
             }
           ></Route>

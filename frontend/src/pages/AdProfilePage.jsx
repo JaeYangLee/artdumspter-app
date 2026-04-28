@@ -4,9 +4,9 @@ import { BsEnvelope } from "react-icons/bs";
 import { BsFillPinMapFill } from "react-icons/bs";
 import { useFetchUserById } from "../hooks/useFetchUserById";
 import AdUpdateUserModal from "../components/AdUpdateUserModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function AdProfilePage({ onLogout }) {
+function AdProfilePage({ onEdit, onLogout }) {
   const user = useFetchUserById();
   const [isUpdateUserModalOpen, setUpdateUserModalOpen] = useState(false);
 
@@ -70,6 +70,7 @@ function AdProfilePage({ onLogout }) {
         isUpdateUserModalOpen={isUpdateUserModalOpen}
         onUpdateUserModalClose={() => setUpdateUserModalOpen(false)}
         user={user}
+        onEdit={onEdit}
       />
     </>
   );

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useFetchUserById } from "../hooks/useFetchUserById";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +14,6 @@ function AdUpdateUserModal({
   const [newEmail, setNewEmail] = useState("");
   const [newBio, setNewBio] = useState("");
   const [newLocation, setNewLocation] = useState("");
-
   const [newTools, setNewTools] = useState([]);
   const [tool_id, setToolId] = useState("");
   const [newArtStyles, setNewArtStyles] = useState([]);
@@ -52,7 +50,36 @@ function AdUpdateUserModal({
     }
   };
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (
+        !newUserName.trim() ||
+        !newEmail.trim() ||
+        !newBio.trim() ||
+        !newLocation.trim() ||
+        !tool_id ||
+        !artstyle_id
+      ) {
+        return;
+      }
+
+      await onEdit(
+        user.user_id,
+        newUserName,
+        newEmail,
+        "",
+        newBio,
+        newLocation,
+        tool_id,
+        artstyle_id,
+      );
+
+      onUpdateUserModalClose();
+    } catch (err) {
+      console.error("[PUT /frontend]: Error updating user!");
+    }
+  };
 
   if (!isUpdateUserModalOpen) return null;
 
@@ -73,7 +100,10 @@ function AdUpdateUserModal({
 
             <hr />
 
-            <form className="flex flex-col gap-8 p-4 bg-white rounded-lg">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-8 p-4 bg-white rounded-lg"
+            >
               <section className="flex flex-col gap-2">
                 <div className="flex flex-col">
                   <label className="w-full text-sm text-start">
@@ -129,7 +159,7 @@ function AdUpdateUserModal({
                     onChange={(e) => setToolId(e.target.value)}
                     className="px-2 border rounded shadow-[2px_2px_0px_0px]"
                   >
-                    <option>Select your tool:</option>
+                    <option value="">Select your tool:</option>
                     {newTools.map((tools) => (
                       <option key={tools.tool_id} value={tools.tool_id}>
                         {tools.tool_name}
@@ -146,7 +176,7 @@ function AdUpdateUserModal({
                     onChange={(e) => setArtStyleId(e.target.value)}
                     className=" px-2 border rounded shadow-[2px_2px_0px_0px]"
                   >
-                    <option>Select your art style:</option>
+                    <option value="">Select your art style:</option>
                     {newArtStyles.map((artstyles) => (
                       <option
                         key={artstyles.artstyle_id}
