@@ -4,10 +4,9 @@ import { BsEnvelope } from "react-icons/bs";
 import { BsFillPinMapFill } from "react-icons/bs";
 import { useFetchUserById } from "../hooks/useFetchUserById";
 import AdUpdateUserModal from "../components/AdUpdateUserModal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-function AdProfilePage({ onEdit, onLogout }) {
-  const user = useFetchUserById();
+function AdProfilePage({ user, onEdit, onLogout }) {
   const [isUpdateUserModalOpen, setUpdateUserModalOpen] = useState(false);
 
   if (!user) return <p>Loading...</p>;
@@ -61,7 +60,7 @@ function AdProfilePage({ onEdit, onLogout }) {
         </div>
 
         <div className="flex flex-col w-full gap-4 px-2 py-4 rounded md:h-full">
-          <h1 className="font-bold text-lg">{`• ${user.username}'s art dumpster:`}</h1>
+          <h1 className="text-lg font-bold">{`• ${user.username}'s art dumpster:`}</h1>
         </div>
       </div>
 

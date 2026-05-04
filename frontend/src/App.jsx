@@ -6,7 +6,7 @@ import AdMyDumpsterPage from "./pages/AdMyDumpsterPage";
 import AdAddAnArtworkPage from "./pages/AdAddAnArtworkPage";
 import AdSuccessModal from "./components/AdSuccessModal";
 import AdErrorModal from "./components/AdErrorModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -15,6 +15,10 @@ function App() {
   const [user, setUser] = useState(null);
   const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
+
+  useEffect(() => {
+    getUserById();
+  }, []);
 
   const registerUser = async (
     username,
@@ -72,9 +76,32 @@ function App() {
       setUser(user);
 
       console.log("User logged in successfully!", loggedInUser.data);
+
+      await getUserById();
     } catch (err) {
       console.error("[POST /App.jsx]: Error logging in user!", err.message);
       setErrorModalOpen(true);
+    }
+  };
+
+  const getUserById = async (user_id) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) return null;
+
+    try {
+      const fetchedUserId = await axios.get(
+        `http://localhost:5000/artDumpster/profile`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      setUser(fetchedUserId.data.data);
+    } catch (err) {
+      console.error("[GET /App.jsx]: Error fetching user data!");
     }
   };
 
@@ -109,6 +136,8 @@ function App() {
       );
 
       setUser(updatedUser.data.data);
+
+      await getUserById();
     } catch (err) {
       console.error("[PUT /frontend]: Error updating user!", err.message);
     }
@@ -144,7 +173,11 @@ function App() {
             path="/profile"
             element={
               <AdProtectedRoute user={user}>
-                <AdProfilePage onLogout={logOutUser} onEdit={updateUser} />
+                <AdProfilePage
+                  user={user}
+                  onLogout={logOutUser}
+                  onEdit={updateUser}
+                />
               </AdProtectedRoute>
             }
           ></Route>

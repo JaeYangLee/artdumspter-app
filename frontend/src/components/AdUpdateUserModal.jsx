@@ -75,6 +75,7 @@ function AdUpdateUserModal({
         artstyle_id,
       );
 
+      navigate("/profile");
       onUpdateUserModalClose();
     } catch (err) {
       console.error("[PUT /frontend]: Error updating user!");
