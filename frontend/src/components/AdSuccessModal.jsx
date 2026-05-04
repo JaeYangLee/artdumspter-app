@@ -23,7 +23,7 @@ function AdSuccessModal({
             <BsCheckCircleFill className="text-green-500 size-16 " />
 
             <h1 className="pt-4 text-lg font-bold">{title}</h1>
-            <p className="text-sm">
+            <p className="text-sm text-center">
               <span>{subject}</span>
               {message}
             </p>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AdSuccessModal from "./AdSuccessModal";
 
 function AdUpdateUserModal({
   user = null,
@@ -18,6 +19,7 @@ function AdUpdateUserModal({
   const [tool_id, setToolId] = useState("");
   const [newArtStyles, setNewArtStyles] = useState([]);
   const [artstyle_id, setArtStyleId] = useState("");
+  const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
 
   useEffect(() => {
     fetchAllTools();
@@ -75,8 +77,7 @@ function AdUpdateUserModal({
         artstyle_id,
       );
 
-      navigate("/profile");
-      onUpdateUserModalClose();
+      setSuccessModalOpen(true);
     } catch (err) {
       console.error("[PUT /frontend]: Error updating user!");
     }
@@ -209,6 +210,18 @@ function AdUpdateUserModal({
           </section>
         </div>
       </div>
+
+      <AdSuccessModal
+        title={"Profile Update Successful!"}
+        message={
+          "Your profile is now up to date. Let’s keep the creativity flowing!"
+        }
+        isSuccessModalOpen={isSuccessModalOpen}
+        onSuccessModalClose={() => {
+          setSuccessModalOpen(false);
+          onUpdateUserModalClose();
+        }}
+      />
     </>
   );
 }
