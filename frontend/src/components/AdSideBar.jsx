@@ -43,11 +43,10 @@ function AdSideBar({ user, isSideBarOpen, onSideBarClose, onLogout }) {
           </ul>
 
           <ul className="flex flex-col justify-end w-full h-full gap-2 text-base text-backgroundColor ">
-            <div className="flex flex-row items-center gap-2">
+            <Link to="/settings" className="flex flex-row items-center gap-2">
               <BsFillGearFill className="size-4" />
-
-              <a>Settings</a>
-            </div>
+              <label>Settings</label>
+            </Link>
             <div
               onClick={onLogout}
               className="flex flex-row items-center gap-2"

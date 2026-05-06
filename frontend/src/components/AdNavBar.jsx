@@ -43,10 +43,13 @@ function AdNavBar({ user, onLogout }) {
           </Link>
         </section>
         <section className="hidden md:flex flex-row gap-4 items-end justify-end">
-          <div className="flex flex-col text-backgroundColor items-center justify-center gap-1">
+          <Link
+            to="/settings"
+            className="flex flex-col text-backgroundColor items-center justify-center gap-1"
+          >
             <BsFillGearFill className="size-5" />
             <label className="text-xs">Settings</label>
-          </div>
+          </Link>
           <div
             onClick={onLogout}
             className="flex flex-col text-backgroundColor items-center justify-center gap-1"

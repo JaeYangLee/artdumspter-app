@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AdSettingsPage from "./pages/AdSettingsPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -198,6 +199,16 @@ function App() {
             element={
               <AdProtectedRoute user={user}>
                 <AdAddAnArtworkPage onLogout={logOutUser} />
+              </AdProtectedRoute>
+            }
+          ></Route>
+
+          <Route
+            exact
+            path="/settings"
+            element={
+              <AdProtectedRoute user={user}>
+                <AdSettingsPage user={user} onLogOut={logOutUser} />
               </AdProtectedRoute>
             }
           ></Route>
