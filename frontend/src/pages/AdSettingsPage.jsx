@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsFillTrashFill } from "react-icons/bs";
 import { BsInfoCircleFill } from "react-icons/bs";
 import AdNavBar from "../components/AdNavBar";
+import AdValidatorModal from "../components/AdValidatorModal";
 
 function AdSettingsPage({ user, onDelete, onLogOut }) {
+  const [isValidatorModalOpen, setValidatorModalOpen] = useState(false);
   return (
     <>
       <div className="w-screen h-screen pt-15">
         <section className="flex flex-col items-center justify-center w-full">
-          <div className="w-full flex flex-row items-center justify-start gap-2 py-4 px-2 text-textColor border-b">
+          <div
+            onClick={() => setValidatorModalOpen(true)}
+            className="flex flex-row items-center justify-start w-full gap-2 px-2 py-4 border-b text-textColor"
+          >
             <BsFillTrashFill />
             <label>Delete account</label>
           </div>
-          <div className="w-full flex flex-row items-center justify-start gap-2 py-4 px-2 text-textColor border-b">
+          <div className="flex flex-row items-center justify-start w-full gap-2 px-2 py-4 border-b text-textColor">
             <BsInfoCircleFill />
             <label>About</label>
           </div>
@@ -20,6 +25,15 @@ function AdSettingsPage({ user, onDelete, onLogOut }) {
       </div>
 
       <AdNavBar onLogOut={onLogOut} user={user} />
+
+      <AdValidatorModal
+        user={user}
+        title={"Are you sure?"}
+        message={"Your profile will be deleted"}
+        onDelete={onDelete}
+        isValidatorModalOpen={isValidatorModalOpen}
+        onValidatorModalClose={() => setValidatorModalOpen(false)}
+      />
     </>
   );
 }

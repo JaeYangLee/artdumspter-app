@@ -144,6 +144,27 @@ function App() {
     }
   };
 
+  const deleteUser = async (user_id) => {
+    const token = localStorage.getItem("token");
+    try {
+      await axios.delete(
+        `http://localhost:5000/artDumpster/profile/${user_id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      localStorage.removeItem("token");
+      setUser(null);
+
+      console.log("[DELETE /App.jsx]: User Deleted Successfully!");
+    } catch (err) {
+      console.error("[DELETE /App.jsx]: Error deleting user!");
+    }
+  };
+
   const logOutUser = async (req, res) => {
     try {
       localStorage.removeItem("token");
@@ -208,7 +229,11 @@ function App() {
             path="/settings"
             element={
               <AdProtectedRoute user={user}>
-                <AdSettingsPage user={user} onLogOut={logOutUser} />
+                <AdSettingsPage
+                  user={user}
+                  onDelete={deleteUser}
+                  onLogOut={logOutUser}
+                />
               </AdProtectedRoute>
             }
           ></Route>
