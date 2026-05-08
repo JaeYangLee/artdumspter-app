@@ -13,7 +13,7 @@ function AdProfilePage({ user, onEdit, onLogout }) {
   if (!user) return <p>Loading...</p>;
   return (
     <>
-      <div className="flex flex-col items-center w-screen h-screen px-2 py-4 pt-16 md:items-start md:flex-row bg-backgroundColor">
+      <div className="flex flex-col items-center w-screen h-screen gap-4 px-2 py-4 pt-16 md:items-start md:flex-row bg-backgroundColor">
         <section className="w-full md:w-[40vw] md:h-full flex flex-col items-center justify-center border rounded-lg shadow-[4px_4px_0px_0px] py-4 px-4">
           <div className="p-4">
             <BsPersonCircle className="size-20 opacity-80" />
