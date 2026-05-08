@@ -1,7 +1,8 @@
 import AdNavBar from "../components/AdNavBar";
 import { BsPersonCircle } from "react-icons/bs";
-import { BsEnvelope } from "react-icons/bs";
-import { BsFillPinMapFill } from "react-icons/bs";
+import { BsPinMapFill } from "react-icons/bs";
+import { BsBrushFill } from "react-icons/bs";
+import { BsFillPaletteFill } from "react-icons/bs";
 import { useFetchUserById } from "../hooks/useFetchUserById";
 import AdUpdateUserModal from "../components/AdUpdateUserModal";
 import { useState } from "react";
@@ -12,56 +13,51 @@ function AdProfilePage({ user, onEdit, onLogout }) {
   if (!user) return <p>Loading...</p>;
   return (
     <>
-      <div className="flex flex-col items-center w-screen h-screen p-2 pt-16 md:flex-row">
-        <div className="flex flex-col items-center justify-center w-full gap-4 px-2 py-4 bg-gray-200 rounded md:h-full">
-          <div
-            to="/profile"
-            className="flex flex-col items-center justify-center gap-2"
-          >
-            <BsPersonCircle className="text-textColor size-28 opacity-80" />
-            <h1 to="/profile" className="text-lg font-bold">
-              {user.username}
-            </h1>
-            <p className="w-full italic">
-              <span className="opacity-40">" </span>
-              {user.bio}
-              <span> "</span>
-            </p>
+      <div className="flex flex-col items-center w-screen h-screen px-2 pt-16 md:flex-row bg-backgroundColor">
+        <section className="w-full md:w-[40vw] flex flex-col items-center justify-center border rounded-lg shadow-[4px_4px_0px_0px] py-4 px-4">
+          <div className="p-4">
+            <BsPersonCircle className="size-20 opacity-80" />
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-2">
-            <div className="flex flex-row items-center justify-start w-full gap-4">
-              <BsEnvelope className="size-6 " />
-              <h3>{user.email}</h3>
-            </div>
-            <div className="flex flex-row items-center justify-start w-full gap-4">
-              <BsFillPinMapFill className="size-6" />
-              <h3>{user.location}</h3>
+          <div className="flex flex-col items-center justify-center px-4 text-textColor">
+            <h1 className="text-2xl font-bold">{user.username}</h1>
+            <p className="text-sm ">{user.email}</p>
+          </div>
+
+          <div className="flex flex-col items-center justify-center py-4 pt-4 text-sm italic font-light text-gray-500">
+            <p className="text-center">{`"${user.bio}"`}</p>
+          </div>
+
+          <div className="flex flex-col items-start justify-center w-full gap-4 py-4 bg-gray-200 rounded-lg wrap-break-words">
+            <div className="flex flex-row items-center justify-center flex-1 gap-8 px-4 text-center">
+              <BsPinMapFill className="size-8" />
+              <p className="text-sm font-bold">{user.location}</p>
             </div>
 
-            <div className="flex flex-col items-start justify-start w-full pt-4">
-              <h1 className="font-bold">Most used tool:</h1>
-              <h3 className="w-full p-2 ">•{user.tool_name}</h3>
+            <hr className="w-full opacity-20" />
+
+            <div className="flex flex-row items-center justify-center flex-1 gap-8 px-4 text-center">
+              <BsBrushFill className="size-8" />
+              <p className="text-sm font-bold">{user.tool_name}</p>
             </div>
-            <div className="flex flex-col items-start justify-start w-full">
-              <h1 className="font-bold">Art style:</h1>
-              <h3 className="w-full p-2">•{user.artstyle_name}</h3>
+
+            <hr className="w-full opacity-20" />
+
+            <div className="flex flex-row items-center justify-center flex-1 gap-8 px-4 text-center">
+              <BsFillPaletteFill className="size-8" />
+              <p className="text-sm font-bold">{user.artstyle_name}</p>
             </div>
           </div>
 
-          <div className="w-full pt-8">
+          <div className="flex justify-center w-full pt-8 flex-center">
             <button
               onClick={() => setUpdateUserModalOpen(true)}
-              className="px-2 rounded border w-full bg-primary text-backgroundColor border-textColor shadow-textColor shadow-[2px_2px_0px_0px]"
+              className="w-full px-2 border border-textColor shadow-textColor shadow-[2px_2px_0px_0px] rounded bg-primary text-backgroundColor"
             >
               Edit profile
             </button>
           </div>
-        </div>
-
-        <div className="flex flex-col w-full gap-4 px-2 py-4 rounded md:h-full">
-          <h1 className="text-lg font-bold">{`• ${user.username}'s art dumpster:`}</h1>
-        </div>
+        </section>
       </div>
 
       <AdNavBar onLogout={onLogout} user={user} />
