@@ -95,10 +95,23 @@ function AdUpdateUserModal({
           onClick={(e) => e.stopPropagation()}
           className="flex flex-col items-center justify-center gap-4 p-4 text-center "
         >
-          <section className="border rounded-lg shadow-[4px_4px_0px_0px] bg-backgroundColor">
-            <header className="p-2">
-              <h1 className="text-lg font-bold text-left">Edit profile</h1>
-            </header>
+          <div className="border rounded-lg shadow-[4px_4px_0px_0px] bg-backgroundColor">
+            <section className="flex flex-row items-center justify-between ">
+              <header className="px-2">
+                <h1 className="font-bold text-left">Edit profile</h1>
+              </header>
+
+              <div className="flex flex-row items-center justify-center gap-2 px-2">
+                <p className="text-xs text-green-500">●</p>
+                <p className="text-xs text-yellow-400">●</p>
+                <p
+                  onClick={onUpdateUserModalClose}
+                  className="text-xs text-red-500"
+                >
+                  ●
+                </p>
+              </div>
+            </section>
 
             <hr />
 
@@ -207,7 +220,7 @@ function AdUpdateUserModal({
                 </button>
               </section>
             </form>
-          </section>
+          </div>
         </div>
       </div>
 

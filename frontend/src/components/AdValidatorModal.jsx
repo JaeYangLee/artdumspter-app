@@ -32,27 +32,49 @@ function AdValidatorModal({
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="flex flex-col items-center justify-center gap-8 p-4 bg-white rounded-lg"
+          className="flex flex-col border shadow-[4px_4px_0px_0px] bg-white rounded-lg"
         >
-          <section className="flex flex-col items-center justify-center">
-            <BsFillExclamationTriangleFill className="text-yellow-600 size-12" />
-            <h1 className="text-lg font-bold">{title}</h1>
-            <p>{message}</p>
+          <section className="flex flex-row items-center justify-between py-2">
+            <header className="px-2">
+              <h1 className="font-bold text-left ">Delete account</h1>
+            </header>
+
+            <div className="flex flex-row items-center justify-center gap-2 px-2">
+              <p className="text-xs text-green-500">●</p>
+              <p className="text-xs text-yellow-400">●</p>
+              <p
+                onClick={onValidatorModalClose}
+                className="text-xs text-red-500"
+              >
+                ●
+              </p>
+            </div>
           </section>
 
-          <section className="flex flex-row items-center justify-end w-full gap-2">
-            <button
-              onClick={handleDelete}
-              className="px-2 bg-red-400 border rounded border-textColor"
-            >
-              Delete
-            </button>
-            <button
-              onClick={onValidatorModalClose}
-              className="px-2 border rounded opacity-60"
-            >
-              Cancel
-            </button>
+          <hr />
+
+          <section className="flex flex-col items-center justify-center gap-4 p-4">
+            <div className="flex flex-col items-center justify-center">
+              <BsFillExclamationTriangleFill className="text-yellow-400 size-16" />
+
+              <h1 className="pt-4 text-lg font-bold">{title}</h1>
+              <p className="">{message}</p>
+            </div>
+
+            <div className="flex flex-row items-center justify-end w-full gap-2 pt-2">
+              <button
+                onClick={handleDelete}
+                className="text-backgroundColor px-2 bg-red-400 border rounded border-textColor shadow-textColor shadow-[2px_2px_0px_0px]"
+              >
+                Delete
+              </button>
+              <button
+                onClick={onValidatorModalClose}
+                className="px-2 border rounded text-gray-600 shadow-textColor border-textColor shadow-[2px_2px_0px_0px]"
+              >
+                Cancel
+              </button>
+            </div>
           </section>
         </div>
       </div>
