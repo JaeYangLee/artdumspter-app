@@ -1,7 +1,7 @@
 const pool = require("../database/database");
 
 const fetchAllArtwork = async () => {
-  //This database query is called JOIN method, it allows you to fetch data from other tables and "JOIN" the data literally for fetching
+  //This database query is called JOIN method, it allows you to fetch data from other tables and "JOIN" the data literally for fetching data.
   const res = await pool.query(
     "SELECT a.artwork_id, a.title, a.description, a.image_url, a.created_at, u.username, t.tool_name, s.artstyle_name FROM artworks a LEFT JOIN users u ON a.user_id = u.user_id LEFT JOIN tools t ON a.tool_id = t.tool_id LEFT JOIN artstyles s ON a.artstyle_id = s.artstyle_id ORDER BY a.created_at DESC",
   );
@@ -10,7 +10,21 @@ const fetchAllArtwork = async () => {
 
 const fetchArtworkById = async (artwork_id) => {
   const res = await pool.query(
-    "SELECT a.artwork_id, a.title, a.description, a.image_url, a.created_at, u.username, t.tool_name, s.artstyle_name FROM artworks a LEFT JOIN users u ON a.user_id = u.user_id LEFT JOIN tools t ON a.tool_id = t.tool_id LEFT JOIN artstyles s ON s.artstyle_id = s.artstyle_id WHERE a.artwork_id = $1",
+    `SELECT
+    a.artwork_id,
+    a.title,
+    a.description,
+    a.image_url,
+    a.created_at,
+    u.username,
+    t.tool_name,
+    s.artstyle_name
+    FROM artworks a
+    LEFT JOIN users u ON a.user_id = u.user_id
+    LEFT JOIN tools t ON a.tool_id = t.tool_id
+    LEFT JOIN artstyles s ON a.artstyle_id = s.artstyle_id
+    WHERE a.artwork_id = $1 ORDER BY a.created_at DESC
+    `,
     [artwork_id],
   );
   return res.rows[0];
@@ -18,7 +32,21 @@ const fetchArtworkById = async (artwork_id) => {
 
 const fetchAllArtworkByUser = async (user_id) => {
   const res = await pool.query(
-    "SELECT * FROM artworks WHERE user_id = $1 ORDER BY created_at DESC",
+    `SELECT
+    a.artwork_id,
+    a.title,
+    a.description,
+    a.image_url,
+    a.created_at,
+    u.username,
+    t.tool_name,
+    s.artstyle_name
+    FROM artworks a 
+    LEFT JOIN users u ON a.user_id = u.user_id
+    LEFT JOIN tools t ON a.tool_id = t.tool_id
+    LEFT JOIN artstyles s ON a.artstyle_id = s.artstyle_id
+    WHERE a.user_id = $1
+    ORDER BY a.created_at DESC`,
     [user_id],
   );
   return res.rows;
