@@ -75,19 +75,21 @@ const fetchArtworkByUser = async (req, res) => {
 const addArtwork = async (req, res) => {
   try {
     const { user_id } = req.user;
-    const { title, description, image_url, tool_id, artstyle_id } = req.body;
+    const { title, description, tool_id, artstyle_id } = req.body;
 
     if (
       !title.trim() ||
       !description.trim() ||
-      !image_url.trim() ||
       !tool_id ||
-      !artstyle_id
+      !artstyle_id ||
+      !req.file
     ) {
       return res
         .status(400)
         .json({ error: "[POST /Controller]: Missing required fields!" });
     }
+
+    const image_url = `/uploads/${req.file.filename}`;
 
     const newArtwork = await adArtworkModel.addArtwork(
       user_id,

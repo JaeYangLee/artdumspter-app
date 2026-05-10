@@ -15,17 +15,17 @@ const storage = multer.diskStorage({
 const fileFilter = (req, file, cb) => {
   const allowedTypes = /jpeg|jpg|png|gif/;
   const extname = allowedTypes.test(
-    path.extname(file.originalname).toLowerCase()
+    path.extname(file.originalname).toLowerCase(),
   );
-  const mimeType = allowedTypes.test(file.mimeType);
+  const mimeType = allowedTypes.test(file.mimetype);
 
   if (mimeType && extname) {
     cb(null, true);
   } else {
     cb(
       new Error(
-        "[UPLOAD /middleware]: Invalid file type. Only images are allowed!"
-      )
+        "[UPLOAD /middleware]: Invalid file type. Only images are allowed!",
+      ),
     );
   }
 };
