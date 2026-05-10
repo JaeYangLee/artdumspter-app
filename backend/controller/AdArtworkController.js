@@ -4,7 +4,7 @@ const fetchAllArtwork = async (req, res) => {
   try {
     const allArtwork = await adArtworkModel.fetchAllArtwork();
 
-    if (!allArtwork.length === 0) {
+    if (allArtwork.length === 0) {
       return res
         .status(404)
         .json({ error: "[GET /controller]: All artwork not found!" });
@@ -51,7 +51,7 @@ const fetchArtworkByUser = async (req, res) => {
 
     const userArtwork = await adArtworkModel.fetchAllArtworkByUser(user_id);
 
-    if (!userArtwork === 0) {
+    if (userArtwork === 0) {
       return res
         .status(404)
         .json({ error: "[GET /controller]: User artwork not found!" });
@@ -74,17 +74,96 @@ const fetchArtworkByUser = async (req, res) => {
 
 const addArtwork = async (req, res) => {
   try {
-  } catch (err) {}
+    const { user_id } = req.user;
+    const { title, description, image_url, tool_id, artstyle_id } = req.body;
+
+    if (
+      !title.trim() ||
+      !description.trim() ||
+      !image_url.trim() ||
+      !tool_id ||
+      !artstyle_id
+    ) {
+      return res
+        .status(400)
+        .json({ error: "[POST /Controller]: Missing required fields!" });
+    }
+
+    const newArtwork = await adArtworkModel.addArtwork(
+      user_id,
+      title,
+      description,
+      image_url,
+      tool_id,
+      artstyle_id,
+    );
+
+    res.status(200).json({
+      message: "[POST /Controller]: Uploading artwork successful!",
+      data: newArtwork,
+    });
+  } catch (err) {
+    console.error("[POST /Controller]: Error adding new artwork!", err.message);
+    res.status(500).json({ error: "[POST /Controller]: Server error!" });
+  }
 };
 
 const updateArtwork = async (req, res) => {
   try {
-  } catch (err) {}
+    const { user_id } = req.user;
+
+    const { artwork_id } = req.params;
+
+    const { title, description, tool_id, artstyle_id } = req.body;
+
+    const updatedArtwork = await adArtworkModel.updateArtwork(
+      artwork_id,
+      user_id,
+      title,
+      description,
+      tool_id,
+    );
+
+    if (!updatedArtwork) {
+      return res
+        .status(404)
+        .json({ error: "[PUT /Controller]: Artwork does not exist!" });
+    }
+
+    res.status(200).json({
+      message: "[PUT /Controller]: Artwork updated successfully!",
+      data: updatedArtwork,
+    });
+  } catch (err) {
+    console.error("[PUT /Controller]: Error updating artwork!", err.message);
+    res.status(500).json({ error: "[PUT /Controller]: Server Error!" });
+  }
 };
 
 const deleteArtwork = async (req, res) => {
   try {
-  } catch (err) {}
+    const { user_id } = req.user;
+    const { artwork_id } = req.params;
+
+    const deletedArtwork = await adArtworkModel.deleteArtwork(
+      artwork_id,
+      user_id,
+    );
+
+    if (!deletedArtwork) {
+      return res
+        .status(404)
+        .json({ error: "[DELETE /Controller]: Artwork not found!" });
+    }
+
+    res.status(200).json({
+      message: "[DELETE /Controller]: Artwork deleted successfully!",
+      data: deletedArtwork,
+    });
+  } catch (err) {
+    console.error("[DELETE /Controller]: Error deleting artwork!", err.message);
+    res.status(500).json({ error: "[DELETE /Controller]: Server error!" });
+  }
 };
 
 module.exports = {

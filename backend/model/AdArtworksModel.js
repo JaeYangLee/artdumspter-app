@@ -72,13 +72,12 @@ const updateArtwork = async (
   user_id,
   title,
   description,
-  image_url,
   tool_id,
   artstyle_id,
 ) => {
   const res = await pool.query(
-    "UPDATE artworks SET title = $1, description = $2, image_url = $3, tool_id = $4, artstyle_id = $5 WHERE artwork_id = $6 AND user_id = $7 RETURNING *",
-    [title, description, image_url, tool_id, artstyle_id, artwork_id, user_id],
+    "UPDATE artworks SET title = $1, description = $2, tool_id = $3, artstyle_id = $4 WHERE artwork_id = $5 AND user_id = $6 RETURNING *",
+    [title, description, tool_id, artstyle_id, artwork_id, user_id],
   );
   return res.rows[0];
 };
