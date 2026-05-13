@@ -4,12 +4,6 @@ const fetchAllArtwork = async (req, res) => {
   try {
     const allArtwork = await adArtworkModel.fetchAllArtwork();
 
-    if (allArtwork.length === 0) {
-      return res
-        .status(404)
-        .json({ error: "[GET /controller]: All artwork not found!" });
-    }
-
     res.status(200).json({
       message: "[GET /controller]: All artworks fetched!",
       data: allArtwork,
@@ -124,6 +118,7 @@ const updateArtwork = async (req, res) => {
       title,
       description,
       tool_id,
+      artstyle_id,
     );
 
     if (!updatedArtwork) {
