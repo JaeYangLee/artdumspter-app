@@ -13,6 +13,8 @@ import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
+  /* KEY NOTE: May bug sa log in, nag a access parin sa account kahit mali yung password. */
+
   const [user, setUser] = useState(null);
   const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
@@ -165,13 +167,47 @@ function App() {
     }
   };
 
-  const logOutUser = async (req, res) => {
+  const logOutUser = async () => {
     try {
       localStorage.removeItem("token");
       setUser(null);
       console.log("Token Deleted!");
     } catch (err) {
       console.error("[LOG OUT /App.jsx]: Error logging out user!", err.message);
+    }
+  };
+
+  const addArtwork = async (
+    title,
+    description,
+    image_url,
+    tool_id,
+    artstyle_id,
+  ) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const formData = new FormData();
+
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("image_url", image_url);
+      formData.append("tool_id", tool_id);
+      formData.append("artstyle_id", artstyle_id);
+
+      const newArtwork = await axios.post(
+        `http://localhost:5000/artDumpster/artWork/upload`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      return newArtwork.data.data;
+    } catch (err) {
+      console.error("[POST /App.jsx]: Error uploading artwork!", err.message);
     }
   };
 
@@ -219,7 +255,11 @@ function App() {
             path="/addAnArtwork"
             element={
               <AdProtectedRoute user={user}>
-                <AdAddAnArtworkPage onLogout={logOutUser} />
+                <AdAddAnArtworkPage
+                  user={user}
+                  onUpload={addArtwork}
+                  onLogout={logOutUser}
+                />
               </AdProtectedRoute>
             }
           ></Route>

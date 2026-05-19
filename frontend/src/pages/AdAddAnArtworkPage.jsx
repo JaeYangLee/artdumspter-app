@@ -1,25 +1,62 @@
 import AdNavBar from "../components/AdNavBar";
 import { BsCloudArrowUp } from "react-icons/bs";
-
 import { useFetchUserById } from "../hooks/useFetchUserById";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-function AdAddAnArtworkPage({ onUpload, onLogout }) {
-  const user = useFetchUserById();
-  const [artwork, setArtwork] = useState(null);
+function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
   const [artworkPreview, setArtworkPreview] = useState(null);
+  const [image_url, setImageUrl] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [toolId, setToolId] = useState("");
+  const [tool_id, setToolId] = useState("");
   const [tool, setTool] = useState([]);
-  const [artstyleId, setArtStyleId] = useState("");
+  const [artstyle_id, setArtStyleId] = useState("");
   const [artstyle, setArtstyle] = useState([]);
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     fetchAllTools();
     fetchAllArtStyles();
   }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (!image_url || !title || !description || !tool_id || !artstyle_id) {
+        console.error("Missing fields!");
+        return;
+      }
+
+      await onUpload(title, description, image_url, tool_id, artstyle_id);
+
+      setImageUrl(null);
+      setArtworkPreview(null);
+      setTitle("");
+      setDescription("");
+      setToolId("");
+      setArtStyleId("");
+    } catch (err) {
+      console.error(
+        "[POST /AdAddAnArtworkPage.jsx]: Error submitting artwork",
+        err.message,
+      );
+    }
+  };
+
+  const handleUploadClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setImageUrl(file);
+
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setArtworkPreview(imageUrl);
+    }
+  };
 
   const fetchAllTools = async () => {
     try {
@@ -33,44 +70,14 @@ function AdAddAnArtworkPage({ onUpload, onLogout }) {
   const fetchAllArtStyles = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/artDumpster/artStyles"
+        "http://localhost:5000/artDumpster/artStyles",
       );
       setArtstyle(res.data.data);
     } catch (err) {
       console.error(
-        "[GEt /AddAnArtworkPage.jsx]: Error fetching all Art styles!"
+        "[GEt /AddAnArtworkPage.jsx]: Error fetching all Art styles!",
       );
     }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      setArtwork(null);
-      setArtworkPreview(null);
-      setTitle("");
-      setDescription("");
-      setToolId("");
-      setArtStyleId("");
-    } catch (err) {
-      console.error("[POST /AddAnArtWorkPage.jsx]: Error adding an artwork!");
-      setArtwork(null);
-      setArtworkPreview(null);
-      setTitle("");
-      setDescription("");
-      setToolId("");
-      setArtStyleId("");
-    }
-  };
-
-  const handleResetFields = (e) => {
-    e.preventDefault();
-    setArtwork(null);
-    setArtworkPreview(null);
-    setTitle("");
-    setDescription("");
-    setToolId("");
-    setArtStyleId("");
   };
 
   return (
@@ -97,26 +104,27 @@ function AdAddAnArtworkPage({ onUpload, onLogout }) {
                 <div className="flex flex-col items-center justify-center border-black/30 bg-gray-100 border-dashed border rounded w-full h-[40vh] md:h-full lg:w-[60vw]">
                   <BsCloudArrowUp className="size-16 opacity-40" />
                   <p className="font-light opacity-60">Drop files to upload</p>
-                  <p className="font-light text-textColor/60">
-                    or{" "}
-                    <span className="font-normal underline opacity-100 text-primary">
+                  <div className="flex flex-row items-center justify-center gap-1">
+                    <p className="font-light text-textColor/60">or</p>
+                    <input
+                      type="file"
+                      ref={fileInputRef}
+                      onChange={handleFileChange}
+                      className="hidden"
+                    />
+                    <p
+                      onClick={handleUploadClick}
+                      className="underline font-light text-primary"
+                    >
                       browse
-                    </span>
-                  </p>
+                    </p>
+                  </div>
                 </div>
               )}
 
               <input
                 required
-                onChange={(e) => {
-                  const file = e.target.files[0];
-                  setArtwork(file);
-
-                  if (file) {
-                    const imageUrl = URL.createObjectURL(file);
-                    setArtworkPreview(imageUrl);
-                  }
-                }}
+                onChange={handleFileChange}
                 type="file"
                 accept="image/*"
                 className="border rounded w-[80vw] md:w-[40vw] shadow-[2px_2px_0px_0px] order file:px-2 file:border-black file:rounded file:bg-primary file:text-backgroundColor lg:w-[60vw]"
@@ -148,7 +156,7 @@ function AdAddAnArtworkPage({ onUpload, onLogout }) {
                   <label>Tool:</label>
                   <select
                     required
-                    value={toolId}
+                    value={tool_id}
                     onChange={(e) => setToolId(e.target.value)}
                     className="md:w-full px-2 border rounded shadow-[2px_2px_0px]"
                   >
@@ -164,7 +172,7 @@ function AdAddAnArtworkPage({ onUpload, onLogout }) {
                   <label>Artstyle:</label>
                   <select
                     required
-                    value={artstyleId}
+                    value={artstyle_id}
                     onChange={(e) => setArtStyleId(e.target.value)}
                     className="md:w-full px-2 border rounded shadow-[2px_2px_0px]"
                   >
@@ -184,14 +192,12 @@ function AdAddAnArtworkPage({ onUpload, onLogout }) {
               <div className="flex flex-row items-end justify-end w-full gap-2">
                 <button
                   type="submit"
+                  onClick={handleSubmit}
                   className="px-2 border rounded bg-primary text-backgroundColor shadow-textColor border-black shadow-[2px_2px_0px_0px]"
                 >
                   Upload
                 </button>
-                <button
-                  onClick={handleResetFields}
-                  className="px-2 border rounded opacity-50 shadow-textColor border-textColor shadow-[2px_2px_0px_0px]"
-                >
+                <button className="px-2 border rounded opacity-50 shadow-textColor border-textColor shadow-[2px_2px_0px_0px]">
                   Clear
                 </button>
               </div>
