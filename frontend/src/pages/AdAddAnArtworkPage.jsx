@@ -3,6 +3,8 @@ import { BsCloudArrowUp } from "react-icons/bs";
 import { useFetchUserById } from "../hooks/useFetchUserById";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import AdSuccessModal from "../components/AdSuccessModal";
+import AdErrorModal from "../components/AdErrorModal";
 
 function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
   const [artworkPreview, setArtworkPreview] = useState(null);
@@ -14,6 +16,8 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
   const [artstyle_id, setArtStyleId] = useState("");
   const [artstyle, setArtstyle] = useState([]);
   const fileInputRef = useRef(null);
+  const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
+  const [isErrorModalOpen, setErrorModalOpen] = useState(false);
 
   useEffect(() => {
     fetchAllTools();
@@ -25,10 +29,13 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
     try {
       if (!image_url || !title || !description || !tool_id || !artstyle_id) {
         console.error("Missing fields!");
+        setErrorModalOpen(true);
         return;
       }
 
       await onUpload(title, description, image_url, tool_id, artstyle_id);
+
+      setSuccessModalOpen(true);
 
       setImageUrl(null);
       setArtworkPreview(null);
@@ -207,6 +214,18 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
       </div>
 
       <AdNavBar onLogout={onLogout} user={user} />
+      <AdSuccessModal
+        isSuccessModalOpen={isSuccessModalOpen}
+        onSuccessModalClose={() => setSuccessModalOpen(false)}
+        title={"Upload Successful!"}
+        message={"Your masterpiece is successfully uploaded!"}
+      />
+      <AdErrorModal
+        isErrorModalOpen={isErrorModalOpen}
+        onErrorModalClose={() => setErrorModalOpen(false)}
+        title={"Error uploading artwork!"}
+        message={"Oops there is an error uploading your masterpiece..."}
+      />
     </>
   );
 }
