@@ -65,6 +65,24 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
     }
   };
 
+  const handleResetFields = async (e) => {
+    e.preventDefault();
+
+    try {
+      setArtworkPreview(null);
+      setImageUrl(null);
+      setTitle("");
+      setDescription("");
+      setToolId("");
+      setArtStyleId("");
+    } catch (err) {
+      console.error(
+        "[/AdAddAnArtworkPage.jsx]: Error resetting all fields!",
+        err.message,
+      );
+    }
+  };
+
   const fetchAllTools = async () => {
     try {
       const res = await axios.get("http://localhost:5000/artDumpster/tools");
@@ -204,7 +222,10 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
                 >
                   Upload
                 </button>
-                <button className="px-2 border rounded opacity-50 shadow-textColor border-textColor shadow-[2px_2px_0px_0px]">
+                <button
+                  onClick={handleResetFields}
+                  className="px-2 border rounded opacity-50 shadow-textColor border-textColor shadow-[2px_2px_0px_0px]"
+                >
                   Clear
                 </button>
               </div>

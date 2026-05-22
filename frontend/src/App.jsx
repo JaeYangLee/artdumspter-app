@@ -16,12 +16,19 @@ function App() {
   /* KEY NOTE: May bug sa log in, nag a access parin sa account kahit mali yung password. */
 
   const [user, setUser] = useState(null);
+  const [artworks, setArtWorks] = useState([]);
   const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
 
   useEffect(() => {
     getUserById();
   }, []);
+
+  useEffect(() => {
+    if (user?.user_id) {
+      fetchArtworkByUser(user.user_id);
+    }
+  }, [user?.user_id]);
 
   const registerUser = async (
     username,
@@ -211,6 +218,29 @@ function App() {
     }
   };
 
+  const fetchArtworkByUser = async (user_id) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const allArtworkByUser = await axios.get(
+        `http://localhost:5000/artDumpster/user/artWork/${user_id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      setArtWorks(allArtworkByUser.data.data);
+      console.log("ARTWORKS IN PAGE:", artworks);
+    } catch (err) {
+      console.error(
+        "[GET /App.jsx]: Error fetching artworks by user!",
+        err.message,
+      );
+    }
+  };
+
   return (
     <>
       <Router>
@@ -245,7 +275,11 @@ function App() {
             path="/myDumpster"
             element={
               <AdProtectedRoute user={user}>
-                <AdMyDumpsterPage onLogout={logOutUser} />
+                <AdMyDumpsterPage
+                  user={user}
+                  artworks={artworks}
+                  onLogout={logOutUser}
+                />
               </AdProtectedRoute>
             }
           ></Route>
