@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import AdNavBar from "../components/AdNavBar";
 import { useFetchUserById } from "../hooks/useFetchUserById";
 
-function AdMyDumpsterPage({ user, artworks, onLogout }) {
+function AdMyDumpsterPage({ user, artworks = [], onLogout }) {
   return (
     <>
       <div className="flex flex-col items-center justify-center w-screen full-screen pt-14">
@@ -14,7 +14,7 @@ function AdMyDumpsterPage({ user, artworks, onLogout }) {
             <div key={artwork.artwork_id}>
               <img
                 className="w-40 h-40 object-cover"
-                src={`http://localhost:5000/uploads/${artwork.image_url}`}
+                src={`http://localhost:5000/${artwork.image_url}`}
                 alt={artwork.title}
               />
             </div>

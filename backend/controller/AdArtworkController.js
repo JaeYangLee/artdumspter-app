@@ -45,12 +45,6 @@ const fetchArtworkByUser = async (req, res) => {
 
     const userArtwork = await adArtworkModel.fetchAllArtworkByUser(user_id);
 
-    if (userArtwork === 0) {
-      return res
-        .status(404)
-        .json({ error: "[GET /controller]: User artwork not found!" });
-    }
-
     res.status(200).json({
       message: "[GET /controller]: User artwork fetched!",
       data: userArtwork,
@@ -83,7 +77,7 @@ const addArtwork = async (req, res) => {
         .json({ error: "[POST /Controller]: Missing required fields!" });
     }
 
-    const image_url = `/uploads/${req.file.filename}`;
+    const image_url = `uploads/${req.file.filename}`;
 
     const newArtwork = await adArtworkModel.addArtwork(
       user_id,
