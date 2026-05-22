@@ -223,7 +223,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       const allArtworkByUser = await axios.get(
-        `http://localhost:5000/artDumpster/user/artWork/${user_id}`,
+        `http://localhost:5000/artDumpster/artWork/user/${user_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -232,7 +232,7 @@ function App() {
       );
 
       setArtWorks(allArtworkByUser.data.data);
-      console.log("ARTWORKS IN PAGE:", artworks);
+      console.log("ARTWORKS IN PAGE:", artworks.data);
     } catch (err) {
       console.error(
         "[GET /App.jsx]: Error fetching artworks by user!",

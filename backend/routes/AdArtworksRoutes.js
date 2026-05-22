@@ -11,7 +11,7 @@ router.get(
   AdArtworkController.fetchArtworkById,
 );
 router.get(
-  "/user/artWork/:user_id",
+  "/artWork/user/:user_id",
   verifyToken,
   AdArtworkController.fetchArtworkByUser,
 );
