@@ -6,8 +6,9 @@ import { BsFillPaletteFill } from "react-icons/bs";
 import { useFetchUserById } from "../hooks/useFetchUserById";
 import AdUpdateUserModal from "../components/AdUpdateUserModal";
 import { useState } from "react";
+import AdArtworkList from "../components/AdArtworkList";
 
-function AdProfilePage({ user, onEdit, onLogout }) {
+function AdProfilePage({ user, artworks, onEdit, onLogout }) {
   const [isUpdateUserModalOpen, setUpdateUserModalOpen] = useState(false);
 
   if (!user) return <p>Loading...</p>;

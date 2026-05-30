@@ -262,6 +262,7 @@ function App() {
               <AdProtectedRoute user={user}>
                 <AdProfilePage
                   user={user}
+                  artworks={artworks}
                   onLogout={logOutUser}
                   onEdit={updateUser}
                 />
