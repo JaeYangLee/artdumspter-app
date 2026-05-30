@@ -8,7 +8,7 @@ function AdArtworkList({ artworks }) {
 
   return (
     <>
-      <div className="flex w-screen h-screen bg-gray">
+      <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 p-4 space-y-4">
         {artworks.map((artwork) => (
           <AdArtworkCard key={artwork.artwork_id} artwork={artwork} />
         ))}

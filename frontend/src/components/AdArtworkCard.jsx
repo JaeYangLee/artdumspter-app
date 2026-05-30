@@ -3,17 +3,12 @@ import React from "react";
 function AdArtworkCard({ artwork }) {
   return (
     <>
-      <div>
+      <div className="break-inside-avoid mb-4 rounded-xl overflow-hidden bg-white shadow-md hover:shadow-xl transition duration-300">
         <img
           src={`http://localhost:5000/${artwork.image_url}`}
           alt={artwork.title}
+          className="w-full object-cover hover:scale-105 transition duration-300"
         />
-
-        <h2>{artwork.title}</h2>
-        <p>{artwork.description}</p>
-
-        <p>{artwork.tool_name}</p>
-        <p>{artwork.artstyle_name}</p>
       </div>
     </>
   );
