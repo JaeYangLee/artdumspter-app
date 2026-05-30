@@ -232,7 +232,6 @@ function App() {
       );
 
       setArtWorks(allArtworkByUser.data.data);
-      console.log("ARTWORKS IN PAGE:", artworks.data);
     } catch (err) {
       console.error(
         "[GET /App.jsx]: Error fetching artworks by user!",
