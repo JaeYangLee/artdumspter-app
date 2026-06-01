@@ -59,7 +59,7 @@ function AdProfilePage({ user, artworks, onEdit, onLogout }) {
             </button>
           </div>
         </section>
-        <section className="flex flex-col items-center justify-center">
+        <section className="w-full flex-wrap flex flex-col items-center justify-center">
           <h1 className="w-full p-2 text-2xl font-bold text-primary">
             {`${user.username}'s Dumpster`}
           </h1>
