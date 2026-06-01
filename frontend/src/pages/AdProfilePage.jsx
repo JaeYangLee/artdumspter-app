@@ -59,6 +59,15 @@ function AdProfilePage({ user, artworks, onEdit, onLogout }) {
             </button>
           </div>
         </section>
+        <section className="flex flex-col items-center justify-center">
+          <h1 className="w-full p-2 text-2xl font-bold text-primary">
+            {`${user.username}'s Dumpster`}
+          </h1>
+
+          <div>
+            <AdArtworkList artworks={artworks} />
+          </div>
+        </section>
       </div>
 
       <AdNavBar onLogout={onLogout} user={user} />
