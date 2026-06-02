@@ -14,59 +14,58 @@ function AdProfilePage({ user, artworks, onEdit, onLogout }) {
   if (!user) return <p>Loading...</p>;
   return (
     <>
-      <div className="flex flex-col items-center w-screen h-screen gap-4 px-2 py-4 pt-16 md:items-start md:flex-row bg-backgroundColor">
-        <section className="w-full md:w-[40vw] md:h-full flex flex-col items-center justify-center border rounded-lg shadow-[4px_4px_0px_0px] py-4 px-4">
+      <div className="flex flex-col w-full h-screen gap-4 px-2 py-4 pt-16 md:overflow-hidden md:flex-row bg-backgroundColor">
+        <section className="w-full md:w-1/3 md:h-full flex flex-col items-center justify-center border rounded-lg shadow-[4px_4px_0px_0px] py-4 px-4">
           <div className="p-4">
             <BsPersonCircle className="size-20 opacity-80" />
           </div>
 
           <div className="flex flex-col items-center justify-center px-4 text-textColor">
             <h1 className="text-2xl font-bold">{user.username}</h1>
-            <p className="text-sm ">{user.email}</p>
+            <p className="text-sm">{user.email}</p>
           </div>
 
-          <div className="flex flex-col items-center justify-center py-4 pt-4 text-sm italic font-light text-gray-500">
+          <div className="flex flex-col items-center justify-center py-4 text-sm italic font-light text-gray-500">
             <p className="text-center">{`"${user.bio}"`}</p>
           </div>
 
-          <div className="flex flex-col items-start justify-center w-full gap-4 py-4 bg-gray-200 rounded-lg wrap-break-words">
-            <div className="flex flex-row items-center justify-center flex-1 gap-8 px-4 text-center">
+          <div className="flex flex-col items-start justify-center w-full gap-4 py-4 break-words bg-gray-200 rounded-lg">
+            <div className="flex flex-row items-center gap-8 px-4">
               <BsPinMapFill className="size-8" />
               <p className="text-sm font-bold">{user.location}</p>
             </div>
 
             <hr className="w-full opacity-20" />
 
-            <div className="flex flex-row items-center justify-center flex-1 gap-8 px-4 text-center">
+            <div className="flex flex-row items-center gap-8 px-4">
               <BsBrushFill className="size-8" />
               <p className="text-sm font-bold">{user.tool_name}</p>
             </div>
 
             <hr className="w-full opacity-20" />
 
-            <div className="flex flex-row items-center justify-center flex-1 gap-8 px-4 text-center">
+            <div className="flex flex-row items-center gap-8 px-4">
               <BsFillPaletteFill className="size-8" />
               <p className="text-sm font-bold">{user.artstyle_name}</p>
             </div>
           </div>
 
-          <div className="flex justify-center w-full pt-8 flex-center">
+          <div className="flex justify-center w-full pt-8">
             <button
               onClick={() => setUpdateUserModalOpen(true)}
               className="w-full px-2 border border-textColor shadow-textColor shadow-[2px_2px_0px_0px] rounded bg-primary text-backgroundColor"
             >
-              Edit profile
+              Edit Profile
             </button>
           </div>
         </section>
-        <section className="w-full flex-wrap flex flex-col items-center justify-center">
-          <h1 className="w-full p-2 text-2xl font-bold text-primary">
+
+        <section className="md:flex-1 md:h-full md:overflow-y-auto">
+          <h1 className="sticky top-0 z-10 p-2 text-2xl font-bold bg-backgroundColor text-primary">
             {`${user.username}'s Dumpster`}
           </h1>
 
-          <div>
-            <AdArtworkList artworks={artworks} />
-          </div>
+          <AdArtworkList artworks={artworks} />
         </section>
       </div>
 
