@@ -240,6 +240,27 @@ function App() {
     }
   };
 
+  const fetchArtworkById = async (artwork_id) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const artworkById = await axios.get(
+        `http://localhost:5000/artDumpster/artWork/${artwork_id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      setArtWorks(artworkById.data.data);
+    } catch (err) {
+      console.error(
+        "[GET /App.jsx]: Error fetching artwork by id!",
+        err.message,
+      );
+    }
+  };
   return (
     <>
       <Router>
