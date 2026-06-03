@@ -10,23 +10,22 @@ function AdArtworkShowCase({
     <>
       <div
         onClick={onArtworkShowcaseClose}
-        className="fixed inset-0 top-0 flex justify-center w-screen h-screen pt-16 z-70 bg-black/50"
+        className="fixed inset-0 top-0 flex flex-col items-center justify-center w-screen h-screen px-4 bg-black/80 z-70"
       >
-        <div
-          onClick={onArtworkShowcaseClose}
-          className="flex flex-col p-4 md:flex-row"
-        >
-          <section className="flex flex-col">
-            <img
-              src={`http://localhost:5000/${artwork.image_url}`}
-              alt={artwork.title}
-              className="object-cover"
-            />
-          </section>
-
-          <section className="bg-white">
-            <h1>{artwork.title}</h1>
-          </section>
+        <div className="">
+          <p className="w-full text-backgroundColor">x</p>
+          <div className="flex flex-col w-full md:flex-row">
+            <section className="w-1/2">
+              <img
+                src={`http://localhost:5000/${artwork.image_url}`}
+                alt={artwork.title}
+                className="object-contain"
+              />
+            </section>
+            <section className="w-1/2 bg-backgroundColor">
+              <p>{artwork.title}</p>
+            </section>
+          </div>
         </div>
       </div>
     </>

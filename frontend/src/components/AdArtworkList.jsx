@@ -8,10 +8,12 @@ function AdArtworkList({ artworks }) {
 
   return (
     <>
-      <div className="columns-2 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 p-4 space-y-4">
-        {artworks.map((artwork) => (
-          <AdArtworkCard key={artwork.artwork_id} artwork={artwork} />
-        ))}
+      <div className="p-4">
+        <div className="columns-2 sm:columns-2 lg:columns-3 xl:columns-4">
+          {artworks.map((artwork) => (
+            <AdArtworkCard key={artwork.artwork_id} artwork={artwork} />
+          ))}
+        </div>
       </div>
     </>
   );
