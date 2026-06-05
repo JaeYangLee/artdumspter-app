@@ -57,8 +57,6 @@ function AdArtworkShowCase({
                   </p>
 
                   <p className="hidden md:flex p-2 border rounded h-[10vh] md:h-[40vh] text-gray-500 italic font-light text-xs">{`" ${artwork.description} "`}</p>
-
-                  <button>Description</button>
                 </div>
 
                 <hr />
