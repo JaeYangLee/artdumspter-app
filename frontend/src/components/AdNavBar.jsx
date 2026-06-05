@@ -7,6 +7,7 @@ import { BsFillGearFill } from "react-icons/bs";
 import { BsPower } from "react-icons/bs";
 import { useState } from "react";
 import AdSideBar from "./AdSideBar";
+
 function AdNavBar({ user, onLogout }) {
   const [isSideBarOpen, setSideBarOpen] = useState(false);
   return (
@@ -19,7 +20,7 @@ function AdNavBar({ user, onLogout }) {
             className="md:hidden size-7 text-backgroundColor"
           />
         </section>
-        <section className="w-full items-center justify-center hidden md:flex flex-row text-backgroundColor gap-4">
+        <section className="flex-row items-center justify-center hidden w-full gap-4 md:flex text-backgroundColor">
           <Link
             to="/profile"
             className="flex flex-col items-center justify-center gap-1"
@@ -42,17 +43,17 @@ function AdNavBar({ user, onLogout }) {
             <label className="text-xs">Upload</label>
           </Link>
         </section>
-        <section className="hidden md:flex flex-row gap-4 items-end justify-end">
+        <section className="flex-row items-end justify-end hidden gap-4 md:flex">
           <Link
             to="/settings"
-            className="flex flex-col text-backgroundColor items-center justify-center gap-1"
+            className="flex flex-col items-center justify-center gap-1 text-backgroundColor"
           >
             <BsFillGearFill className="size-5" />
             <label className="text-xs">Settings</label>
           </Link>
           <div
             onClick={onLogout}
-            className="flex flex-col text-backgroundColor items-center justify-center gap-1"
+            className="flex flex-col items-center justify-center gap-1 text-backgroundColor"
           >
             <BsPower className="size-5" />
             <label className="text-xs">Logout</label>
