@@ -29,7 +29,7 @@ function AdProfilePage({ user, artworks, onEdit, onLogout }) {
             <p className="text-center">{`"${user.bio}"`}</p>
           </div>
 
-          <div className="flex flex-col items-start justify-center w-full gap-4 py-4 break-words bg-gray-200 rounded-lg">
+          <div className="flex flex-col items-start justify-center w-full gap-4 py-4 wrap-break-words bg-gray-200 rounded-lg">
             <div className="flex flex-row items-center gap-8 px-4">
               <BsPinMapFill className="size-8" />
               <p className="text-sm font-bold">{user.location}</p>
