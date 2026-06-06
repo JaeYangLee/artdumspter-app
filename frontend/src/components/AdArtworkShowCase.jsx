@@ -14,76 +14,71 @@ function AdArtworkShowCase({
     <>
       <div
         onClick={onArtworkShowcaseClose}
-        className="fixed inset-0 top-0 flex flex-col items-center justify-start w-screen h-screen px-4 pt-4 md:pt-0 md:justify-center bg-black/90 z-70"
+        className="fixed top-0 inset-0 z-70 bg-black/70 flex flex-col items-center justify-center p-4"
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="flex flex-col items-center justify-center"
+          className="flex flex-col justify-center"
         >
-          <div className="flex flex-row items-end justify-end w-full py-2 text-3xl text-backgroundColor">
+          <div className="w-full flex justify-end p-2">
             <BsXLg
               onClick={onArtworkShowcaseClose}
-              className="size-4 md:size-8"
+              className="text-backgroundColor"
             />
           </div>
 
-          <div className="flex flex-row items-center justify-between w-full p-2 md:hidden bg-backgroundColor">
-            <div className="flex flex-row items-center justify-center gap-2">
-              <BsPersonCircle className="size-8 opacity-80" />
-              <h1 className="text-sm font-bold">Username</h1>
-            </div>
-            <BsThreeDots />
-          </div>
+          <div className="bg-backgroundColor flex flex-col md:flex-row text-textColor">
+            <section className="w-full flex md:hidden bg-backgroundColor p-2 items-center justify-between">
+              <div className="flex flex-row items-center justify-center gap-2">
+                <BsPersonCircle className="size-8" />
+                <p className="font-bold">username</p>
+              </div>
 
-          <div className="flex flex-col w-full md:flex-row">
-            <section className="flex flex-col items-center justify-center bg-black w-full md:w-[50vw]">
+              <BsThreeDots className="size-8" />
+            </section>
+
+            <section className="bg-black flex flex-col items-center justify-center">
               <img
                 src={`http://localhost:5000/${artwork.image_url}`}
                 alt={artwork.title}
-                className="object-contain"
+                className="w-full max-w-full h-auto"
               />
             </section>
 
-            <section className="flex flex-col h-full py-2 bg-backgroundColor md:w-[30vw] gap-2">
-              <div className="flex-row items-center justify-between hidden w-full px-2 md:flex md:">
+            <section className="w-full md:w-[40vw] bg-backgroundColor">
+              <header className="w-full md:flex hidden bg-backgroundColor p-2 items-center justify-between">
                 <div className="flex flex-row items-center justify-center gap-2">
-                  <BsPersonCircle className="size-8 opacity-80" />
-                  <h1 className="text-sm font-bold">Username</h1>
+                  <BsPersonCircle className="size-8" />
+                  <p className="font-bold">username</p>
                 </div>
-                <BsThreeDots />
-              </div>
 
-              <hr className="hidden md:flex opacity-20" />
+                <BsThreeDots className="size-8" />
+              </header>
 
-              <div className="flex flex-col gap-2">
-                <div className="flex flex-col px-2">
-                  <h1 className="font-bold text-textColor">{artwork.title}</h1>
+              <hr className="opacity-20" />
 
-                  <p className="text-xs font-light opacity-50">
+              <div className="h-full flex-col flex">
+                <div className="p-2">
+                  <h1 className="font-bold">{artwork.title}</h1>
+                  <p className="text-xs">
                     {new Date(artwork.create_at).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "long",
                       day: "numeric",
                     })}
                   </p>
-
-                  <p className="hidden md:flex p-2 border rounded h-[10vh] md:h-[40vh] text-gray-500 italic font-light text-xs">{`" ${artwork.description} "`}</p>
                 </div>
 
                 <hr className="opacity-20" />
 
-                <div className="flex flex-col">
-                  <p className="px-2 text-sm font-bold">
-                    • Art style:
-                    <span className="font-normal capitalize">
-                      {artwork.artstyle_name}
-                    </span>
+                <div className="flex flex-col p-2">
+                  <p className="font-bold">
+                    {`•Art style: `}
+                    <span className="font-light">{artwork.artstyle_name}</span>
                   </p>
-                  <p className="px-2 text-sm font-bold">
-                    • Tool:
-                    <span className="font-normal capitalize">
-                      {artwork.tool_name}
-                    </span>
+                  <p className="font-bold">
+                    {`•Tool: `}
+                    <span className="font-light">{artwork.tool_name}</span>
                   </p>
                 </div>
               </div>
