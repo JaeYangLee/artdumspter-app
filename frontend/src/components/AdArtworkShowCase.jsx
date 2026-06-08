@@ -14,53 +14,51 @@ function AdArtworkShowCase({
     <>
       <div
         onClick={onArtworkShowcaseClose}
-        className="fixed top-0 inset-0 z-70 bg-black/70 flex flex-col items-center justify-center p-4"
+        className="fixed inset-0 top-0 flex flex-col items-center justify-center w-screen h-screen z-70 bg-black/70"
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="flex flex-col justify-center"
+          className="flex flex-col items-center justify-center px-4"
         >
-          <div className="w-full flex justify-end p-2">
+          <div className="flex flex-row items-end justify-end w-full py-1">
             <BsXLg
               onClick={onArtworkShowcaseClose}
-              className="text-backgroundColor"
+              className="font-bold text-backgroundColor size-4"
             />
           </div>
 
-          <div className="bg-backgroundColor flex flex-col md:flex-row text-textColor">
-            <section className="w-full flex md:hidden bg-backgroundColor p-2 items-center justify-between">
+          <div className="flex flex-col items-center justify-center w-full h-full md:flex-row">
+            <div className="flex flex-row items-center justify-between w-full p-2 bg-backgroundColor md:hidden">
               <div className="flex flex-row items-center justify-center gap-2">
-                <BsPersonCircle className="size-8" />
-                <p className="font-bold">username</p>
+                <BsPersonCircle />
+                <h1 className="font-bold">username</h1>
               </div>
 
               <BsThreeDots className="size-8" />
-            </section>
+            </div>
 
-            <section className="bg-black flex flex-col items-center justify-center">
+            <div className="flex items-center justify-center bg-black">
               <img
                 src={`http://localhost:5000/${artwork.image_url}`}
                 alt={artwork.title}
-                className="w-full max-w-full h-auto"
+                className="object-contain max-w-full max-h-full"
               />
-            </section>
+            </div>
 
-            <section className="w-full md:w-[40vw] bg-backgroundColor">
-              <header className="w-full md:flex hidden bg-backgroundColor p-2 items-center justify-between">
-                <div className="flex flex-row items-center justify-center gap-2">
+            <div className="w-full h-full bg-backgroundColor">
+              <div className="justify-between hidden p-2 lex-row bg-back md:flex">
+                <div className="flex flex-row items-center gap-2 justify-b">
                   <BsPersonCircle className="size-8" />
-                  <p className="font-bold">username</p>
+                  <h1 className="font-bold">username</h1>
                 </div>
 
                 <BsThreeDots className="size-8" />
-              </header>
+              </div>
 
-              <hr className="opacity-20" />
-
-              <div className="h-full flex-col flex">
+              <div className="flex flex-col items-start justify-start max-h-full">
                 <div className="p-2">
                   <h1 className="font-bold">{artwork.title}</h1>
-                  <p className="text-xs">
+                  <p className="text-xs font-light">
                     {new Date(artwork.create_at).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "long",
@@ -69,20 +67,20 @@ function AdArtworkShowCase({
                   </p>
                 </div>
 
-                <hr className="opacity-20" />
+                <hr className="w-full" />
 
-                <div className="flex flex-col p-2">
+                <div className="flex flex-col justify-endp-2">
                   <p className="font-bold">
-                    {`•Art style: `}
-                    <span className="font-light">{artwork.artstyle_name}</span>
+                    {`Art style: `}
+                    <span className="font-normal">{artwork.artstyle_name}</span>
                   </p>
                   <p className="font-bold">
-                    {`•Tool: `}
-                    <span className="font-light">{artwork.tool_name}</span>
+                    {`Tool used: `}
+                    <span className="font-normal">{artwork.tool_name}</span>
                   </p>
                 </div>
               </div>
-            </section>
+            </div>
           </div>
         </div>
       </div>
