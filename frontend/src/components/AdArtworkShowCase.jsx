@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsPersonCircle } from "react-icons/bs";
 import { BsXLg } from "react-icons/bs";
 import { BsThreeDots } from "react-icons/bs";
+import AdArtworkSettingsModal from "./AdArtworkSettingsModal";
 
 function AdArtworkShowCase({
   user,
@@ -9,6 +10,9 @@ function AdArtworkShowCase({
   isArtworkShowcaseOpen,
   onArtworkShowcaseClose,
 }) {
+  const [isArtworkSettingsModalOpen, setArtworkSettingsModalOpen] =
+    useState(false);
+
   if (!isArtworkShowcaseOpen) return null;
   return (
     <>
@@ -33,7 +37,11 @@ function AdArtworkShowCase({
                 <h1 className="font-bold">username</h1>
               </div>
 
-              <BsThreeDots className="size-8" />
+              <BsThreeDots
+                type="button"
+                onClick={() => setArtworkSettingsModalOpen(true)}
+                className="size-8"
+              />
             </div>
 
             <div className="flex items-center justify-center bg-black">
@@ -51,7 +59,11 @@ function AdArtworkShowCase({
                   <h1 className="font-bold">username</h1>
                 </div>
 
-                <BsThreeDots className="size-8" />
+                <BsThreeDots
+                  type="button"
+                  onClick={() => setArtworkSettingsModalOpen(true)}
+                  className="size-8"
+                />
               </div>
 
               <div className="flex flex-col items-start justify-start h-full bg-backgroundColor">
@@ -89,9 +101,14 @@ function AdArtworkShowCase({
                 </div>
               </div>
             </div>
-          </div>{" "}
+          </div>
         </div>
       </div>
+
+      <AdArtworkSettingsModal
+        isArtworkSettingsOpen={isArtworkSettingsModalOpen}
+        onArtworkSettings={() => setArtworkSettingsModalOpen(false)}
+      />
     </>
   );
 }
