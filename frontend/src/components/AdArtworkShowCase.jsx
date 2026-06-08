@@ -26,7 +26,6 @@ function AdArtworkShowCase({
               className="font-bold text-backgroundColor size-4"
             />
           </div>
-
           <div className="flex flex-col items-center justify-center w-full h-full md:flex-row">
             <div className="flex flex-row items-center justify-between w-full p-2 bg-backgroundColor md:hidden">
               <div className="flex flex-row items-center justify-center gap-2">
@@ -45,7 +44,7 @@ function AdArtworkShowCase({
               />
             </div>
 
-            <div className="w-full h-full bg-backgroundColor">
+            <div className="flex flex-col w-full h-full bg-backgroundColor">
               <div className="justify-between hidden p-2 lex-row bg-back md:flex">
                 <div className="flex flex-row items-center gap-2 justify-b">
                   <BsPersonCircle className="size-8" />
@@ -55,7 +54,7 @@ function AdArtworkShowCase({
                 <BsThreeDots className="size-8" />
               </div>
 
-              <div className="flex flex-col items-start justify-start max-h-full">
+              <div className="flex flex-col items-start justify-start h-full bg-backgroundColor">
                 <div className="p-2">
                   <h1 className="font-bold">{artwork.title}</h1>
                   <p className="text-xs font-light">
@@ -69,19 +68,28 @@ function AdArtworkShowCase({
 
                 <hr className="w-full" />
 
-                <div className="flex flex-col justify-endp-2">
-                  <p className="font-bold">
-                    {`Art style: `}
-                    <span className="font-normal">{artwork.artstyle_name}</span>
+                <div className="w-full p-2 opacity-50">
+                  <p className="hidden p-2 italic font-light border rounded border-black/50 md:flex">
+                    {`"${artwork.description}"`}
                   </p>
-                  <p className="font-bold">
+                </div>
+
+                <div className="flex flex-col w-full h-full md:justify-end">
+                  <hr className="hidden w-full md:flex" />
+                  <p className="px-2 font-bold">
+                    {`Art style: `}
+                    <span className="px-2 font-normal">
+                      {artwork.artstyle_name}
+                    </span>
+                  </p>
+                  <p className="px-2 font-bold">
                     {`Tool used: `}
                     <span className="font-normal">{artwork.tool_name}</span>
                   </p>
                 </div>
               </div>
             </div>
-          </div>
+          </div>{" "}
         </div>
       </div>
     </>
