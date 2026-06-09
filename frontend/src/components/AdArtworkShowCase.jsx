@@ -7,6 +7,7 @@ import AdArtworkSettingsModal from "./AdArtworkSettingsModal";
 function AdArtworkShowCase({
   user,
   artwork,
+  onDelete,
   isArtworkShowcaseOpen,
   onArtworkShowcaseClose,
 }) {
@@ -34,7 +35,7 @@ function AdArtworkShowCase({
             <div className="flex flex-row items-center justify-between w-full p-2 bg-backgroundColor md:hidden">
               <div className="flex flex-row items-center justify-center gap-2">
                 <BsPersonCircle />
-                <h1 className="font-bold">username</h1>
+                <h1 className="font-bold">{user?.username}</h1>
               </div>
 
               <BsThreeDots
@@ -56,7 +57,7 @@ function AdArtworkShowCase({
               <div className="justify-between hidden p-2 lex-row bg-back md:flex">
                 <div className="flex flex-row items-center gap-2 justify-b">
                   <BsPersonCircle className="size-8" />
-                  <h1 className="font-bold">username</h1>
+                  <h1 className="font-bold">{user.username}</h1>
                 </div>
 
                 <BsThreeDots
@@ -78,16 +79,16 @@ function AdArtworkShowCase({
                   </p>
                 </div>
 
-                <hr className="w-full" />
+                <hr className="w-full opacity-20" />
 
-                <div className="w-full p-2 opacity-50">
+                <div className="w-full p-2 opacity-60">
                   <p className="hidden p-2 italic font-light border rounded border-black/50 md:flex">
-                    {`"${artwork.description}"`}
+                    {`"${artwork.description}" -${user.username}`}
                   </p>
                 </div>
 
                 <div className="flex flex-col w-full h-full md:justify-end">
-                  <hr className="hidden w-full md:flex" />
+                  <hr className="hidden w-full md:flex opacity-20" />
                   <p className="px-2 font-bold">
                     {`Art style: `}
                     <span className="px-2 font-normal">
@@ -106,6 +107,7 @@ function AdArtworkShowCase({
       </div>
 
       <AdArtworkSettingsModal
+        artwork={artwork}
         isArtworkSettingsOpen={isArtworkSettingsModalOpen}
         onArtworkSettings={() => setArtworkSettingsModalOpen(false)}
       />

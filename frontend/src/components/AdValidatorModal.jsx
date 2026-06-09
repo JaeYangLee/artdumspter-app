@@ -3,6 +3,7 @@ import { BsFillExclamationTriangleFill } from "react-icons/bs";
 
 function AdValidatorModal({
   user,
+  artwork,
   title,
   subject,
   message,
@@ -28,7 +29,7 @@ function AdValidatorModal({
     <>
       <div
         onClick={onValidatorModalClose}
-        className="fixed top-0 flex flex-col items-center justify-center w-screen h-screen pt-16 bg-black/50 z-60"
+        className="fixed inset-0 top-0 flex flex-col items-center justify-center w-screen h-screen pt-16 bg-black/50 z-90"
       >
         <div
           onClick={(e) => e.stopPropagation()}
@@ -36,7 +37,7 @@ function AdValidatorModal({
         >
           <section className="flex flex-row items-center justify-between py-2">
             <header className="px-2">
-              <h1 className="font-bold text-left ">Delete account</h1>
+              <h1 className="font-bold text-left ">Delete {subject}</h1>
             </header>
 
             <div className="flex flex-row items-center justify-center gap-2 px-2">

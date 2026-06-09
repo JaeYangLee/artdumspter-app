@@ -4,7 +4,7 @@ import AdNavBar from "../components/AdNavBar";
 import { useFetchUserById } from "../hooks/useFetchUserById";
 import AdArtworkList from "../components/AdArtworkList";
 
-function AdMyDumpsterPage({ user, artworks, onLogout }) {
+function AdMyDumpsterPage({ user, artworks, onDelete, onLogout }) {
   return (
     <>
       <div className="w-full h-screen overflow-hidden pt-14 bg-backgroundColor">
@@ -13,7 +13,7 @@ function AdMyDumpsterPage({ user, artworks, onLogout }) {
         </h1>
 
         <div className="h-[calc(100vh-100px)] overflow-y-auto">
-          <AdArtworkList artworks={artworks} />
+          <AdArtworkList user={user} artworks={artworks} onDelete={onDelete} />
         </div>
       </div>
 
