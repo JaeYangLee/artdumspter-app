@@ -184,40 +184,6 @@ function App() {
     }
   };
 
-  const addArtwork = async (
-    title,
-    description,
-    image_url,
-    tool_id,
-    artstyle_id,
-  ) => {
-    try {
-      const token = localStorage.getItem("token");
-
-      const formData = new FormData();
-
-      formData.append("title", title);
-      formData.append("description", description);
-      formData.append("image_url", image_url);
-      formData.append("tool_id", tool_id);
-      formData.append("artstyle_id", artstyle_id);
-
-      const newArtwork = await axios.post(
-        `http://localhost:5000/artDumpster/artWork/upload`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-
-      return newArtwork.data.data;
-    } catch (err) {
-      console.error("[POST /App.jsx]: Error uploading artwork!", err.message);
-    }
-  };
-
   const fetchArtworkByUser = async (user_id) => {
     try {
       const token = localStorage.getItem("token");
@@ -261,6 +227,64 @@ function App() {
       );
     }
   };
+
+  const addArtwork = async (
+    title,
+    description,
+    image_url,
+    tool_id,
+    artstyle_id,
+  ) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const formData = new FormData();
+
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("image_url", image_url);
+      formData.append("tool_id", tool_id);
+      formData.append("artstyle_id", artstyle_id);
+
+      const newArtwork = await axios.post(
+        `http://localhost:5000/artDumpster/artWork/upload`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      return newArtwork.data.data;
+    } catch (err) {
+      console.error("[POST /App.jsx]: Error uploading artwork!", err.message);
+    }
+  };
+
+  const updateArtwork = async (
+    user_id,
+    artwork_id,
+    title,
+    description,
+    tool_id,
+    artstyle_id,
+  ) => {
+    try {
+      const token = localStorage.getItem("token");
+    } catch (err) {
+      console.error("[PUT /App.jsx]: Error updating artwork!");
+    }
+  };
+
+  const deleteArtwork = async (user_id, artwork_id) => {
+    try {
+      const token = localStorage.getItem("token");
+    } catch (err) {
+      console.error("[DELETE /App.jsx]: Error deleting artwork");
+    }
+  };
+
   return (
     <>
       <Router>
@@ -299,6 +323,7 @@ function App() {
                 <AdMyDumpsterPage
                   user={user}
                   artworks={artworks}
+                  onDelete={deleteArtwork}
                   onLogout={logOutUser}
                 />
               </AdProtectedRoute>

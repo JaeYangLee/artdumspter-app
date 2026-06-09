@@ -29,6 +29,7 @@ function AdSettingsPage({ user, onDelete, onLogOut }) {
       <AdValidatorModal
         user={user}
         title={"Are you sure?"}
+        subject={"account"}
         message={"Your profile will be deleted"}
         onDelete={onDelete}
         isValidatorModalOpen={isValidatorModalOpen}
