@@ -15,7 +15,7 @@ function AdValidatorModal({
 
   const handleDelete = async () => {
     try {
-      await onDelete(user.user_id);
+      await onDelete();
 
       onValidatorModalClose();
     } catch (err) {

@@ -40,10 +40,12 @@ function AdArtworkSettingsModal({
       </div>
 
       <AdValidatorModal
+        artwork={artwork}
         isValidatorModalOpen={isValidatorModalOpen}
         title={"Are you sure?"}
         subject={"artwork"}
         message={"This artwork will be deleted.."}
+        onDelete={() => onDelete(artwork.artwork_id)}
         onValidatorModalClose={() => setValidatorModalOpen(false)}
       />
     </>

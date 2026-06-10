@@ -277,9 +277,23 @@ function App() {
     }
   };
 
-  const deleteArtwork = async (user_id, artwork_id) => {
+  const deleteArtwork = async (artwork_id) => {
     try {
       const token = localStorage.getItem("token");
+
+      await axios.delete(
+        `http://localhost:5000/artDumpster/artWork/${artwork_id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      // Ganito ginamit kasi array ang useState ng artwork so para makapag delete lang ng 1 artwork tong function na to.
+      setArtWorks((prev) =>
+        prev.filter((artwork) => artwork.artwork_id !== artwork_id),
+      );
     } catch (err) {
       console.error("[DELETE /App.jsx]: Error deleting artwork");
     }

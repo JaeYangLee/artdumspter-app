@@ -49,11 +49,11 @@ function AdArtworkShowCase({
               <img
                 src={`http://localhost:5000/${artwork.image_url}`}
                 alt={artwork.title}
-                className="object-contain max-w-full max-h-full"
+                className="object-contain w-full h-full md:w-auto md:h-[80vh]"
               />
             </div>
 
-            <div className="flex flex-col w-full h-full bg-backgroundColor">
+            <div className="flex flex-col w-full md:w-[40vw] h-full bg-backgroundColor">
               <div className="justify-between hidden p-2 lex-row bg-back md:flex">
                 <div className="flex flex-row items-center gap-2 justify-b">
                   <BsPersonCircle className="size-8" />
@@ -68,7 +68,7 @@ function AdArtworkShowCase({
               </div>
 
               <div className="flex flex-col items-start justify-start h-full bg-backgroundColor">
-                <div className="p-2">
+                <div className="p-2 w-full">
                   <h1 className="font-bold">{artwork.title}</h1>
                   <p className="text-xs font-light">
                     {new Date(artwork.create_at).toLocaleDateString("en-US", {
@@ -108,6 +108,7 @@ function AdArtworkShowCase({
 
       <AdArtworkSettingsModal
         artwork={artwork}
+        onDelete={onDelete}
         isArtworkSettingsOpen={isArtworkSettingsModalOpen}
         onArtworkSettings={() => setArtworkSettingsModalOpen(false)}
       />
