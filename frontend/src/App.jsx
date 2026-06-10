@@ -322,8 +322,9 @@ function App() {
                 <AdProfilePage
                   user={user}
                   artworks={artworks}
-                  onLogout={logOutUser}
                   onEdit={updateUser}
+                  onDelete={deleteArtwork}
+                  onLogout={logOutUser}
                 />
               </AdProtectedRoute>
             }
