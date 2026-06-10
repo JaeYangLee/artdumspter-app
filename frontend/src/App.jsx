@@ -367,7 +367,7 @@ function App() {
                 <AdSettingsPage
                   user={user}
                   onDelete={deleteUser}
-                  onLogOut={logOutUser}
+                  onLogout={logOutUser}
                 />
               </AdProtectedRoute>
             }

@@ -4,7 +4,7 @@ import { BsInfoCircleFill } from "react-icons/bs";
 import AdNavBar from "../components/AdNavBar";
 import AdValidatorModal from "../components/AdValidatorModal";
 
-function AdSettingsPage({ user, onDelete, onLogOut }) {
+function AdSettingsPage({ user, onDelete, onLogout }) {
   const [isValidatorModalOpen, setValidatorModalOpen] = useState(false);
   return (
     <>
@@ -24,7 +24,7 @@ function AdSettingsPage({ user, onDelete, onLogOut }) {
         </section>
       </div>
 
-      <AdNavBar onLogOut={onLogOut} user={user} />
+      <AdNavBar onLogout={onLogout} user={user} />
 
       <AdValidatorModal
         user={user}
