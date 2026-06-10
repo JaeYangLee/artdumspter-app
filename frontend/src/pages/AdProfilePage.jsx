@@ -8,7 +8,7 @@ import AdUpdateUserModal from "../components/AdUpdateUserModal";
 import { useState } from "react";
 import AdArtworkList from "../components/AdArtworkList";
 
-function AdProfilePage({ user, artworks, onEdit, onLogout }) {
+function AdProfilePage({ user, artworks, onDelete, onEdit, onLogout }) {
   const [isUpdateUserModalOpen, setUpdateUserModalOpen] = useState(false);
 
   if (!user) return <p>Loading...</p>;
@@ -65,7 +65,7 @@ function AdProfilePage({ user, artworks, onEdit, onLogout }) {
             {`${user.username}'s Dumpster`}
           </h1>
 
-          <AdArtworkList user={user} artworks={artworks} />
+          <AdArtworkList onDelete={onDelete} user={user} artworks={artworks} />
         </section>
       </div>
 
