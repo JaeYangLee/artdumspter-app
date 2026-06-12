@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import AdSuccessModal from "./AdSuccessModal";
 
 function AdUpdateUserModal({
@@ -10,7 +9,6 @@ function AdUpdateUserModal({
   isUpdateUserModalOpen,
   onUpdateUserModalClose,
 }) {
-  const navigate = useNavigate();
   const [newUserName, setNewUserName] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newBio, setNewBio] = useState("");
@@ -96,9 +94,11 @@ function AdUpdateUserModal({
           className="flex flex-col items-center justify-center gap-4 p-4 text-center "
         >
           <div className="border rounded-lg shadow-[4px_4px_0px_0px] bg-backgroundColor">
-            <section className="flex flex-row items-center justify-between ">
+            <section className="flex flex-row items-center justify-between rounded-t-md bg-primary">
               <header className="px-2">
-                <h1 className="font-bold text-left">Edit profile</h1>
+                <h1 className="font-bold text-left text-backgroundColor">
+                  Edit profile
+                </h1>
               </header>
 
               <div className="flex flex-row items-center justify-center gap-2 px-2">

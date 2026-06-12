@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AdArtworkShowCase from "./AdArtworkShowCase";
 
-function AdArtworkCard({ user, artwork, onDelete }) {
+function AdArtworkCard({ user, artwork, onDelete, onEdit }) {
   const [isArtworkShowcaseOpen, setArtworkShowcaseOpen] = useState(false);
   return (
     <>
@@ -18,6 +18,7 @@ function AdArtworkCard({ user, artwork, onDelete }) {
         user={user}
         artwork={artwork}
         onDelete={onDelete}
+        onEdit={onEdit}
         isArtworkShowcaseOpen={isArtworkShowcaseOpen}
         onArtworkShowcaseClose={() => setArtworkShowcaseOpen(false)}
       />

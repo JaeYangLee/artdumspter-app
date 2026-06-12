@@ -1,7 +1,7 @@
 import React from "react";
 import AdArtworkCard from "./AdArtworkCard";
 
-function AdArtworkList({ user, artworks, onDelete }) {
+function AdArtworkList({ user, artworks, onDelete, onEdit }) {
   if (!artworks?.length) {
     return <p>No Artworks Yet... </p>;
   }
@@ -16,6 +16,7 @@ function AdArtworkList({ user, artworks, onDelete }) {
               user={user}
               artwork={artwork}
               onDelete={onDelete}
+              onEdit={onEdit}
             />
           ))}
         </div>

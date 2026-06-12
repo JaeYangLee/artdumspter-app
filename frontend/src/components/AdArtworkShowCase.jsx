@@ -8,6 +8,7 @@ function AdArtworkShowCase({
   user,
   artwork,
   onDelete,
+  onEdit,
   isArtworkShowcaseOpen,
   onArtworkShowcaseClose,
 }) {
@@ -68,7 +69,7 @@ function AdArtworkShowCase({
               </div>
 
               <div className="flex flex-col items-start justify-start h-full bg-backgroundColor">
-                <div className="p-2 w-full">
+                <div className="w-full p-2">
                   <h1 className="font-bold">{artwork.title}</h1>
                   <p className="text-xs font-light">
                     {new Date(artwork.create_at).toLocaleDateString("en-US", {
@@ -109,6 +110,7 @@ function AdArtworkShowCase({
       <AdArtworkSettingsModal
         artwork={artwork}
         onDelete={onDelete}
+        onEdit={onEdit}
         isArtworkSettingsOpen={isArtworkSettingsModalOpen}
         onArtworkSettings={() => setArtworkSettingsModalOpen(false)}
       />

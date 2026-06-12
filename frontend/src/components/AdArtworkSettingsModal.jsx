@@ -1,13 +1,16 @@
 import { useState } from "react";
 import AdValidatorModal from "./AdValidatorModal";
+import AdUpdateArtworkModal from "./AdUpdateArtworkModal";
 
 function AdArtworkSettingsModal({
   artwork,
   onDelete,
+  onEdit,
   isArtworkSettingsOpen,
   onArtworkSettings,
 }) {
   const [isValidatorModalOpen, setValidatorModalOpen] = useState(false);
+  const [isUpdateArtworkModalOpen, setUpdateArtworkModalOpen] = useState(false);
 
   if (!isArtworkSettingsOpen) return null;
 
@@ -28,7 +31,12 @@ function AdArtworkSettingsModal({
             >
               Delete
             </li>
-            <li className="w-full px-4 py-2 text-center border-b">Edit</li>
+            <li
+              onClick={() => setUpdateArtworkModalOpen(true)}
+              className="w-full px-4 py-2 text-center border-b"
+            >
+              Edit
+            </li>
             <li
               onClick={onArtworkSettings}
               className="w-full px-4 py-2 text-center"
@@ -38,6 +46,13 @@ function AdArtworkSettingsModal({
           </ul>
         </div>
       </div>
+
+      <AdUpdateArtworkModal
+        artwork={artwork}
+        onEdit={onEdit}
+        isUpdateArtworkModalOpen={isUpdateArtworkModalOpen}
+        onUpdateArtworkModalClose={() => setUpdateArtworkModalOpen(false)}
+      />
 
       <AdValidatorModal
         artwork={artwork}

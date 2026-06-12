@@ -65,7 +65,12 @@ function AdProfilePage({ user, artworks, onDelete, onEdit, onLogout }) {
             {`${user.username}'s Dumpster`}
           </h1>
 
-          <AdArtworkList onDelete={onDelete} user={user} artworks={artworks} />
+          <AdArtworkList
+            onDelete={onDelete}
+            onEdit={onEdit}
+            user={user}
+            artworks={artworks}
+          />
         </section>
       </div>
 
