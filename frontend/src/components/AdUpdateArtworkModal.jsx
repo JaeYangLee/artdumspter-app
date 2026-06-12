@@ -19,11 +19,12 @@ function AdUpdateArtworkModal({
   useEffect(() => {
     fetchAllTools();
     fetchAllArtStyles();
+
     if (artwork) {
       setNewTitle(artwork.title);
       setNewDescription(artwork.description);
-      setNewTools(artwork.tool_id);
-      setNewArtStyles(artwork.artstyle_id);
+      setToolId(artwork.tool_id);
+      setArtStylesID(artwork.artstyle_id);
     }
   }, [artwork]);
 
@@ -182,6 +183,7 @@ function AdUpdateArtworkModal({
               </button>
               <button
                 type="button"
+                onClick={onUpdateArtworkModalClose}
                 className="px-2 border rounded shadow-[2px_2px_0px_0px] text-textColor/50 border-textColor/50 shadow-textColor/50"
               >
                 Cancel
@@ -195,7 +197,10 @@ function AdUpdateArtworkModal({
         title={"Artwork Updated!"}
         message={"Artwork updated successfully!"}
         isSuccessModalOpen={isSuccessModalOpen}
-        onSuccessModalClose={() => setSuccessModalOpen(false)}
+        onSuccessModalClose={() => {
+          setSuccessModalOpen(false);
+          onUpdateArtworkModalClose();
+        }}
       />
     </>
   );

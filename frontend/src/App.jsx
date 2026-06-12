@@ -263,7 +263,6 @@ function App() {
   };
 
   const updateArtwork = async (
-    user_id,
     artwork_id,
     title,
     description,
@@ -272,8 +271,26 @@ function App() {
   ) => {
     try {
       const token = localStorage.getItem("token");
+
+      const updatedArtwork = await axios.put(
+        `http://localhost:5000/artDumpster/artWork/edit/${artwork_id}`,
+        { title, description, tool_id, artstyle_id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      setArtWorks((prev) =>
+        prev.map((artwork) =>
+          artwork.artwork_id === artwork_id
+            ? updatedArtwork.data.data
+            : artwork,
+        ),
+      );
     } catch (err) {
-      console.error("[PUT /App.jsx]: Error updating artwork!");
+      console.error("[PUT /App.jsx]: Error updating artwork!", err.message);
     }
   };
 
@@ -295,7 +312,7 @@ function App() {
         prev.filter((artwork) => artwork.artwork_id !== artwork_id),
       );
     } catch (err) {
-      console.error("[DELETE /App.jsx]: Error deleting artwork");
+      console.error("[DELETE /App.jsx]: Error deleting artwork", err.message);
     }
   };
 
@@ -324,6 +341,7 @@ function App() {
                   artworks={artworks}
                   onEdit={updateUser}
                   onDelete={deleteArtwork}
+                  onEdit={updateArtwork}
                   onLogout={logOutUser}
                 />
               </AdProtectedRoute>
@@ -339,6 +357,7 @@ function App() {
                   user={user}
                   artworks={artworks}
                   onDelete={deleteArtwork}
+                  onEdit={updateArtwork}
                   onLogout={logOutUser}
                 />
               </AdProtectedRoute>
