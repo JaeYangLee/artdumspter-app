@@ -61,7 +61,7 @@ const addArtwork = async (
   artstyle_id,
 ) => {
   const res = await pool.query(
-    "INSERT INTO artworks(user_id, title, description, image_url, tool_id, artstyle_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
+    "INSERT INTO artworks(user_id, title, description, image_url, tool_id, artstyle_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING artwork_id, user_id, title, description, image_url, tool_id, artstyle_id, create_at, updated_at",
     [user_id, title, description, image_url, tool_id, artstyle_id],
   );
   return res.rows[0];

@@ -16,7 +16,7 @@ router.get(
   AdArtworkController.fetchArtworkByUser,
 );
 router.post(
-  "/artWork/upload",
+  "/artWork/uploads",
   verifyToken,
   uploadConfig.single("image_url"),
   AdArtworkController.addArtwork,

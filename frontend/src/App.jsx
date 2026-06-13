@@ -247,16 +247,17 @@ function App() {
       formData.append("artstyle_id", artstyle_id);
 
       const newArtwork = await axios.post(
-        `http://localhost:5000/artDumpster/artWork/upload`,
+        `http://localhost:5000/artDumpster/artWork/uploads`,
         formData,
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
           },
         },
       );
 
-      return newArtwork.data.data;
+      setArtWorks((prev) => [newArtwork.data.data, ...prev]);
     } catch (err) {
       console.error("[POST /App.jsx]: Error uploading artwork!", err.message);
     }
