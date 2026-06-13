@@ -285,10 +285,15 @@ function App() {
       setArtWorks((prev) =>
         prev.map((artwork) =>
           artwork.artwork_id === artwork_id
-            ? updatedArtwork.data.data
+            ? {
+                ...artwork,
+                ...updatedArtwork.data.data,
+              }
             : artwork,
         ),
       );
+
+      await fetchArtworkByUser(user.user_id);
     } catch (err) {
       console.error("[PUT /App.jsx]: Error updating artwork!", err.message);
     }
@@ -341,7 +346,8 @@ function App() {
                   artworks={artworks}
                   onEdit={updateUser}
                   onDelete={deleteArtwork}
-                  onEdit={updateArtwork}
+                  onEditUser={updateUser}
+                  onEditArtwork={updateArtwork}
                   onLogout={logOutUser}
                 />
               </AdProtectedRoute>

@@ -13,7 +13,7 @@ function AdSuccessModal({
     <>
       <div
         onClick={onSuccessModalClose}
-        className="fixed top-0 flex items-center justify-center w-screen h-screen px-4 z-100 bg-black/50"
+        className="fixed top-0 flex items-center justify-center w-screen h-screen px-4 z-100 inset-0 bg-black/60"
       >
         <div
           onClick={(e) => e.stopPropagation()}

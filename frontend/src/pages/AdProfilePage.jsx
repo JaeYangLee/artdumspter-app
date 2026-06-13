@@ -8,7 +8,14 @@ import AdUpdateUserModal from "../components/AdUpdateUserModal";
 import { useState } from "react";
 import AdArtworkList from "../components/AdArtworkList";
 
-function AdProfilePage({ user, artworks, onDelete, onEdit, onLogout }) {
+function AdProfilePage({
+  user,
+  artworks,
+  onDelete,
+  onEditUser,
+  onEditArtwork,
+  onLogout,
+}) {
   const [isUpdateUserModalOpen, setUpdateUserModalOpen] = useState(false);
 
   if (!user) return <p>Loading...</p>;
@@ -67,7 +74,7 @@ function AdProfilePage({ user, artworks, onDelete, onEdit, onLogout }) {
 
           <AdArtworkList
             onDelete={onDelete}
-            onEdit={onEdit}
+            onEdit={onEditArtwork}
             user={user}
             artworks={artworks}
           />
@@ -79,7 +86,7 @@ function AdProfilePage({ user, artworks, onDelete, onEdit, onLogout }) {
         isUpdateUserModalOpen={isUpdateUserModalOpen}
         onUpdateUserModalClose={() => setUpdateUserModalOpen(false)}
         user={user}
-        onEdit={onEdit}
+        onEdit={onEditUser}
       />
     </>
   );
