@@ -1,5 +1,4 @@
 import { BsCheckCircleFill } from "react-icons/bs";
-import { useFetchUserById } from "../hooks/useFetchUserById";
 
 function AdSuccessModal({
   title,

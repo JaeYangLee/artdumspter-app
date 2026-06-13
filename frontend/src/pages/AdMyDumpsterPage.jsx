@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AdNavBar from "../components/AdNavBar";
-import { useFetchUserById } from "../hooks/useFetchUserById";
 import AdArtworkList from "../components/AdArtworkList";
 
 function AdMyDumpsterPage({ user, artworks, onDelete, onEdit, onLogout }) {

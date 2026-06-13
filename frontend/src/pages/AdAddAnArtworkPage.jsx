@@ -1,6 +1,5 @@
 import AdNavBar from "../components/AdNavBar";
 import { BsCloudArrowUp } from "react-icons/bs";
-import { useFetchUserById } from "../hooks/useFetchUserById";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import AdSuccessModal from "../components/AdSuccessModal";

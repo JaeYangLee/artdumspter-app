@@ -3,7 +3,6 @@ import { BsPersonCircle } from "react-icons/bs";
 import { BsPinMapFill } from "react-icons/bs";
 import { BsBrushFill } from "react-icons/bs";
 import { BsFillPaletteFill } from "react-icons/bs";
-import { useFetchUserById } from "../hooks/useFetchUserById";
 import AdUpdateUserModal from "../components/AdUpdateUserModal";
 import { useState } from "react";
 import AdArtworkList from "../components/AdArtworkList";
