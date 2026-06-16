@@ -96,17 +96,17 @@ function AdUpdateUserModal({
           <div className="border rounded-lg shadow-[4px_4px_0px_0px] bg-backgroundColor">
             <section className="flex flex-row items-center justify-between rounded-t-md bg-primary">
               <header className="px-2">
-                <h1 className="font-bold text-left text-backgroundColor">
+                <h1 className="font-bold text-left text-backgroundColor lg:text-lg">
                   Edit profile
                 </h1>
               </header>
 
               <div className="flex flex-row items-center justify-center gap-2 px-2">
-                <p className="text-xs text-green-500">●</p>
-                <p className="text-xs text-yellow-400">●</p>
+                <p className="text-xs text-green-500 lg:text-sm">●</p>
+                <p className="text-xs text-yellow-400 lg:text-sm">●</p>
                 <p
                   onClick={onUpdateUserModalClose}
-                  className="text-xs text-red-500"
+                  className="text-xs text-red-500 lg:text-sm"
                 >
                   ●
                 </p>
@@ -121,7 +121,7 @@ function AdUpdateUserModal({
             >
               <section className="flex flex-col gap-2">
                 <div className="flex flex-col">
-                  <label className="w-full text-sm text-start">
+                  <label className="w-full text-sm text-start lg:text-lg">
                     Edit username:
                   </label>
                   <input
@@ -129,11 +129,11 @@ function AdUpdateUserModal({
                     type="text"
                     value={newUserName}
                     onChange={(e) => setNewUserName(e.target.value)}
-                    className="px-2 border rounded shadow-[2px_2px_0px_0px]"
+                    className="px-2 border rounded shadow-[2px_2px_0px_0px] lg:text-lg"
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="w-full text-sm text-start">
+                  <label className="w-full text-sm text-start lg:text-lg">
                     Edit email:
                   </label>
                   <input
@@ -141,20 +141,22 @@ function AdUpdateUserModal({
                     type="email"
                     value={newEmail}
                     onChange={(e) => setNewEmail(e.target.value)}
-                    className="px-2 border rounded shadow-[2px_2px_0px_0px]"
+                    className="px-2 border rounded shadow-[2px_2px_0px_0px] lg:text-lg"
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="w-full text-sm text-start">Edit bio:</label>
+                  <label className="w-full text-sm text-start lg:text-lg">
+                    Edit bio:
+                  </label>
                   <textarea
                     type="text"
                     value={newBio}
                     onChange={(e) => setNewBio(e.target.value)}
-                    className="px-2 border rounded shadow-[2px_2px_0px_0px]"
+                    className="px-2 border rounded shadow-[2px_2px_0px_0px] lg:text-lg"
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="w-full text-sm text-start">
+                  <label className="w-full text-sm text-start lg:text-lg">
                     Edit location:
                   </label>
                   <input
@@ -162,17 +164,17 @@ function AdUpdateUserModal({
                     type="text"
                     value={newLocation}
                     onChange={(e) => setNewLocation(e.target.value)}
-                    className="px-2 border rounded shadow-[2px_2px_0px_0px]"
+                    className="px-2 border rounded shadow-[2px_2px_0px_0px] lg:text-lg"
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="w-full text-sm text-start">
+                  <label className="w-full text-sm text-start lg:text-lg">
                     Edit your main tool:
                   </label>
                   <select
                     value={tool_id}
                     onChange={(e) => setToolId(e.target.value)}
-                    className="px-2 border rounded shadow-[2px_2px_0px_0px]"
+                    className="px-2 border rounded shadow-[2px_2px_0px_0px] lg:text-lg"
                   >
                     <option value="">Select your tool:</option>
                     {newTools.map((tools) => (
@@ -183,13 +185,13 @@ function AdUpdateUserModal({
                   </select>
                 </div>
                 <div className="flex flex-col">
-                  <label className="w-full text-sm text-start">
+                  <label className="w-full text-sm text-start lg:text-lg">
                     Edit art style:
                   </label>
                   <select
                     value={artstyle_id}
                     onChange={(e) => setArtStyleId(e.target.value)}
-                    className=" px-2 border rounded shadow-[2px_2px_0px_0px]"
+                    className=" px-2 border rounded shadow-[2px_2px_0px_0px] lg:text-lg"
                   >
                     <option value="">Select your art style:</option>
                     {newArtStyles.map((artstyles) => (
@@ -204,7 +206,7 @@ function AdUpdateUserModal({
                 </div>
               </section>
 
-              <section className="flex flex-row items-end justify-end w-full gap-2">
+              <section className="flex flex-row items-end justify-end w-full gap-2 lg:text-lg">
                 <button
                   type="submit"
                   className="px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor"
