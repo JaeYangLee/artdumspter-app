@@ -20,7 +20,7 @@ function AdErrorModal({
           onClick={(e) => e.stopPropagation()}
           className="flex flex-col bg-backgroundColor border rounded-lg shadow-[4px_4px_0px_0px]"
         >
-          <section className="flex flex-row items-center justify-between py-2">
+          <section className="flex flex-row items-center justify-between py-2 bg-primary">
             <header className="px-2">
               <h1 className="font-bold text-left"></h1>
             </header>

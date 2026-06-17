@@ -35,9 +35,11 @@ function AdValidatorModal({
           onClick={(e) => e.stopPropagation()}
           className="flex flex-col border shadow-[4px_4px_0px_0px] bg-white rounded-lg"
         >
-          <section className="flex flex-row items-center justify-between py-2">
+          <section className="flex flex-row items-center justify-between py-2 bg-primary rounded-t">
             <header className="px-2">
-              <h1 className="font-bold text-left ">Delete {subject}</h1>
+              <h1 className="font-bold text-left text-backgroundColor">
+                Delete {subject}
+              </h1>
             </header>
 
             <div className="flex flex-row items-center justify-center gap-2 px-2">
@@ -65,7 +67,7 @@ function AdValidatorModal({
             <div className="flex flex-row items-center justify-end w-full gap-2 pt-2">
               <button
                 onClick={handleDelete}
-                className="text-backgroundColor px-2 bg-red-400 border rounded border-textColor shadow-textColor shadow-[2px_2px_0px_0px]"
+                className="text-backgroundColor px-2 bg-red-500 border rounded border-textColor shadow-textColor shadow-[2px_2px_0px_0px]"
               >
                 Delete
               </button>
