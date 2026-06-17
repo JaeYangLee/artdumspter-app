@@ -7,7 +7,7 @@ function AdArtworkCard({ user, artwork, onDelete, onEdit }) {
     <>
       <div
         onClick={() => setArtworkShowcaseOpen(true)}
-        className="relative mb-4 overflow-hidden transition duration-300 bg-white shadow-md group break-inside-avoid rounded-xl hover:shadow-xl"
+        className="relative mb-4 overflow-hidden transition duration-300 bg-white shadow-md group break-inside-avoid rounded-xl hover:shadow-xl active:scale-88"
       >
         <img
           src={`http://localhost:5000/${artwork.image_url}`}

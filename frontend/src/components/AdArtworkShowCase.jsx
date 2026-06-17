@@ -24,7 +24,7 @@ function AdArtworkShowCase({
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="flex flex-col items-center justify-center px-4 bg-back"
+          className="flex flex-col items-center justify-center px-4 transition duration-100 bg-back animate-modal-scale"
         >
           <div className="flex flex-row items-end justify-end w-full py-1">
             <BsXLg
