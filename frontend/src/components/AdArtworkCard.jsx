@@ -5,11 +5,13 @@ function AdArtworkCard({ user, artwork, onDelete, onEdit }) {
   const [isArtworkShowcaseOpen, setArtworkShowcaseOpen] = useState(false);
   return (
     <>
-      <div className="relative mb-4 overflow-hidden transition duration-300 bg-white shadow-md group break-inside-avoid rounded-xl hover:shadow-xl">
+      <div
+        onClick={() => setArtworkShowcaseOpen(true)}
+        className="relative mb-4 overflow-hidden transition duration-300 bg-white shadow-md group break-inside-avoid rounded-xl hover:shadow-xl"
+      >
         <img
           src={`http://localhost:5000/${artwork.image_url}`}
           alt={artwork.title}
-          onClick={() => setArtworkShowcaseOpen(true)}
           className="object-cover w-full transition duration-300 hover:scale-105"
         />
 
