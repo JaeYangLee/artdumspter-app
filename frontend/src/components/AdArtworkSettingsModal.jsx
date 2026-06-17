@@ -22,7 +22,7 @@ function AdArtworkSettingsModal({
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="w-full rounded bg-backgroundColor text-textColor"
+          className="w-[30vw] rounded bg-backgroundColor text-textColor"
         >
           <ul className="flex flex-col items-center justify-center">
             <li

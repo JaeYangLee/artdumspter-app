@@ -24,7 +24,7 @@ function AdArtworkShowCase({
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="flex flex-col items-center justify-center px-4"
+          className="flex flex-col items-center justify-center px-4 bg-back"
         >
           <div className="flex flex-row items-end justify-end w-full py-1">
             <BsXLg
@@ -32,17 +32,17 @@ function AdArtworkShowCase({
               className="font-bold text-backgroundColor size-4"
             />
           </div>
-          <div className="flex flex-col items-center justify-center w-full h-full md:flex-row">
-            <div className="flex flex-row items-center justify-between w-full p-2 bg-backgroundColor md:hidden">
+          <div className="flex flex-col items-center justify-center w-full h-full md:flex-row bg-backgroundColor shadow-[4px_4px_0px_0px] shadow-textColor">
+            <div className="flex flex-row items-center justify-between w-full p-2 md:hidden">
               <div className="flex flex-row items-center justify-center gap-2">
-                <BsPersonCircle />
+                <BsPersonCircle className="size-8" />
                 <h1 className="font-bold">{user?.username}</h1>
               </div>
 
               <BsThreeDots
                 type="button"
                 onClick={() => setArtworkSettingsModalOpen(true)}
-                className="size-8"
+                className="size-5"
               />
             </div>
 
@@ -54,7 +54,7 @@ function AdArtworkShowCase({
               />
             </div>
 
-            <div className="flex flex-col w-full md:w-[40vw] h-full bg-backgroundColor">
+            <div className="flex flex-col w-full md:w-[40vw] h-full ">
               <div className="justify-between hidden p-2 lex-row bg-back md:flex">
                 <div className="flex flex-row items-center gap-2 justify-b">
                   <BsPersonCircle className="size-8" />
@@ -68,7 +68,7 @@ function AdArtworkShowCase({
                 />
               </div>
 
-              <div className="flex flex-col items-start justify-start h-full bg-backgroundColor">
+              <div className="flex flex-col items-start justify-start h-full">
                 <div className="w-full p-2">
                   <h1 className="font-bold">{artwork.title}</h1>
                   <p className="text-xs font-light">
@@ -90,7 +90,7 @@ function AdArtworkShowCase({
 
                 <div className="flex flex-col w-full h-full md:justify-end">
                   <hr className="hidden w-full md:flex opacity-20" />
-                  <p className="px-2 font-bold">
+                  <p className="px-2 pt-2 font-bold">
                     {`Art style: `}
                     <span className="px-2 font-normal">
                       {artwork.artstyle_name}
