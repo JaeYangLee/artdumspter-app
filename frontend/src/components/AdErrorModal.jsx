@@ -18,7 +18,7 @@ function AdErrorModal({
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="flex flex-col bg-backgroundColor border rounded-lg shadow-[4px_4px_0px_0px]"
+          className="flex flex-col bg-backgroundColor border rounded-lg shadow-[4px_4px_0px_0px] animate-modal-scale"
         >
           <section className="flex flex-row items-center justify-between py-2 bg-primary">
             <header className="px-2">

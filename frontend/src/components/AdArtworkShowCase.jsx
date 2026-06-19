@@ -68,7 +68,7 @@ function AdArtworkShowCase({
                 />
               </div>
 
-              <div className="flex flex-col items-start justify-start h-full">
+              <div className="flex flex-col items-start justify-start">
                 <div className="w-full p-2">
                   <h1 className="font-bold">{artwork.title}</h1>
                   <p className="text-xs font-light">
@@ -82,13 +82,13 @@ function AdArtworkShowCase({
 
                 <hr className="w-full opacity-20" />
 
-                <div className="w-full p-2 opacity-60">
-                  <p className="hidden p-2 italic font-light border rounded border-black/50 md:flex">
+                <div className="w-full p-2 opacity-60 md:overflow-y-auto">
+                  <p className="hidden h-[20vh] p-2 italic font-light rounded md:flex">
                     {`"${artwork.description}" -${user.username}`}
                   </p>
                 </div>
 
-                <div className="flex flex-col w-full h-full md:justify-end">
+                <div className="flex flex-col w-full h-full">
                   <hr className="hidden w-full md:flex opacity-20" />
                   <p className="px-2 pt-2 font-bold">
                     {`Art style: `}
