@@ -95,7 +95,7 @@ function AdUpdateArtworkModal({
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="bg-backgroundColor rounded-lg shadow-[4px_4px_0px_0px]"
+          className="bg-backgroundColor rounded-lg shadow-[4px_4px_0px_0px] animate-modal-scale"
         >
           <section className="flex flex-row items-center justify-between rounded-t bg-primary">
             <header className="px-2">

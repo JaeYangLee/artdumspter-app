@@ -33,7 +33,7 @@ function AdValidatorModal({
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="flex flex-col border shadow-[4px_4px_0px_0px] bg-white rounded-lg"
+          className="flex flex-col border shadow-[4px_4px_0px_0px] bg-white rounded-lg animate-modal-scale"
         >
           <section className="flex flex-row items-center justify-between py-2 bg-primary rounded-t">
             <header className="px-2">

@@ -1,3 +1,7 @@
+import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import axios from "axios";
+import "./index.css";
 import AdLandingPage from "./pages/AdLandingPage";
 import AdRegisterPage from "./pages/AdRegisterPage";
 import AdProtectedRoute from "./components/AdProtectedRoute";
@@ -7,13 +11,9 @@ import AdAddAnArtworkPage from "./pages/AdAddAnArtworkPage";
 import AdSuccessModal from "./components/AdSuccessModal";
 import AdErrorModal from "./components/AdErrorModal";
 import AdSettingsPage from "./pages/AdSettingsPage";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import "./index.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  /* KEY NOTE: May bug sa log in, nag a access parin sa account kahit mali yung password. */
+  /* KEY NOTE: Hindi continous yung token */
 
   const [user, setUser] = useState(null);
   const [artworks, setArtWorks] = useState([]);

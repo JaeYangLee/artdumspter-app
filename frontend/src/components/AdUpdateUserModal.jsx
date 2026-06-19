@@ -91,7 +91,7 @@ function AdUpdateUserModal({
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="flex flex-col items-center justify-center gap-4 p-4 text-center "
+          className="flex flex-col items-center justify-center gap-4 p-4 text-center animate-modal-scale"
         >
           <div className="border rounded-lg shadow-[4px_4px_0px_0px] bg-backgroundColor">
             <section className="flex flex-row items-center justify-between rounded-t-md bg-primary">

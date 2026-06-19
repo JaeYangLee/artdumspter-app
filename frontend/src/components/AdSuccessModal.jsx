@@ -16,9 +16,9 @@ function AdSuccessModal({
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="flex flex-col rounded-lg bg-backgroundColor shadow-[4px_4px_0px_0px] border"
+          className="flex flex-col rounded-lg bg-backgroundColor shadow-[4px_4px_0px_0px] border animate-modal-scale"
         >
-          <section className="flex flex-row items-center justify-between py-2 rounded-t bg-primary">
+          <section className="flex flex-row items-center justify-between py-2 rounded-t border-t border-textColor bg-primary">
             <header className="px-2">
               <h1 className="text-lg font-bold text-left"></h1>
             </header>

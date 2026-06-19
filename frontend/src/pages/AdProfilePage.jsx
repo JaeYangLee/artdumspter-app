@@ -69,7 +69,7 @@ function AdProfilePage({
         </section>
 
         <section className="md:flex-1 md:h-full md:overflow-y-auto">
-          <h1 className="sticky top-0 z-10 p-2 text-2xl font-bold lg:text-3xl xl:text-4xl bg-backgroundColor text-primary">
+          <h1 className="sticky top-0 z-10 p-2 text-2xl font-bold lg:text-3xl xl:text-4xl bg-backgroundColor text-primary truncate">
             {`${user.username}'s Dumpster`}
           </h1>
 
