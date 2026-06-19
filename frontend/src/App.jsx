@@ -258,6 +258,7 @@ function App() {
       );
 
       setArtWorks((prev) => [newArtwork.data.data, ...prev]);
+      await fetchArtworkByUser(user.user_id);
     } catch (err) {
       console.error("[POST /App.jsx]: Error uploading artwork!", err.message);
     }

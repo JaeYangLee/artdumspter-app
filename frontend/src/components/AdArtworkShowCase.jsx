@@ -91,7 +91,7 @@ function AdArtworkShowCase({
                 <div className="flex flex-col w-full h-full">
                   <hr className="hidden w-full md:flex opacity-20" />
                   <p className="px-2 pt-2 font-bold">
-                    {`Art style: `}
+                    {`Art style:`}
                     <span className="px-2 font-normal">
                       {artwork.artstyle_name}
                     </span>
