@@ -12,12 +12,12 @@ function AdSettingsPage({ user, onDelete, onLogout }) {
         <section className="flex flex-col items-center justify-center w-full">
           <div
             onClick={() => setValidatorModalOpen(true)}
-            className="flex flex-row items-center justify-start w-full gap-2 px-2 py-4 border-b text-textColor"
+            className="flex flex-row items-center justify-start w-full gap-2 px-2 py-4 border-b md:justify-center text-textColor hover:shadow-[inset_0px_-4px_4px_rgb(0,0,0,0.3)] transition duration-300 cursor-pointer"
           >
             <BsFillTrashFill />
             <label>Delete account</label>
           </div>
-          <div className="flex flex-row items-center justify-start w-full gap-2 px-2 py-4 border-b text-textColor">
+          <div className="flex flex-row items-center justify-start w-full gap-2 px-2 py-4 border-b text-textColor md:justify-center cursor-pointer hover:shadow-[inset_0px_-4px_4px_rgb(0,0,0,0.3)] transition duration-300">
             <BsInfoCircleFill />
             <label>About</label>
           </div>

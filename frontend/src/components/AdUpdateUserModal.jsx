@@ -96,17 +96,21 @@ function AdUpdateUserModal({
           <div className="border rounded-lg shadow-[4px_4px_0px_0px] bg-backgroundColor">
             <section className="flex flex-row items-center justify-between rounded-t-md bg-primary">
               <header className="px-2">
-                <h1 className="font-bold text-left text-backgroundColor lg:text-lg">
+                <h1 className="font-bold text-left select-none text-backgroundColor lg:text-lg">
                   Edit profile
                 </h1>
               </header>
 
               <div className="flex flex-row items-center justify-center gap-2 px-2">
-                <p className="text-xs text-green-500 lg:text-sm">●</p>
-                <p className="text-xs text-yellow-400 lg:text-sm">●</p>
+                <p className="text-xs text-green-500 cursor-pointer lg:text-sm">
+                  ●
+                </p>
+                <p className="text-xs text-yellow-400 cursor-pointer lg:text-sm">
+                  ●
+                </p>
                 <p
                   onClick={onUpdateUserModalClose}
-                  className="text-xs text-red-500 lg:text-sm"
+                  className="text-xs text-red-500 cursor-pointer lg:text-sm"
                 >
                   ●
                 </p>
@@ -209,14 +213,14 @@ function AdUpdateUserModal({
               <section className="flex flex-row items-end justify-end w-full gap-2 lg:text-lg">
                 <button
                   type="submit"
-                  className="px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor"
+                  className="px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor hover:bg-textColor transition duration-200 cursor-pointer"
                 >
                   Submit
                 </button>
                 <button
                   onClick={onUpdateUserModalClose}
                   type="button"
-                  className="px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-backgroundColor text-gray opacity-50"
+                  className="px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-backgroundColor text-gray opacity-50 hover:bg-textColor hover:text-backgroundColor transition duration-200 cursor-pointer"
                 >
                   Cancel
                 </button>

@@ -61,7 +61,7 @@ function AdProfilePage({
           <div className="flex justify-center w-full pt-8">
             <button
               onClick={() => setUpdateUserModalOpen(true)}
-              className="lg:text-lg w-full px-2 border border-textColor shadow-textColor shadow-[2px_2px_0px_0px] rounded bg-primary text-backgroundColor"
+              className="lg:text-lg w-full px-2 border border-textColor shadow-textColor shadow-[2px_2px_0px_0px] rounded bg-primary text-backgroundColor hover:bg-textColor transition duration-200 cursor-pointer"
             >
               Edit Profile
             </button>
@@ -69,7 +69,7 @@ function AdProfilePage({
         </section>
 
         <section className="md:flex-1 md:h-full md:overflow-y-auto">
-          <h1 className="sticky top-0 z-10 p-2 text-2xl font-bold lg:text-3xl xl:text-4xl bg-backgroundColor text-primary truncate">
+          <h1 className="sticky top-0 z-10 p-2 text-2xl font-bold truncate lg:text-3xl xl:text-4xl bg-backgroundColor text-primary">
             {`${user.username}'s Dumpster`}
           </h1>
 

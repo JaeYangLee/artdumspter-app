@@ -13,7 +13,9 @@ function AdNavBar({ user, onLogout }) {
   return (
     <>
       <nav className="fixed top-0 flex flex-row items-center justify-between w-screen p-2 bg-primary z-60 h-14 ">
-        <h1 className="text-lg font-bold text-backgroundColor">ArtDumpster*</h1>
+        <h1 className="text-lg font-bold select-none text-backgroundColor">
+          ArtDumpster*
+        </h1>
         <section>
           <BsJustify
             onClick={() => setSideBarOpen(true)}
@@ -23,40 +25,40 @@ function AdNavBar({ user, onLogout }) {
         <section className="flex-row items-center justify-center hidden w-full gap-4 md:flex text-backgroundColor">
           <Link
             to="/profile"
-            className="flex flex-col items-center justify-center gap-1"
+            className="flex flex-col items-center justify-center gap-1 transition duration-200 cursor-pointer hover:text-textColor active:text-textColor"
           >
             <BsFillPersonVcardFill className="size-5" />
-            <label className="text-xs">Profile</label>
+            <label className="text-xs cursor-pointer">Profile</label>
           </Link>
           <Link
             to="/myDumpster"
-            className="flex flex-col items-center justify-center gap-1"
+            className="flex flex-col items-center justify-center gap-1 transition duration-300 cursor-pointer hover:text-textColor active:text-textColor"
           >
             <BsFolderFill className="size-5" />
-            <label className="text-xs">My Dumpster</label>
+            <label className="text-xs cursor-pointer">My Dumpster</label>
           </Link>
           <Link
             to="/addAnArtwork"
-            className="flex flex-col items-center justify-center gap-1"
+            className="flex flex-col items-center justify-center gap-1 transition duration-300 cursor-pointer hover:text-textColor active:text-textColor"
           >
             <BsUpload className="size-5" />
-            <label className="text-xs">Upload</label>
+            <label className="text-xs cursor-pointer">Upload</label>
           </Link>
         </section>
         <section className="flex-row items-end justify-end hidden gap-4 md:flex">
           <Link
             to="/settings"
-            className="flex flex-col items-center justify-center gap-1 text-backgroundColor"
+            className="flex flex-col items-center justify-center gap-1 transition duration-300 cursor-pointer text-backgroundColor hover:text-textColor active:text-textColor"
           >
             <BsFillGearFill className="size-5" />
-            <label className="text-xs">Settings</label>
+            <label className="text-xs cursor-pointer">Settings</label>
           </Link>
           <div
             onClick={onLogout}
-            className="flex flex-col items-center justify-center gap-1 text-backgroundColor"
+            className="flex flex-col items-center justify-center gap-1 transition duration-300 cursor-pointer text-backgroundColor hover:text-textColor active:text-textColor"
           >
             <BsPower className="size-5" />
-            <label className="text-xs">Logout</label>
+            <label className="text-xs cursor-pointer">Logout</label>
           </div>
         </section>
       </nav>

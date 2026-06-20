@@ -116,8 +116,8 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
             onSubmit={handleSubmit}
             className="flex flex-col items-start w-full gap-4 p-2 md:flex-row md:items-center"
           >
-            <section className="flex flex-col h-full items-start gap-2 px-2">
-              <label className="w-full items-start">Upload artwork:</label>
+            <section className="flex flex-col items-start h-full gap-2 px-2">
+              <label className="items-start w-full">Upload artwork:</label>
               {artworkPreview ? (
                 <img
                   src={artworkPreview}
@@ -138,7 +138,7 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
                     />
                     <p
                       onClick={handleUploadClick}
-                      className="underline font-light text-primary"
+                      className="font-light underline transition duration-200 cursor-pointer text-primary hover:text-textColor"
                     >
                       browse
                     </p>
@@ -151,12 +151,12 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
                 onChange={handleFileChange}
                 type="file"
                 accept="image/*"
-                className="border rounded w-[80vw] md:w-[40vw] shadow-[2px_2px_0px_0px] order file:px-2 file:border-black file:rounded file:bg-primary file:text-backgroundColor lg:w-[60vw]"
+                className="border rounded w-[80vw] md:w-[40vw] shadow-[2px_2px_0px_0px] order file:px-2 file:border-black file:rounded file:bg-primary file:text-backgroundColor lg:w-[60vw] cursor-pointer file:cursor-pointer"
               />
             </section>
 
             <section className="flex flex-col items-start w-full gap-4 px-2">
-              <div className="flex flex-col gap-2 w-full">
+              <div className="flex flex-col w-full gap-2">
                 <div className="flex flex-col">
                   <label>Enter Artwork title:</label>
                   <input
@@ -217,13 +217,13 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
                 <button
                   type="submit"
                   onClick={handleSubmit}
-                  className="px-2 border rounded bg-primary text-backgroundColor shadow-textColor border-black shadow-[2px_2px_0px_0px]"
+                  className="px-2 border rounded bg-primary text-backgroundColor shadow-textColor border-black shadow-[2px_2px_0px_0px] cursor-pointer hover:bg-textColor hover:text-backgroundColor transition duration-200"
                 >
                   Upload
                 </button>
                 <button
                   onClick={handleResetFields}
-                  className="px-2 border rounded opacity-50 shadow-textColor border-textColor shadow-[2px_2px_0px_0px]"
+                  className="px-2 border rounded opacity-50 shadow-textColor border-textColor shadow-[2px_2px_0px_0px] cursor-pointer hover:bg-gray-400 transition duration-200 hover:text-backgroundColor"
                 >
                   Clear
                 </button>

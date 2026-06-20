@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BsPersonCircle } from "react-icons/bs";
 import { BsXLg } from "react-icons/bs";
 import { BsThreeDots } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import AdArtworkSettingsModal from "./AdArtworkSettingsModal";
 
 function AdArtworkShowCase({
@@ -34,15 +35,18 @@ function AdArtworkShowCase({
           </div>
           <div className="flex flex-col items-center justify-center w-full h-full md:flex-row bg-backgroundColor shadow-[4px_4px_0px_0px] shadow-textColor">
             <div className="flex flex-row items-center justify-between w-full p-2 md:hidden">
-              <div className="flex flex-row items-center justify-center gap-2">
-                <BsPersonCircle className="size-8" />
+              <Link
+                to="/profile"
+                className="flex flex-row items-center justify-center gap-2"
+              >
+                <BsPersonCircle className="cursor-pointer size-8" />
                 <h1 className="font-bold">{user?.username}</h1>
-              </div>
+              </Link>
 
               <BsThreeDots
                 type="button"
                 onClick={() => setArtworkSettingsModalOpen(true)}
-                className="size-5"
+                className="cursor-pointer size-5"
               />
             </div>
 

@@ -18,17 +18,21 @@ function AdSuccessModal({
           onClick={(e) => e.stopPropagation()}
           className="flex flex-col rounded-lg bg-backgroundColor shadow-[4px_4px_0px_0px] border animate-modal-scale"
         >
-          <section className="flex flex-row items-center justify-between py-2 rounded-t border-t border-textColor bg-primary">
+          <section className="flex flex-row items-center justify-between py-2 border-t rounded-t border-textColor bg-primary">
             <header className="px-2">
               <h1 className="text-lg font-bold text-left"></h1>
             </header>
 
             <div className="flex flex-row items-center justify-center gap-2 px-2">
-              <p className="text-xs text-green-500 lg:text-sm">●</p>
-              <p className="text-xs text-yellow-400 lg:text-sm">●</p>
+              <p className="text-xs text-green-500 cursor-pointer lg:text-sm">
+                ●
+              </p>
+              <p className="text-xs text-yellow-400 cursor-pointer lg:text-sm">
+                ●
+              </p>
               <p
                 onClick={onSuccessModalClose}
-                className="text-xs text-red-500 lg:text-sm"
+                className="text-xs text-red-500 cursor-pointer lg:text-sm"
               >
                 ●
               </p>
@@ -50,7 +54,7 @@ function AdSuccessModal({
 
             <button
               onClick={onSuccessModalClose}
-              className="px-2 mt-8 border rounded bg-primary text-backgroundColor border-black shadow-black shadow-[2px_2px_0px_0px] lg:text-2xl"
+              className="px-2 mt-8 border rounded bg-primary text-backgroundColor border-black shadow-black shadow-[2px_2px_0px_0px] lg:text-2xl cursor-pointer hover:bg-textColor"
             >
               Okay
             </button>

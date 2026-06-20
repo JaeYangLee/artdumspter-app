@@ -17,7 +17,7 @@ function AdSideBar({ user, isSideBarOpen, onSideBarClose, onLogout }) {
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="flex flex-col items-center h-full gap-4 p-4 bg-primary"
+          className="flex flex-col items-center h-full gap-4 p-4 bg-primary "
         >
           <div className="flex items-center gap-2 flex-crow text-backgroundColor">
             <BsPersonCircle className="text-textColor size-8 opacity-80" />

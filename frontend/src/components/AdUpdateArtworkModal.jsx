@@ -99,17 +99,17 @@ function AdUpdateArtworkModal({
         >
           <section className="flex flex-row items-center justify-between rounded-t bg-primary">
             <header className="px-2">
-              <h1 className="font-bold text-left text-backgroundColor">
+              <h1 className="font-bold text-left select-none text-backgroundColor">
                 Edit artwork
               </h1>
             </header>
 
             <div className="flex flex-row items-center justify-center gap-2 px-2">
-              <p className="text-xs text-green-500">●</p>
-              <p className="text-xs text-yellow-400">●</p>
+              <p className="text-xs text-green-500 cursor-pointer">●</p>
+              <p className="text-xs text-yellow-400 cursor-pointer">●</p>
               <p
                 onClick={onUpdateArtworkModalClose}
-                className="text-xs text-red-500"
+                className="text-xs text-red-500 cursor-pointer"
               >
                 ●
               </p>
@@ -177,14 +177,14 @@ function AdUpdateArtworkModal({
             <section className="flex flex-row items-end justify-end w-full gap-2 p-2">
               <button
                 type="submit"
-                className="px-2 border rounded shadow-textColor shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor border-textColor"
+                className="px-2 border rounded shadow-textColor shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor border-textColor hover:bg-textColor hover:text-backgroundColor transition duration-200"
               >
                 Submit
               </button>
               <button
                 type="button"
                 onClick={onUpdateArtworkModalClose}
-                className="px-2 border rounded shadow-[2px_2px_0px_0px] text-textColor/50 border-textColor/50 shadow-textColor/50"
+                className="px-2 border rounded shadow-[2px_2px_0px_0px] text-textColor/50 border-textColor/50 shadow-textColor/50 hover:bg-gray-400 hover:text-backgroundColor transition duration-200"
               >
                 Cancel
               </button>
