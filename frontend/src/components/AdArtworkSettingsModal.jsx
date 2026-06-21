@@ -27,19 +27,19 @@ function AdArtworkSettingsModal({
           <ul className="flex flex-col items-center justify-center">
             <li
               onClick={() => setValidatorModalOpen(true)}
-              className="w-full px-4 py-2 text-center text-red-500 border-b border-black cursor-pointer hover:shadow-[inset_0_-4px_4px_rgba(0,0,0,0.3)] transition duration-200 active:bg-gray-300"
+              className="w-full px-4 py-2 text-center text-red-500 border-b border-black cursor-pointer hover:shadow-[inset_0_-8px_8px_rgba(0,0,0,0.1)] transition duration-200 active:bg-gray-300"
             >
               Delete
             </li>
             <li
               onClick={() => setUpdateArtworkModalOpen(true)}
-              className="w-full px-4 py-2 text-center border-b cursor-pointer hover:shadow-[inset_0_-4px_4px_rgba(0,0,0,0.3)] transition duration-200 active:bg-gray-300"
+              className="w-full px-4 py-2 text-center border-b cursor-pointer hover:shadow-[inset_0_-8px_8px_rgba(0,0,0,0.1)] transition duration-200 active:bg-gray-300"
             >
               Edit
             </li>
             <li
               onClick={onArtworkSettings}
-              className="w-full px-4 py-2 text-center cursor-pointer hover:shadow-[inset_0_-4px_4px_rgba(0,0,0,0.3)] transition duration-200 active:bg-gray-300"
+              className="w-full px-4 py-2 text-center cursor-pointer hover:shadow-[inset_0_-8px_8px_rgba(0,0,0,0.1)] transition duration-200 active:bg-gray-300"
             >
               Cancel
             </li>

@@ -21,7 +21,7 @@ function AdProfilePage({
   return (
     <>
       <div className="flex flex-col w-screen h-screen gap-4 px-2 py-4 pt-16 md:overflow-hidden md:flex-row bg-backgroundColor">
-        <section className="w-full md:w-1/3 md:h-full flex flex-col items-center justify-center border rounded-lg shadow-[4px_4px_0px_0px] py-4 px-4">
+        <section className="w-full md:w-1/3 md:h-full flex flex-col items-center border rounded-lg shadow-[4px_4px_0px_0px] py-4 px-4  md:overflow-y-auto">
           <div className="p-4">
             <BsPersonCircle className="size-20 opacity-80 lg:size-28" />
           </div>
@@ -31,7 +31,7 @@ function AdProfilePage({
             <p className="text-sm lg:text-lg">{user.email}</p>
           </div>
 
-          <div className="flex flex-col items-center justify-center py-4 text-sm italic font-light text-gray-500">
+          <div className="flex flex-col items-center justify-center p-4 text-sm italic font-light text-gray-500">
             <p className="text-center lg:text-lg">{`"${user.bio}"`}</p>
           </div>
 
