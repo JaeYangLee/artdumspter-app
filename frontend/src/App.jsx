@@ -17,12 +17,17 @@ function App() {
 
   const [user, setUser] = useState(null);
   const [artworks, setArtWorks] = useState([]);
+  const [isAuthChecking, setIsAuthChecking] = useState(true);
   const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
 
   useEffect(() => {
-    getUserById();
+    initAuth();
   }, []);
+
+  const initAuth = async () => {
+    await getUserById();
+  };
 
   useEffect(() => {
     if (user?.user_id) {
@@ -94,10 +99,14 @@ function App() {
     }
   };
 
-  const getUserById = async (user_id) => {
+  const getUserById = async () => {
     const token = localStorage.getItem("token");
 
-    if (!token) return null;
+    if (!token) {
+      setUser(null);
+      setIsAuthChecking(false);
+      return;
+    }
 
     try {
       const fetchedUserId = await axios.get(
@@ -112,6 +121,10 @@ function App() {
       setUser(fetchedUserId.data.data);
     } catch (err) {
       console.error("[GET /App.jsx]: Error fetching user data!");
+      setUser(null);
+      localStorage.removeItem("token");
+    } finally {
+      setIsAuthChecking(false);
     }
   };
 
@@ -322,6 +335,14 @@ function App() {
       console.error("[DELETE /App.jsx]: Error deleting artwork", err.message);
     }
   };
+
+  if (isAuthChecking) {
+    return (
+      <div className="w-scree h-screen flex flex-col items-center justify-center">
+        <div className=" text-base text-primary">Loading session...</div>
+      </div>
+    );
+  }
 
   return (
     <>
