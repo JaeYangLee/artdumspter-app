@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { BsFillTrashFill } from "react-icons/bs";
 import { BsInfoCircleFill } from "react-icons/bs";
+import { BsFillMoonFill } from "react-icons/bs";
 import AdNavBar from "../components/AdNavBar";
 import AdValidatorModal from "../components/AdValidatorModal";
+import AdThemeModal from "../components/AdThemeModal";
 
 function AdSettingsPage({ user, onDelete, onLogout }) {
   const [isValidatorModalOpen, setValidatorModalOpen] = useState(false);
+  const [isThemeModalOpen, setThemeModalOpen] = useState(false);
   return (
     <>
       <div className="w-screen h-screen pt-15">
@@ -16,6 +19,13 @@ function AdSettingsPage({ user, onDelete, onLogout }) {
           >
             <BsFillTrashFill />
             <label>Delete account</label>
+          </div>
+          <div
+            onClick={() => setThemeModalOpen(true)}
+            className="flex flex-row items-center justify-start w-full gap-2 px-2 py-4 border-b text-textColor md:justify-center cursor-pointer hover:shadow-[inset_0px_-8px_8px_rgb(0,0,0,0.1)] transition duration-300"
+          >
+            <BsFillMoonFill />
+            <label>Theme</label>
           </div>
           <div className="flex flex-row items-center justify-start w-full gap-2 px-2 py-4 border-b text-textColor md:justify-center cursor-pointer hover:shadow-[inset_0px_-8px_8px_rgb(0,0,0,0.1)] transition duration-300">
             <BsInfoCircleFill />
@@ -34,6 +44,11 @@ function AdSettingsPage({ user, onDelete, onLogout }) {
         onDelete={() => onDelete(user.user_id)}
         isValidatorModalOpen={isValidatorModalOpen}
         onValidatorModalClose={() => setValidatorModalOpen(false)}
+      />
+
+      <AdThemeModal
+        isThemeModalOpen={isThemeModalOpen}
+        onThemeModalClose={() => setThemeModalOpen(false)}
       />
     </>
   );
