@@ -1,4 +1,4 @@
-function AdThemeModal({ isThemeModalOpen, onThemeModalClose }) {
+function AdThemeModal({ setTheme, isThemeModalOpen, onThemeModalClose }) {
   if (!isThemeModalOpen) return null;
   return (
     <>
@@ -32,10 +32,16 @@ function AdThemeModal({ isThemeModalOpen, onThemeModalClose }) {
           <section className="flex flex-col items-center justify-center gap-4 p-4 bg-backgroundColor">
             <h1>Choose your theme:</h1>
             <div className="flex flex-row items-center justify-center w-full gap-8">
-              <button className="px-2 border rounded shadow-[2px_2px_0px_0px] cursor-pointer">
+              <button
+                onClick={() => setTheme("light")}
+                className="px-2 border rounded shadow-[2px_2px_0px_0px] cursor-pointer"
+              >
                 Light
               </button>
-              <button className="cursor-pointer px-2 border rounded shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor border-textColor shadow-textColor">
+              <button
+                onClick={() => setTheme("dark")}
+                className="cursor-pointer px-2 border rounded shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor border-textColor shadow-textColor"
+              >
                 Dark
               </button>
             </div>

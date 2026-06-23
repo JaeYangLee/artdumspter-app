@@ -6,12 +6,12 @@ import AdNavBar from "../components/AdNavBar";
 import AdValidatorModal from "../components/AdValidatorModal";
 import AdThemeModal from "../components/AdThemeModal";
 
-function AdSettingsPage({ user, onDelete, onLogout }) {
+function AdSettingsPage({ user, onDelete, setTheme, onLogout }) {
   const [isValidatorModalOpen, setValidatorModalOpen] = useState(false);
   const [isThemeModalOpen, setThemeModalOpen] = useState(false);
   return (
     <>
-      <div className="w-screen h-screen pt-15">
+      <div className="w-screen h-screen pt-15 bg-backgroundColor dark:bg-primary">
         <section className="flex flex-col items-center justify-center w-full">
           <div
             onClick={() => setValidatorModalOpen(true)}
@@ -47,6 +47,7 @@ function AdSettingsPage({ user, onDelete, onLogout }) {
       />
 
       <AdThemeModal
+        setTheme={setTheme}
         isThemeModalOpen={isThemeModalOpen}
         onThemeModalClose={() => setThemeModalOpen(false)}
       />

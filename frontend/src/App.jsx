@@ -18,6 +18,9 @@ function App() {
   const [isAuthChecking, setIsAuthChecking] = useState(true);
   const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
 
   useEffect(() => {
     initAuth();
@@ -32,6 +35,16 @@ function App() {
       fetchArtworkByUser(user.user_id);
     }
   }, [user?.user_id]);
+
+  useEffect(() => {
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
+
+  const setThemeMode = (mode) => {
+    setDarkMode(mode === "dark");
+  };
 
   const registerUser = async (
     username,
@@ -336,8 +349,8 @@ function App() {
 
   if (isAuthChecking) {
     return (
-      <div className="w-scree h-screen flex flex-col items-center justify-center">
-        <div className=" text-base text-primary">Loading session...</div>
+      <div className="flex flex-col items-center justify-center w-screen h-screen">
+        <div className="text-base text-primary">Loading session...</div>
       </div>
     );
   }
@@ -413,6 +426,7 @@ function App() {
                 <AdSettingsPage
                   user={user}
                   onDelete={deleteUser}
+                  setTheme={setThemeMode}
                   onLogout={logOutUser}
                 />
               </AdProtectedRoute>

@@ -21,7 +21,7 @@ function AdSideBar({ user, isSideBarOpen, onSideBarClose, onLogout }) {
         >
           <div className="flex items-center gap-2 flex-crow text-backgroundColor">
             <BsPersonCircle className="text-textColor size-8 opacity-80" />
-            <Link to="/profile" className="text-base">
+            <Link to="/profile" className="text-base truncate">
               {user.username}
             </Link>
           </div>
