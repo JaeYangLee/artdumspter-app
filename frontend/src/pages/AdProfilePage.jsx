@@ -20,10 +20,10 @@ function AdProfilePage({
   if (!user) return <p>Loading...</p>;
   return (
     <>
-      <div className="flex flex-col w-screen h-screen gap-4 px-2 py-4 pt-16 md:overflow-hidden md:flex-row bg-backgroundColor">
-        <section className="w-full md:w-1/3 md:h-full flex flex-col items-center border rounded-lg shadow-[4px_4px_0px_0px] py-4 px-4  md:overflow-y-auto">
+      <div className="flex flex-col w-screen h-full md:h-screen gap-4 px-2 py-4 pt-16 md:overflow-hidden md:flex-row bg-backgroundColor">
+        <section className="w-full md:w-1/3 md:h-full flex flex-col items-center border border-textColor rounded-lg shadow-[4px_4px_0px_0px] py-4 px-4  md:overflow-y-auto bg-backgroundColor">
           <div className="p-4">
-            <BsPersonCircle className="size-20 opacity-80 lg:size-28" />
+            <BsPersonCircle className="size-20 opacity-80 lg:size-28 text-textColor" />
           </div>
 
           <div className="flex flex-col items-center justify-center px-4 text-textColor">
@@ -35,24 +35,28 @@ function AdProfilePage({
             <p className="text-center lg:text-lg">{`"${user.bio}"`}</p>
           </div>
 
-          <div className="flex flex-col items-start justify-center w-full gap-4 py-4 bg-gray-200 rounded-lg wrap-break-words">
+          <div className="flex flex-col items-start justify-center w-full gap-4 py-4 bg-backgroundColor rounded-lg wrap-break-words">
             <div className="flex flex-row items-center gap-8 px-4">
-              <BsPinMapFill className="size-8 lg:size-12 " />
-              <p className="text-sm font-bold lg:text-lg">{user.location}</p>
+              <BsPinMapFill className="size-8 lg:size-12 text-textColor" />
+              <p className="text-sm font-bold lg:text-lg text-textColor">
+                {user.location}
+              </p>
             </div>
 
-            <hr className="w-full opacity-20" />
+            <hr className="w-full opacity-20 text-textColor" />
 
             <div className="flex flex-row items-center gap-8 px-4">
-              <BsBrushFill className="size-8 lg:size-12 " />
-              <p className="text-sm font-bold lg:text-lg">{user.tool_name}</p>
+              <BsBrushFill className="size-8 lg:size-12 text-textColor" />
+              <p className="text-sm font-bold lg:text-lg text-textColor">
+                {user.tool_name}
+              </p>
             </div>
 
-            <hr className="w-full opacity-20" />
+            <hr className="w-full opacity-20 text-textColor" />
 
             <div className="flex flex-row items-center gap-8 px-4">
-              <BsFillPaletteFill className="size-8 lg:size-12 xl:size-16" />
-              <p className="text-sm font-bold lg:text-lg">
+              <BsFillPaletteFill className="size-8 lg:size-12 xl:size-16 text-textColor" />
+              <p className="text-sm font-bold lg:text-lg text-textColor">
                 {user.artstyle_name}
               </p>
             </div>
@@ -68,7 +72,7 @@ function AdProfilePage({
           </div>
         </section>
 
-        <section className="md:flex-1 md:h-full md:overflow-y-auto">
+        <section className="md:flex-1 md:h-full md:overflow-y-auto bg-backgroundColor">
           <h1 className="sticky top-0 z-10 p-2 text-2xl font-bold truncate lg:text-3xl xl:text-4xl bg-backgroundColor text-primary">
             {`${user.username}'s Dumpster`}
           </h1>

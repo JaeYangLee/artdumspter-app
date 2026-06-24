@@ -30,11 +30,11 @@ function AdThemeModal({ setTheme, isThemeModalOpen, onThemeModalClose }) {
           </section>
 
           <section className="flex flex-col items-center justify-center gap-4 p-4 bg-backgroundColor">
-            <h1>Choose your theme:</h1>
+            <h1 className="text-textColor">Choose your theme:</h1>
             <div className="flex flex-row items-center justify-center w-full gap-8">
               <button
                 onClick={() => setTheme("light")}
-                className="px-2 border rounded shadow-[2px_2px_0px_0px] cursor-pointer"
+                className="px-2 border rounded shadow-[2px_2px_0px_0px] cursor-pointer bg-backgroundColor text-textColor"
               >
                 Light
               </button>
