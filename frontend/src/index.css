@@ -1,11 +1,29 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-textColor: #0b0b11;
   --color-backgroundColor: #f5f4f8;
   --color-primary: #6b6aa1;
   --color-secondary: #ccafcb;
   --color-accent: #b78da7;
+}
+
+:root {
+  --color-textColor: #0b0b11;
+  --color-backgroundColor: #f5f4f8;
+  --color-primary: #6b6aa1;
+  --color-secondary: #ccafcb;
+  --color-accent: #b78da7;
+}
+
+.dark {
+  --color-textColor: #f5f4f8;
+  --color-backgroundColor: #121212;
+  --color-primary: #8d8be6;
+  --color-secondary: #4f4d73;
+  --color-accent: #d5a6c7;
 }
 
 @keyframes modalFadeIn {

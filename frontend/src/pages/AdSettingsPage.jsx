@@ -11,7 +11,7 @@ function AdSettingsPage({ user, onDelete, setTheme, onLogout }) {
   const [isThemeModalOpen, setThemeModalOpen] = useState(false);
   return (
     <>
-      <div className="w-screen h-screen pt-15 bg-backgroundColor dark:bg-primary">
+      <div className="w-screen h-screen pt-15 bg-backgroundColor">
         <section className="flex flex-col items-center justify-center w-full">
           <div
             onClick={() => setValidatorModalOpen(true)}
