@@ -30,7 +30,7 @@ function AdArtworkShowCase({
           <div className="flex flex-row items-end justify-end w-full py-1">
             <BsXLg
               onClick={onArtworkShowcaseClose}
-              className="font-bold text-backgroundColor size-4"
+              className="font-bold text-textColor size-4"
             />
           </div>
           <div className="flex flex-col items-center justify-center w-full h-full md:flex-row bg-backgroundColor shadow-[4px_4px_0px_0px] shadow-textColor">
@@ -58,7 +58,7 @@ function AdArtworkShowCase({
               />
             </div>
 
-            <div className="flex flex-col w-full md:w-[40vw] h-full ">
+            <div className="flex flex-col w-full md:w-[40vw] h-full text-textColor">
               <div className="justify-between hidden p-2 lex-row bg-back md:flex">
                 <div className="flex flex-row items-center gap-2 justify-b">
                   <BsPersonCircle className="size-8" />

@@ -16,7 +16,7 @@ function AdSuccessModal({
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="flex flex-col rounded-lg bg-backgroundColor shadow-[4px_4px_0px_0px] border animate-modal-scale"
+          className="flex flex-col rounded-lg bg-backgroundColor shadow-[4px_4px_0px_0px] border border-textColor shadow-textColor animate-modal-scale"
         >
           <section className="flex flex-row items-center justify-between py-2 border-t rounded-t border-textColor bg-primary">
             <header className="px-2">
@@ -45,8 +45,10 @@ function AdSuccessModal({
             <div className="flex flex-col items-center justify-center lg:">
               <BsCheckCircleFill className="text-green-500 size-16 lg:size-20" />
 
-              <h1 className="pt-4 text-lg font-bold lg:text-2xl">{title}</h1>
-              <p className="text-sm text-center lg:text-lg">
+              <h1 className="pt-4 text-lg font-bold lg:text-2xl text-textColor">
+                {title}
+              </h1>
+              <p className="text-sm text-center lg:text-lg text-textColor">
                 <span>{subject}</span>
                 {message}
               </p>
@@ -54,7 +56,7 @@ function AdSuccessModal({
 
             <button
               onClick={onSuccessModalClose}
-              className="px-2 mt-8 border rounded bg-primary text-backgroundColor border-black shadow-black shadow-[2px_2px_0px_0px] lg:text-2xl cursor-pointer hover:bg-textColor"
+              className="px-2 mt-8 border rounded bg-primary border-textColor shadow-textColor shadow-[2px_2px_0px_0px] lg:text-2xl cursor-pointer hover:bg-backgroundColor text-textColor hover:text-textColor"
             >
               Okay
             </button>

@@ -62,7 +62,7 @@ function AdLandingPage({ onLogin, onRegister }) {
                 />
                 <button
                   type="submit"
-                  className="w-full px-2 border border-textColor shadow-textColor rounded  bg-primary text-backgroundColor shadow-[2px_2px_0px_0px]"
+                  className="text-textColor w-full px-2 border border-textColor shadow-textColor rounded  bg-primary shadow-[2px_2px_0px_0px]"
                 >
                   Log in
                 </button>

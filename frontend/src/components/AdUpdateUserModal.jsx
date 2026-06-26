@@ -93,7 +93,7 @@ function AdUpdateUserModal({
           onClick={(e) => e.stopPropagation()}
           className="flex flex-col items-center justify-center gap-4 p-4 text-center animate-modal-scale"
         >
-          <div className="border rounded-lg shadow-[4px_4px_0px_0px] bg-backgroundColor">
+          <div className="border rounded-lg shadow-[4px_4px_0px_0px] bg-backgroundColor text-textColor">
             <section className="flex flex-row items-center justify-between rounded-t-md bg-primary">
               <header className="px-2">
                 <h1 className="font-bold text-left select-none text-backgroundColor lg:text-lg">
@@ -121,7 +121,7 @@ function AdUpdateUserModal({
 
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col gap-8 p-4 bg-white rounded-lg"
+              className="flex flex-col gap-8 p-4 rounded-lg"
             >
               <section className="flex flex-col gap-2">
                 <div className="flex flex-col">
@@ -213,7 +213,7 @@ function AdUpdateUserModal({
               <section className="flex flex-row items-end justify-end w-full gap-2 lg:text-lg">
                 <button
                   type="submit"
-                  className="px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor hover:bg-textColor transition duration-200 cursor-pointer"
+                  className="px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor hover:bg-backgroundColor hover:text-textColor transition duration-200 cursor-pointer"
                 >
                   Submit
                 </button>

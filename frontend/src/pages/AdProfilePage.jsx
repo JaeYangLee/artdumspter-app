@@ -20,7 +20,7 @@ function AdProfilePage({
   if (!user) return <p>Loading...</p>;
   return (
     <>
-      <div className="flex flex-col w-screen h-full md:h-screen gap-4 px-2 py-4 pt-16 md:overflow-hidden md:flex-row bg-backgroundColor">
+      <div className="flex flex-col w-screen h-full gap-4 px-2 py-4 pt-16 md:h-screen md:overflow-hidden md:flex-row bg-backgroundColor">
         <section className="w-full md:w-1/3 md:h-full flex flex-col items-center border border-textColor rounded-lg shadow-[4px_4px_0px_0px] py-4 px-4  md:overflow-y-auto bg-backgroundColor">
           <div className="p-4">
             <BsPersonCircle className="size-20 opacity-80 lg:size-28 text-textColor" />
@@ -35,7 +35,7 @@ function AdProfilePage({
             <p className="text-center lg:text-lg">{`"${user.bio}"`}</p>
           </div>
 
-          <div className="flex flex-col items-start justify-center w-full gap-4 py-4 bg-backgroundColor rounded-lg wrap-break-words">
+          <div className="flex flex-col items-start justify-center w-full gap-4 py-4 rounded-lg bg-backgroundColor wrap-break-words">
             <div className="flex flex-row items-center gap-8 px-4">
               <BsPinMapFill className="size-8 lg:size-12 text-textColor" />
               <p className="text-sm font-bold lg:text-lg text-textColor">
@@ -65,7 +65,7 @@ function AdProfilePage({
           <div className="flex justify-center w-full pt-8">
             <button
               onClick={() => setUpdateUserModalOpen(true)}
-              className="lg:text-lg w-full px-2 border border-textColor shadow-textColor shadow-[2px_2px_0px_0px] rounded bg-primary text-backgroundColor hover:bg-textColor transition duration-200 cursor-pointer"
+              className="lg:text-lg w-full px-2 border border-textColor shadow-textColor shadow-[2px_2px_0px_0px] rounded bg-primary text-textColor hover:bg-backgroundColor transition duration-200 cursor-pointer"
             >
               Edit Profile
             </button>

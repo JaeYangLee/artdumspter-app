@@ -17,11 +17,11 @@ function AdArtworkCard({ user, artwork, onDelete, onEdit }) {
 
         <div className="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-t from-black/60 to-transparent group-hover:opacity-100"></div>
 
-        <div className="absolute bottom-0 left-0 w-full p-3 transition-all duration-500 transform translate-y-full opacity-0 text-backgroundColor group-hover:translate-y-0 group-hover:opacity-100">
-          <p className="w-full text-sm font-bold truncate md:text-lg">
+        <div className="absolute bottom-0 left-0 w-full p-3 transition-all duration-500 transform translate-y-full opacity-0 text-backgroundColor group-hover:translate-y-0 group-hover:opacity-100 ">
+          <p className="w-full text-sm font-bold truncate md:text-lg text-textColor">
             {artwork.title}
           </p>
-          <p className="w-full text-xs font-light md:text-sm">
+          <p className="w-full text-xs font-light md:text-sm text-textColor">
             {new Date(artwork.create_at).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",

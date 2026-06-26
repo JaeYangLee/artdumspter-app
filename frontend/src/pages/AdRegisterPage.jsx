@@ -22,7 +22,7 @@ function AdRegisterPage({ onRegister }) {
   const fetchAllArtStyles = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/artDumpster/artStyles"
+        "http://localhost:5000/artDumpster/artStyles",
       );
       setArtStyles(res.data.data);
     } catch (err) {
@@ -60,7 +60,7 @@ function AdRegisterPage({ onRegister }) {
         bio,
         location,
         tool_id,
-        artstyle_id
+        artstyle_id,
       );
 
       navigate("/profile");
@@ -72,20 +72,25 @@ function AdRegisterPage({ onRegister }) {
   return (
     <>
       <div className="flex flex-col items-center justify-center w-screen h-screen bg-backgroundColor">
-        <div className="flex flex-col items-center justify-center gap-4 text-center ">
+        <div className="flex flex-col items-center justify-center gap-4 text-center">
           <section>
             <h1 className="text-3xl font-bold text-primary">ArtDumpster*</h1>
           </section>
 
-          <section className="border rounded-lg shadow-[4px_4px_0px_0px]">
+          <section className="border border-textColor rounded-lg shadow-[4px_4px_0px_0px] shadow-textColor">
             <header className="p-4">
-              <h1 className="text-lg font-bold">Create a new art account</h1>
-              <h3>It's quick and easy.</h3>
+              <h1 className="text-lg font-bold text-textColor">
+                Create a new art account
+              </h1>
+              <h3 className="text-textColor">It's quick and easy.</h3>
             </header>
 
-            <hr />
+            <hr className="text-textColor" />
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-8 p-4 ">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-8 p-4 text-textColor"
+            >
               <section className="flex flex-col gap-2">
                 <div className="flex flex-col">
                   <label className="w-full text-sm text-start">
