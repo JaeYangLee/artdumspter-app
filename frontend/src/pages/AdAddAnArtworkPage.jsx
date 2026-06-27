@@ -106,7 +106,7 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
 
   return (
     <>
-      <div className="flex flex-col items-center w-screen h-screen pt-14 text-textColor">
+      <div className="flex flex-col items-center w-screen h-screen pt-14 text-textColor bg-backgroundColor">
         <div className="flex flex-col w-full p-2 item-start bg-gray">
           <h1 className="p-2 text-2xl font-bold text-primary">
             Add an artwork
@@ -122,10 +122,10 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
                 <img
                   src={artworkPreview}
                   alt="Artwork Preview"
-                  className="inline-block object-contain flex-col items-center justify-center border-black/30 bg-gray-100 border-dashed border rounded w-full h-[40vh] md:h-[54vh]"
+                  className="inline-block object-contain flex-col items-center justify-center border-black/30 bg-backgroundColor border-dashed border rounded w-full h-[40vh] md:h-[54vh]"
                 />
               ) : (
-                <div className="flex flex-col items-center justify-center border-black/30 bg-gray-100 border-dashed border rounded w-full h-[40vh] md:h-full lg:w-[60vw]">
+                <div className="flex flex-col items-center justify-center border-black/30 bg-backgroundColor border-dashed border rounded w-full h-[40vh] md:h-full lg:w-[60vw]">
                   <BsCloudArrowUp className="size-16 opacity-40" />
                   <p className="font-light opacity-60">Drop files to upload</p>
                   <div className="flex flex-row items-center justify-center gap-1">

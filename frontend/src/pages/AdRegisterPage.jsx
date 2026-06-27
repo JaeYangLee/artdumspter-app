@@ -193,13 +193,13 @@ function AdRegisterPage({ onRegister }) {
               <section className="flex flex-row items-end justify-end w-full gap-2">
                 <button
                   type="submit"
-                  className="px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor"
+                  className="hover:cursor-pointer px-2 border border-textColor shadow-textColor rounded shadow-[2px_2px_0px_0px] bg-primary text-backgroundColor hover:bg-backgroundColor"
                 >
                   Submit
                 </button>
                 <Link
                   to="/"
-                  className="px-2 border rounded shadow-[2px_2px_0px_0px]"
+                  className="hover:cursor-pointer px-2 border rounded shadow-[2px_2px_0px_0px] hover:bg-backgroundColor"
                 >
                   Cancel
                 </Link>

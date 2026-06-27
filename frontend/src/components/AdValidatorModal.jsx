@@ -33,7 +33,7 @@ function AdValidatorModal({
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="flex flex-col border shadow-[4px_4px_0px_0px] bg-white rounded-lg animate-modal-scale"
+          className="flex flex-col border shadow-[4px_4px_0px_0px] bg-backgroundColor rounded-lg animate-modal-scale"
         >
           <section className="flex flex-row items-center justify-between py-2 rounded-t bg-primary">
             <header className="px-2">
@@ -56,24 +56,24 @@ function AdValidatorModal({
 
           <hr />
 
-          <section className="flex flex-col items-center justify-center gap-4 p-4">
+          <section className="flex flex-col items-center justify-center gap-4 p-4 ">
             <div className="flex flex-col items-center justify-center">
               <BsFillExclamationTriangleFill className="text-yellow-400 size-16" />
 
-              <h1 className="pt-4 text-lg font-bold">{title}</h1>
-              <p className="">{message}</p>
+              <h1 className="pt-4 text-lg font-bold text-textColor">{title}</h1>
+              <p className="text-textColor">{message}</p>
             </div>
 
-            <div className="flex flex-row items-center justify-end w-full gap-2 pt-2">
+            <div className="flex flex-row items-center justify-end w-full gap-2 pt-2 ">
               <button
                 onClick={handleDelete}
-                className="text-backgroundColor px-2 bg-red-500 border rounded border-textColor shadow-textColor shadow-[2px_2px_0px_0px] hover:bg-textColor transition duration-200 cursor-pointer"
+                className="text-textColor px-2 bg-red-500 border rounded border-textColor shadow-textColor shadow-[2px_2px_0px_0px] hover:bg-textColor transition duration-200 cursor-pointer"
               >
                 Delete
               </button>
               <button
                 onClick={onValidatorModalClose}
-                className="px-2 border rounded text-gray-600 shadow-textColor border-textColor shadow-[2px_2px_0px_0px] hover:bg-gray-400 hover:text-backgroundColor cursor-pointer"
+                className="px-2 border rounded shadow-textColor border-textColor shadow-[2px_2px_0px_0px] hover:bg-gray-400 hover:text-backgroundColor cursor-pointer text-textColor"
               >
                 Cancel
               </button>

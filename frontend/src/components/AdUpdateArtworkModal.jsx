@@ -118,7 +118,10 @@ function AdUpdateArtworkModal({
 
           <hr className="w-full" />
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-8 p-4">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-8 p-4 text-textColor"
+          >
             <section className="flex flex-col gap-2">
               <div className="flex flex-col">
                 <label className="">Edit title:</label>

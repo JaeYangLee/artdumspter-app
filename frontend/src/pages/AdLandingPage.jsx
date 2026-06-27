@@ -62,7 +62,7 @@ function AdLandingPage({ onLogin, onRegister }) {
                 />
                 <button
                   type="submit"
-                  className="text-textColor w-full px-2 border border-textColor shadow-textColor rounded  bg-primary shadow-[2px_2px_0px_0px]"
+                  className="text-textColor w-full px-2 border border-textColor shadow-textColor rounded  bg-primary shadow-[2px_2px_0px_0px] hover:cursor-pointer hover:bg-backgroundColor"
                 >
                   Log in
                 </button>
@@ -72,7 +72,7 @@ function AdLandingPage({ onLogin, onRegister }) {
 
               <Link
                 to="/register"
-                className="px-2 rounded border shadow-[2px_2px_0px_0px] bg-secondary"
+                className="px-2 rounded border shadow-[2px_2px_0px_0px] bg-secondary hover:cursor-pointer hover:bg-backgroundColor"
               >
                 Create new art account
               </Link>
