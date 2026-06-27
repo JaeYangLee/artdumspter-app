@@ -88,7 +88,7 @@ function AdLandingPage({ onLogin, onRegister }) {
               <p className="text-center select-none md:text-left">
                 © 2026 ArtDumpster*. All rights reserved.
               </p>
-              <p className="text-center md:text-left select-non">
+              <p className="hidden text-center md:flex md:text-left select-non">
                 A space for unfinished creativity and experimental artworks.
               </p>
             </section>
@@ -101,7 +101,7 @@ function AdLandingPage({ onLogin, onRegister }) {
               >
                 Crafted by Jian Lee Ramos
               </a>
-              <p className="select-none">
+              <p className="hidden select-none md:flex">
                 Built with PostgreSQL • Express • React • Node
               </p>
             </section>
