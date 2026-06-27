@@ -30,7 +30,7 @@ function AdLandingPage({ onLogin, onRegister }) {
   return (
     <>
       <div className="flex flex-col items-center justify-center w-screen h-screen bg-backgroundColor text-textColor">
-        <div className="flex flex-col items-center justify-center w-full h-full md:flex-row">
+        <div className="flex flex-col items-center justify-center w-full h-full pb-12 md:pb-0 md:flex-row">
           <section className="flex flex-col items-center justify-center w-full h-full">
             <div className="p-4 text-center md:text-start">
               <h1 className="text-2xl font-bold">
@@ -80,7 +80,33 @@ function AdLandingPage({ onLogin, onRegister }) {
           </section>
         </div>
 
-        <footer className="w-ful bg-violet-400"></footer>
+        <hr className="w-full text-textColor opacity-20" />
+
+        <footer className="bottom-0 w-full p-4 md:p-8 bg-backgroundColor">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row opacity-40 md:gap-0">
+            <section className="flex flex-col gap-4 text-xs">
+              <p className="text-center select-none md:text-left">
+                © 2026 ArtDumpster*. All rights reserved.
+              </p>
+              <p className="text-center md:text-left select-non">
+                A space for unfinished creativity and experimental artworks.
+              </p>
+            </section>
+
+            <section className="flex flex-col items-center gap-4 text-xs md:items-end">
+              <a
+                href="https://jian-lee-ramos-portfolio-7cc2b.web.app/"
+                target="_blank"
+                className="text-center hover:underline hover:text-primary"
+              >
+                Crafted by Jian Lee Ramos
+              </a>
+              <p className="select-none">
+                Built with PostgreSQL • Express • React • Node
+              </p>
+            </section>
+          </div>
+        </footer>
       </div>
     </>
   );
