@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "cp -r dist/* /var/www/artdumpster-app/",
+    "build:deploy": "npm run build && npm run deploy"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
