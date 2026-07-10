@@ -84,7 +84,7 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
 
   const fetchAllTools = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/artDumpster/tools");
+      const res = await axios.get("http://localhost:7000/artDumpster/tools");
       setTool(res.data.data);
     } catch (err) {
       console.error("[GET /AddAnArtworkPage.jsx]: Error fetching all tools!");
@@ -94,7 +94,7 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
   const fetchAllArtStyles = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/artDumpster/artStyles",
+        "http://localhost:7000/artDumpster/artStyles",
       );
       setArtstyle(res.data.data);
     } catch (err) {
