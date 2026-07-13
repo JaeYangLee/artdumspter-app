@@ -207,7 +207,6 @@ function AdRegisterPage({ onRegister }) {
             </form>
           </section>
         </div>
-        <footer></footer>
       </div>
     </>
   );
