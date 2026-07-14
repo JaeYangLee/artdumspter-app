@@ -22,7 +22,7 @@ function AdArtworkCard({ user, artwork, onDelete, onEdit }) {
             {artwork.title}
           </p>
           <p className="w-full text-xs font-light text-white md:text-sm">
-            {new Date(artwork.create_at).toLocaleDateString("en-US", {
+            {new Date(artwork.created_at).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",
               day: "numeric",

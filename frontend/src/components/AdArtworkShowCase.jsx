@@ -76,7 +76,7 @@ function AdArtworkShowCase({
                 <div className="w-full p-2">
                   <h1 className="font-bold">{artwork.title}</h1>
                   <p className="text-xs font-light">
-                    {new Date(artwork.create_at).toLocaleDateString("en-US", {
+                    {new Date(artwork.created_at).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "long",
                       day: "numeric",
