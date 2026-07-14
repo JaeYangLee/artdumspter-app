@@ -213,7 +213,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       const allArtworkByUser = await axios.get(
-        `http://localhost:7000/artDumpster/artWork/user/${user_id}`,
+        `${import.meta.env.VITE_API_URL}/artDumpster/artWork/user/${user_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

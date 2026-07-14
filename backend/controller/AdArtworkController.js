@@ -56,8 +56,9 @@ const fetchArtworkByUser = async (req, res) => {
     );
     res
       .status(500)
-      .json({ error: "[GET/ controller]: Error fetching user artwork!" });
+      .json({ error: err.message});
   }
+  
 };
 
 const addArtwork = async (req, res) => {
