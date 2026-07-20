@@ -63,6 +63,11 @@ const fetchArtworkByUser = async (req, res) => {
 
 const addArtwork = async (req, res) => {
   try {
+    console.log("========== ADD ARTWORK ==========");
+    console.log("USER:", req.user);
+    console.log("BODY:", req.body);
+    console.log("FILE:", req.file);
+
     const { user_id } = req.user;
     const { title, description, tool_id, artstyle_id } = req.body;
 
