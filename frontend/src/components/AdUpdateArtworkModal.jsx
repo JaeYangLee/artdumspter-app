@@ -31,7 +31,7 @@ function AdUpdateArtworkModal({
   const fetchAllTools = async () => {
     try {
       const allTools = await axios.get(
-        `https://localhost:7000/artDumpster/tools`,
+        `http://localhost:7000/artDumpster/tools`,
       );
       setNewTools(allTools.data.data);
     } catch (err) {
@@ -45,7 +45,7 @@ function AdUpdateArtworkModal({
   const fetchAllArtStyles = async () => {
     try {
       const allArtstyles = await axios.get(
-        `https://localhost:7000/artDumpster/artStyles`,
+        `http://localhost:7000/artDumpster/artStyles`,
       );
       setNewArtStyles(allArtstyles.data.data);
     } catch (err) {

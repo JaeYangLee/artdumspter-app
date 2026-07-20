@@ -95,7 +95,7 @@ function AdLandingPage({ onLogin, onRegister }) {
 
             <section className="flex flex-col items-center gap-4 text-xs md:items-end">
               <a
-                href="https://jian-lee-ramos-portfolio-7cc2b.web.app/"
+                href="http://jian-lee-ramos-portfolio-7cc2b.web.app/"
                 target="_blank"
                 className="text-center hover:underline hover:text-primary"
               >

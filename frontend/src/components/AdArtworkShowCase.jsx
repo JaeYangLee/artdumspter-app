@@ -52,7 +52,7 @@ function AdArtworkShowCase({
 
             <div className="flex items-center justify-center bg-black">
               <img
-                src={`https://localhost:7000/${artwork.image_url}`}
+                src={`http://localhost:7000/${artwork.image_url}`}
                 alt={artwork.title}
                 className="object-contain w-full h-full md:w-auto md:h-[80vh]"
               />
