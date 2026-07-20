@@ -14,7 +14,7 @@ export function useFetchUserById() {
         if (!authToken) return;
 
         const userProfile = await axios.get(
-          "http://localhost:7000/artDumpster/profile",
+          "https://localhost:7000/artDumpster/profile",
           {
             headers: { Authorization: `Bearer ${authToken}` },
           },

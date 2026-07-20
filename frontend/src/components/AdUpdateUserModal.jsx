@@ -42,7 +42,7 @@ function AdUpdateUserModal({
   const fetchAllArtStyles = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:7000/artDumpster/artStyles",
+        "https://localhost:7000/artDumpster/artStyles",
       );
       setNewArtStyles(res.data.data);
     } catch (err) {

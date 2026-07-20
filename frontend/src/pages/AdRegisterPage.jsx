@@ -32,7 +32,7 @@ function AdRegisterPage({ onRegister }) {
 
   const fetchAllTools = async () => {
     try {
-      const res = await axios.get("http://localhost:7000/artDumpster/tools");
+      const res = await axios.get("https://localhost:7000/artDumpster/tools");
       setTools(res.data.data);
     } catch (err) {
       console.error("[GET /RegisterPage.jsx]: Error fetching all tools!");
