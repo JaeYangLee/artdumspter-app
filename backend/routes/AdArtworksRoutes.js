@@ -23,6 +23,11 @@ router.get(
 );
 router.post(
   "/artWork/uploads",
+  (req, res, next)=>
+    {console.log("Upload Route Hit!");
+      next();
+    },
+  
   verifyToken,
   uploadConfig.single("image_url"),
   AdArtworkController.addArtwork,
