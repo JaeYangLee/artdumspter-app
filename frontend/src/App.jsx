@@ -59,7 +59,7 @@ console.log("🔥 ART DUMPSTER VERSION 2026");
   ) => {
     try {
       const registeredUser = await axios.post(
-        `http://localhost:7000/artDumpster/register`,
+        `https://localhost:7000/artDumpster/register`,
         {
           username,
           email,
@@ -87,7 +87,7 @@ console.log("🔥 ART DUMPSTER VERSION 2026");
   const loginUser = async (email, password) => {
     try {
       const loggedInUser = await axios.post(
-        `http://localhost:7000/artDumpster/login`,
+        `https://localhost:7000/artDumpster/login`,
         {
           email,
           password,
@@ -123,7 +123,7 @@ console.log("🔥 ART DUMPSTER VERSION 2026");
 
     try {
       const fetchedUserId = await axios.get(
-        `http://localhost:7000/artDumpster/profile`,
+        `https://localhost:7000/artDumpster/profile`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -154,7 +154,7 @@ console.log("🔥 ART DUMPSTER VERSION 2026");
     const token = localStorage.getItem("token");
     try {
       const updatedUser = await axios.put(
-        `http://localhost:7000/artDumpster/profile/${user_id}`,
+        `https://localhost:7000/artDumpster/profile/${user_id}`,
         {
           username,
           email,
@@ -183,7 +183,7 @@ console.log("🔥 ART DUMPSTER VERSION 2026");
     const token = localStorage.getItem("token");
     try {
       await axios.delete(
-        `http://localhost:7000/artDumpster/profile/${user_id}`,
+        `https://localhost:7000/artDumpster/profile/${user_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -237,7 +237,7 @@ console.log("🔥 ART DUMPSTER VERSION 2026");
       const token = localStorage.getItem("token");
 
       const artworkById = await axios.get(
-        `http://localhost:7000/artDumpster/artWork/${artwork_id}`,
+        `https://localhost:7000/artDumpster/artWork/${artwork_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -301,7 +301,7 @@ console.log("🔥 ART DUMPSTER VERSION 2026");
       const token = localStorage.getItem("token");
 
       const updatedArtwork = await axios.put(
-        `http://localhost:7000/artDumpster/artWork/edit/${artwork_id}`,
+        `https://localhost:7000/artDumpster/artWork/edit/${artwork_id}`,
         { title, description, tool_id, artstyle_id },
         {
           headers: {
@@ -332,7 +332,7 @@ console.log("🔥 ART DUMPSTER VERSION 2026");
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:7000/artDumpster/artWork/${artwork_id}`,
+        `https://localhost:7000/artDumpster/artWork/${artwork_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
