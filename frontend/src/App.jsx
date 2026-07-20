@@ -13,6 +13,8 @@ import AdErrorModal from "./components/AdErrorModal";
 import AdSettingsPage from "./pages/AdSettingsPage";
 
 function App() {
+console.log("🔥 ART DUMPSTER VERSION 2026");
+
   const [user, setUser] = useState(null);
   const [artworks, setArtWorks] = useState([]);
   const [isAuthChecking, setIsAuthChecking] = useState(true);
@@ -271,7 +273,7 @@ function App() {
       formData.append("artstyle_id", artstyle_id);
 
       const newArtwork = await axios.post(
-        `http://localhost:7000/artDumpster/artWork/uploads`,
+        `${import.meta.env.VITE_API_URL}/artDumpster/artWork/uploads`,
         formData,
         {
           headers: {
