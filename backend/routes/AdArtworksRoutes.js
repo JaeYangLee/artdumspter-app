@@ -4,16 +4,22 @@ const router = express.Router();
 const uploadConfig = require("../middleware/uploadConfig");
 const verifyToken = require("../middleware/verifyToken");
 
-router.get("/artWork", verifyToken, AdArtworkController.fetchAllArtwork);
+router.get(
+  "/artWork/user/:user_id",
+  verifyToken,
+  AdArtworkController.fetchArtworkByUser,
+);
+
 router.get(
   "/artWork/:artwork_id",
   verifyToken,
   AdArtworkController.fetchArtworkById,
 );
+
 router.get(
-  "/artWork/user/:user_id",
+  "/artWork",
   verifyToken,
-  AdArtworkController.fetchArtworkByUser,
+  AdArtworkController.fetchAllArtwork,
 );
 router.post(
   "/artWork/uploads",
