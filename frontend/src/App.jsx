@@ -13,8 +13,6 @@ import AdErrorModal from "./components/AdErrorModal";
 import AdSettingsPage from "./pages/AdSettingsPage";
 
 function App() {
-console.log("🔥 ART DUMPSTER VERSION 2026");
-
   const [user, setUser] = useState(null);
   const [artworks, setArtWorks] = useState([]);
   const [isAuthChecking, setIsAuthChecking] = useState(true);
