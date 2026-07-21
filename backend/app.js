@@ -7,7 +7,6 @@ const cors = require("cors");
 const path = require("path");
 
 const app = express();
-console.log("App.js version updated");
 
 app.use(cors());
 app.use(express.json());

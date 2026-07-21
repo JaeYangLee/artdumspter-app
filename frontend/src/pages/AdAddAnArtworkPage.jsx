@@ -107,7 +107,7 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
   return (
     <>
       <div className="flex flex-col items-center w-screen h-screen pt-14 text-textColor bg-backgroundColor">
-        <div className="flex flex-col w-full p-2 item-start bg-gray">
+        <div className="flex flex-col w-full p-2 item-start bg-backgroundColor">
           <h1 className="p-2 text-2xl font-bold text-primary">
             Add an artwork
           </h1>
@@ -155,7 +155,7 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
               />
             </section>
 
-            <section className="flex flex-col items-start w-full gap-4 px-2">
+            <section className="flex flex-col items-start w-full bg-backgroundColor gap-4 px-2">
               <div className="flex flex-col w-full gap-2">
                 <div className="flex flex-col">
                   <label>Enter Artwork title:</label>
@@ -213,7 +213,7 @@ function AdAddAnArtworkPage({ user, onUpload, onLogout }) {
                 </div>
               </div>
 
-              <div className="flex flex-row items-end justify-end w-full gap-2">
+              <div className="flex flex-row items-end justify-end w-full gap-2 ">
                 <button
                   type="submit"
                   onClick={handleSubmit}
