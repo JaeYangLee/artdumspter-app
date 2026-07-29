@@ -34,6 +34,7 @@ const logInUser = async (req, res) => {
     if (!email || !password) {
       return res.status(400).json({
         message: "[POST /UserController]: Email and Password required!",
+        details: err.message,
       });
     }
 
