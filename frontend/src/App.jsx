@@ -213,7 +213,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       const allArtworkByUser = await axios.get(
-        `http://localhost:7000/artDumpster/artDumpster/artWork/user/${user_id}`,
+        `http://localhost:7000/artDumpster/artWork/user/${user_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -271,7 +271,7 @@ function App() {
       formData.append("artstyle_id", artstyle_id);
 
       const newArtwork = await axios.post(
-        `http://localhost:7000/artDumpster/artDumpster/artWork/uploads`,
+        `http://localhost:7000/artDumpster/artWork/uploads`,
         formData,
         {
           headers: {

@@ -74,7 +74,7 @@ function AdRegisterPage({ onRegister }) {
       <div className="flex flex-col items-center justify-center w-screen h-screen bg-backgroundColor">
         <div className="flex flex-col items-center justify-center gap-4 text-center">
           <section>
-            <h1 className="text-3xl font-bold text-primary">*</h1>
+            <h1 className="text-3xl font-bold text-primary">ArtDumpster*</h1>
           </section>
 
           <section className="border border-textColor rounded-lg shadow-[4px_4px_0px_0px] shadow-textColor">
