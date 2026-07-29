@@ -22,7 +22,7 @@ function AdRegisterPage({ onRegister }) {
   const fetchAllArtStyles = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}artDumpster/artStyles`,
+        `${import.meta.env.VITE_API_URL}/artStyles`,
       );
       setArtStyles(res.data.data);
     } catch (err) {
@@ -32,7 +32,7 @@ function AdRegisterPage({ onRegister }) {
 
   const fetchAllTools = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}artDumpster/tools`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/tools`);
       setTools(res.data.data);
     } catch (err) {
       console.error("[GET /RegisterPage.jsx]: Error fetching all tools!");
@@ -74,7 +74,7 @@ function AdRegisterPage({ onRegister }) {
       <div className="flex flex-col items-center justify-center w-screen h-screen bg-backgroundColor">
         <div className="flex flex-col items-center justify-center gap-4 text-center">
           <section>
-            <h1 className="text-3xl font-bold text-primary">ArtDumpster*</h1>
+            <h1 className="text-3xl font-bold text-primary">*</h1>
           </section>
 
           <section className="border border-textColor rounded-lg shadow-[4px_4px_0px_0px] shadow-textColor">
