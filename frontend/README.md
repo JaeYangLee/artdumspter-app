@@ -12,3 +12,4 @@ sample user for testing
     "build:deploy": "npm run build && npm run deploy"
   },
 
+++ hardcoded url for local: http://localhost:7000/artDumpster

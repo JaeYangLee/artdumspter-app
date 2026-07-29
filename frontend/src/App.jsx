@@ -57,7 +57,7 @@ function App() {
   ) => {
     try {
       const registeredUser = await axios.post(
-        `http://localhost:7000/artDumpster/register`,
+        `${import.meta.env.VITE_API_URL}/register`,
         {
           username,
           email,
@@ -85,7 +85,7 @@ function App() {
   const loginUser = async (email, password) => {
     try {
       const loggedInUser = await axios.post(
-        `http://localhost:7000/artDumpster/login`,
+        `${import.meta.env.VITE_API_URL}/login`,
         {
           email,
           password,
@@ -121,7 +121,7 @@ function App() {
 
     try {
       const fetchedUserId = await axios.get(
-        `http://localhost:7000/artDumpster/profile`,
+        `${import.meta.env.VITE_API_URL}/profile`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -152,7 +152,7 @@ function App() {
     const token = localStorage.getItem("token");
     try {
       const updatedUser = await axios.put(
-        `http://localhost:7000/artDumpster/profile/${user_id}`,
+        `${import.meta.env.VITE_API_URL}/profile/${user_id}`,
         {
           username,
           email,
@@ -181,7 +181,7 @@ function App() {
     const token = localStorage.getItem("token");
     try {
       await axios.delete(
-        `http://localhost:7000/artDumpster/profile/${user_id}`,
+        `${import.meta.env.VITE_API_URL}/profile/${user_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -235,7 +235,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       const artworkById = await axios.get(
-        `http://localhost:7000/artDumpster/artWork/${artwork_id}`,
+        `${import.meta.env.VITE_API_URL}/artWork/${artwork_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -299,7 +299,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       const updatedArtwork = await axios.put(
-        `http://localhost:7000/artDumpster/artWork/edit/${artwork_id}`,
+        `${import.meta.env.VITE_API_URL}/artWork/edit/${artwork_id}`,
         { title, description, tool_id, artstyle_id },
         {
           headers: {
@@ -330,7 +330,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:7000/artDumpster/artWork/${artwork_id}`,
+        `${import.meta.env.VITE_API_URL}/artWork/${artwork_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
