@@ -57,7 +57,7 @@ function App() {
   ) => {
     try {
       const registeredUser = await axios.post(
-        `${import.meta.env.VITE_API_URL}/register`,
+        `http://localhost:7000/artDumpster/register`,
         {
           username,
           email,
@@ -85,7 +85,7 @@ function App() {
   const loginUser = async (email, password) => {
     try {
       const loggedInUser = await axios.post(
-        `${import.meta.env.VITE_API_URL}/login`,
+        `http://localhost:7000/artDumpster/login`,
         {
           email,
           password,
@@ -121,7 +121,7 @@ function App() {
 
     try {
       const fetchedUserId = await axios.get(
-        `${import.meta.env.VITE_API_URL}/profile`,
+        `http://localhost:7000/artDumpster/profile`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -152,7 +152,7 @@ function App() {
     const token = localStorage.getItem("token");
     try {
       const updatedUser = await axios.put(
-        `${import.meta.env.VITE_API_URL}/profile/${user_id}`,
+        `http://localhost:7000/artDumpster/profile/${user_id}`,
         {
           username,
           email,
@@ -181,7 +181,7 @@ function App() {
     const token = localStorage.getItem("token");
     try {
       await axios.delete(
-        `${import.meta.env.VITE_API_URL}/profile/${user_id}`,
+        `http://localhost:7000/artDumpster/profile/${user_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -213,7 +213,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       const allArtworkByUser = await axios.get(
-        `${import.meta.env.VITE_API_URL}/artDumpster/artWork/user/${user_id}`,
+        `http://localhost:7000/artDumpster/artDumpster/artWork/user/${user_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -235,7 +235,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       const artworkById = await axios.get(
-        `${import.meta.env.VITE_API_URL}/artWork/${artwork_id}`,
+        `http://localhost:7000/artDumpster/artWork/${artwork_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -271,7 +271,7 @@ function App() {
       formData.append("artstyle_id", artstyle_id);
 
       const newArtwork = await axios.post(
-        `${import.meta.env.VITE_API_URL}/artDumpster/artWork/uploads`,
+        `http://localhost:7000/artDumpster/artDumpster/artWork/uploads`,
         formData,
         {
           headers: {
@@ -299,7 +299,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       const updatedArtwork = await axios.put(
-        `${import.meta.env.VITE_API_URL}/artWork/edit/${artwork_id}`,
+        `http://localhost:7000/artDumpster/artWork/edit/${artwork_id}`,
         { title, description, tool_id, artstyle_id },
         {
           headers: {
@@ -330,7 +330,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `${import.meta.env.VITE_API_URL}/artWork/${artwork_id}`,
+        `http://localhost:7000/artDumpster/artWork/${artwork_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
