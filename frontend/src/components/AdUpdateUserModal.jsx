@@ -32,7 +32,9 @@ function AdUpdateUserModal({
 
   const fetchAllTools = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.API_URL}/artDumpster/tools`);
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/artDumpster/tools`,
+      );
       setNewTools(res.data.data);
     } catch (err) {
       console.error("[GET /frontend]: Error fetching all tools!");
@@ -42,7 +44,7 @@ function AdUpdateUserModal({
   const fetchAllArtStyles = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.API_URL}/artDumpster/artStyles`,
+        `${import.meta.env.VITE_API_URL}/artDumpster/artStyles`,
       );
       setNewArtStyles(res.data.data);
     } catch (err) {

@@ -14,7 +14,7 @@ export function useFetchUserById() {
         if (!authToken) return;
 
         const userProfile = await axios.get(
-          `${import.meta.env.API_URL}/artDumpster/profile`,
+          `${import.meta.env.VITE_API_URL}/artDumpster/profile`,
           {
             headers: { Authorization: `Bearer ${authToken}` },
           },

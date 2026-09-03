@@ -22,7 +22,7 @@ function AdRegisterPage({ onRegister }) {
   const fetchAllArtStyles = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.API_URL}/artDumpster/artStyles`,
+        `${import.meta.env.VITE_API_URL}/artDumpster/artStyles`,
       );
       setArtStyles(res.data.data);
     } catch (err) {
@@ -32,7 +32,9 @@ function AdRegisterPage({ onRegister }) {
 
   const fetchAllTools = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.API_URL}/artDumpster/tools`);
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/artDumpster/tools`,
+      );
       setTools(res.data.data);
     } catch (err) {
       console.error("[GET /RegisterPage.jsx]: Error fetching all tools!");
