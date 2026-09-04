@@ -16,26 +16,25 @@ router.get(
   AdArtworkController.fetchArtworkById,
 );
 
-router.get(
-  "/artWork",
-  verifyToken,
-  AdArtworkController.fetchAllArtwork,
-);
+router.get("/artWork", verifyToken, AdArtworkController.fetchAllArtwork);
+
 router.post(
   "/artWork/uploads",
-  (req, res, next)=>
-    {console.log("Upload Route Hit!");
-      next();
-    },  
+  (req, res, next) => {
+    console.log("Upload Route Hit!");
+    next();
+  },
   verifyToken,
   uploadConfig.single("image_url"),
   AdArtworkController.addArtwork,
 );
+
 router.put(
   "/artWork/edit/:artwork_id",
   verifyToken,
   AdArtworkController.updateArtwork,
 );
+
 router.delete(
   "/artWork/:artwork_id",
   verifyToken,

@@ -10,7 +10,7 @@ function AdArtworkCard({ user, artwork, onDelete, onEdit }) {
         className="relative mb-4 overflow-hidden transition duration-300 bg-white shadow-md group break-inside-avoid rounded-xl hover:shadow-xl active:scale-88"
       >
         <img
-          src={`${import.meta.env.VITE_API_URL}/${artwork.image_url}`}
+          src={artwork.image_url}
           alt={artwork.title}
           className="object-cover w-full transition duration-300 hover:scale-105"
         />

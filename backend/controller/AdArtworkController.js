@@ -1,3 +1,5 @@
+const { uploadFile } = require("../middleware/s3.js");
+const path = require("path");
 const adArtworkModel = require("../model/AdArtworksModel");
 
 const fetchAllArtwork = async (req, res) => {
@@ -54,11 +56,8 @@ const fetchArtworkByUser = async (req, res) => {
       "[GET /controller]: Error fetching user artwork!",
       err.message,
     );
-    res
-      .status(500)
-      .json({ error: err.message});
+    res.status(500).json({ error: err.message });
   }
-  
 };
 
 const addArtwork = async (req, res) => {
@@ -78,7 +77,17 @@ const addArtwork = async (req, res) => {
         .json({ error: "[POST /Controller]: Missing required fields!" });
     }
 
-    const image_url = `uploads/${req.file.filename}`;
+    const key = `uploads/${crypto.randomUUID()}${path.extname(req.file.originalname)}`;
+
+    await uploadFile(
+      key,
+      req.file.buffer, // Buffer straight from memory
+      undefined, // uses default bucket
+      { originalName: req.file.originalname },
+      req.file.mimetype,
+    );
+
+    const image_url = `${process.env.S3_ENDPOINT}/${process.env.S3_BUCKET}/${key}`;
 
     const newArtwork = await adArtworkModel.addArtwork(
       user_id,
@@ -93,6 +102,8 @@ const addArtwork = async (req, res) => {
       message: "[POST /Controller]: Uploading artwork successful!",
       data: newArtwork,
     });
+
+    res.status(201).json({ key, url });
   } catch (err) {
     console.error("[POST /Controller]: Error adding new artwork!", err.message);
     res.status(500).json({ error: "[POST /Controller]: Server error!" });
