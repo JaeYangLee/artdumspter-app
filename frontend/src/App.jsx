@@ -11,6 +11,7 @@ import AdAddAnArtworkPage from "./pages/AdAddAnArtworkPage";
 import AdSuccessModal from "./components/AdSuccessModal";
 import AdErrorModal from "./components/AdErrorModal";
 import AdSettingsPage from "./pages/AdSettingsPage";
+import AdAboutPage from "./pages/AdAboutPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -429,6 +430,16 @@ function App() {
                   setTheme={setThemeMode}
                   onLogout={logOutUser}
                 />
+              </AdProtectedRoute>
+            }
+          ></Route>
+
+          <Route
+            exact
+            path="/settings/about"
+            element={
+              <AdProtectedRoute user={user}>
+                <AdAboutPage onLogout={logOutUser} user={user} />
               </AdProtectedRoute>
             }
           ></Route>

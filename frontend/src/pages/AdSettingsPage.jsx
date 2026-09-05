@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { BsFillTrashFill } from "react-icons/bs";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { BsFillMoonFill } from "react-icons/bs";
@@ -27,15 +28,17 @@ function AdSettingsPage({ user, onDelete, setTheme, onLogout }) {
             <BsFillMoonFill />
             <label>Theme</label>
           </div>
-          <div className="flex flex-row items-center justify-start w-full gap-2 px-2 py-4 border-b text-textColor md:justify-center cursor-pointer hover:shadow-[inset_0px_-8px_8px_rgb(0,0,0,0.1)] transition duration-300">
+          <Link
+            to="/settings/about"
+            className="flex flex-row items-center justify-start w-full gap-2 px-2 py-4 border-b text-textColor md:justify-center cursor-pointer hover:shadow-[inset_0px_-8px_8px_rgb(0,0,0,0.1)] transition duration-300"
+          >
             <BsInfoCircleFill />
             <label>About</label>
-          </div>
+          </Link>
         </section>
       </div>
 
       <AdNavBar onLogout={onLogout} user={user} />
-
       <AdValidatorModal
         user={user}
         title={"Are you sure?"}
@@ -45,7 +48,6 @@ function AdSettingsPage({ user, onDelete, setTheme, onLogout }) {
         isValidatorModalOpen={isValidatorModalOpen}
         onValidatorModalClose={() => setValidatorModalOpen(false)}
       />
-
       <AdThemeModal
         setTheme={setTheme}
         isThemeModalOpen={isThemeModalOpen}
